@@ -1,0 +1,123 @@
+<html>
+    <head>
+        <meta charset="UTF-8" />
+        <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <title>Header</title>
+        <script src="https://cdn.tailwindcss.com"></script>
+        <link
+            rel="stylesheet"
+            href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css"
+        />
+        <link href="http://fonts.cdnfonts.com/css/elianto" rel="stylesheet" />
+        <style>
+            .image {
+                /* object-fit: cover; */
+                width: 100%;
+                height: 100%;
+                border-radius: 10px;
+                /* backdrop-filter: blur(10px); */
+            }
+        </style>
+    </head>
+    <body class="max-w-screen-2xl mx-auto">
+        <div class="flex px-4 sm:px-6 lg:px-20 mt-6 justify-evenly">
+            <div class="flex flex-col md:flex-row -mx-4">
+                <div class="md:flex-1 px-4">
+                    <div>
+                        <div
+                            class="h-64 md:h-80 rounded-lg bg-transparent mb-4"
+                        >
+                            <image
+                                class="image rounded-md h-full w-full object-cover"
+                                src="https://elearn-ivory.vercel.app/_next/image?url=https%3A%2F%2Ffirebasestorage.googleapis.com%2Fv0%2Fb%2Felearn-ivory.appspot.com%2Fo%2Fimages%252Fscience.jpg%3Falt%3Dmedia%26token%3D73a111ef-56cc-4ffc-b7b0-1b991ade11ac&w=256&q=75"
+                            />
+                        </div>
+                        <div class="flex -mx-2 mb-4"></div>
+                    </div>
+                </div>
+                <div class="md:flex-1 px-4">
+                    <h2
+                        class="mb-2 leading-tight tracking-tight font-bold text-gray-800 text-2xl md:text-3xl"
+                    >
+                        Lorem ipsum dolor, sit amet consectetur, adipisicing
+                        elit.
+                    </h2>
+                    <p class="text-gray-500 text-sm">
+                        By
+                        <a href="#" class="text-indigo-600 hover:underline"
+                            >ABC Company</a
+                        >
+                    </p>
+
+                    <div class="flex items-center space-x-4 my-4">
+                        <div>
+                            <div class="rounded-lg bg-gray-100 flex py-2 px-3">
+                                <span class="text-indigo-400 mr-1 mt-1">$</span>
+                                <span class="font-bold text-indigo-600 text-3xl"
+                                    >25</span
+                                >
+                            </div>
+                        </div>
+                        <div class="flex-1">
+                            <p class="text-green-500 text-xl font-semibold">
+                                Save 12%
+                            </p>
+                            <p class="text-gray-400 text-sm">
+                                Inclusive of all Taxes.
+                            </p>
+                        </div>
+                    </div>
+
+                    <p class="text-gray-500">
+                        Lorem ipsum, dolor sit, amet consectetur adipisicing
+                        elit. Vitae exercitationem porro saepe ea harum corrupti
+                        vero id laudantium enim, libero blanditiis expedita
+                        cupiditate a est.
+                    </p>
+
+                    <div class="flex py-4 space-x-4">
+                        <div class="relative">
+                            <div
+                                class="text-center left-0 pt-2 right-0 absolute block text-xs uppercase text-gray-400 tracking-wide font-semibold"
+                            >
+                                Qty
+                            </div>
+                            <select
+                                class="cursor-pointer appearance-none rounded-xl border border-gray-200 pl-4 pr-8 h-14 flex items-end pb-1"
+                            >
+                                <option>1</option>
+                                <option>2</option>
+                                <option>3</option>
+                                <option>4</option>
+                                <option>5</option>
+                            </select>
+
+                            <svg
+                                class="w-5 h-5 text-gray-400 absolute right-0 bottom-0 mb-2 mr-2"
+                                xmlns="http://www.w3.org/2000/svg"
+                                fill="none"
+                                viewBox="0 0 24 24"
+                                stroke="currentColor"
+                            >
+                                <path
+                                    stroke-linecap="round"
+                                    stroke-linejoin="round"
+                                    stroke-width="2"
+                                    d="M8 9l4-4 4 4m0 6l-4 4-4-4"
+                                />
+                            </svg>
+                        </div>
+
+                        <button
+                            type="button"
+                            class="h-14 px-6 py-2 font-semibold rounded-xl bg-indigo-600 hover:bg-indigo-500 text-white"
+                        >
+                            Add to Cart
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </body>
+</html>
