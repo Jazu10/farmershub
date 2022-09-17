@@ -36,13 +36,26 @@
             }
             .prod img {
                 width: 8rem;
-                height: 100%;
+                height: 8rem;
                 align-self: center;
                 object-fit: cover;
             }
+            .logo {
+                color: #2a9d8f;
+            }
+            body {
+                background: radial-gradient(
+                    70vh at 2.9% 15%,
+                    rgb(171, 249, 213) 0%,
+                    rgb(177, 244, 212) 25.8%,
+                    rgb(181, 234, 209) 50.8%,
+                    rgb(211, 251, 233) 77.6%,
+                    rgb(245, 255, 250) 100.7%
+                );
+            }
         </style>
     </head>
-    <body class="bg-gray-100">
+    <body class="h-screen">
         <header
             class="header bg-gray-200 bg-clip-border backdrop-filter backdrop-blur-3xl bg-opacity-20 top-0 w-full sticky z-40"
         >
@@ -50,20 +63,20 @@
                 class="nav mx-auto max-w-screen-2xl flex py-2 px-4 md:py-6 w-full mx-auto items-center justify-between md:justify-around"
             >
                 <!-- logo -->
-                <div class="logo flex px-2">
+                <div class="logo flex">
                     <text class="hidden lg:flex font-bold text-3xl font-elianto"
                         >Green Shoppee</text
                     >
                     <text
-                        class="logo1 font-bold text-3xl md:text-4xl lg:hidden font-elianto"
+                        class="logo font-bold text-3xl md:text-4xl lg:hidden font-elianto"
                         >GS</text
                     >
                 </div>
 
                 <!-- search -->
-                <div class="search hidden md:flex md:w-3/5 px-4">
+                <div class="search hidden md:flex md:w-3/5">
                     <div
-                        class="flex flex-grow bg-white items-center rounded-md"
+                        class="flex flex-grow bg-white items-center shadow-md rounded-md"
                     >
                         <input
                             class="sinput bg-transparent font-semibold text-sm pl-4 h-12 flex flex-grow focus:outline-none text-lg"
@@ -92,25 +105,25 @@
                                     <span class="">do</span>
                                 </button>
                                 <ul
-                                    class="dropdown absolute hidden text-gray-700 pt-1 group-hover:block w-44 -mx-40"
+                                    class="dropdown bg-white border-gray-300 border-2 rounded-md absolute hidden text-gray-700 group-hover:block w-44 -mx-36"
                                 >
                                     <li class="">
                                         <a
-                                            class="dropelements rounded-t bg-gray-200 hover:bg-gray-400 py-2 px-4 block whitespace-no-wrap"
+                                            class="dropelements rounded-t-md hover:bg-gray-200 py-2 px-4 block whitespace-no-wrap"
                                             href="#"
                                             >One</a
                                         >
                                     </li>
                                     <li class="">
                                         <a
-                                            class="dropelements bg-gray-200 hover:bg-gray-400 py-2 px-4 block whitespace-no-wrap"
+                                            class="dropelements hover:bg-gray-200 py-2 px-4 block whitespace-no-wrap"
                                             href="#"
                                             >Two</a
                                         >
                                     </li>
                                     <li class="">
                                         <a
-                                            class="dropelements rounded-b bg-gray-200 hover:bg-gray-400 py-2 px-4 block whitespace-no-wrap"
+                                            class="dropelements rounded-b-md hover:bg-gray-200 py-2 px-4 block whitespace-no-wrap"
                                             href="#"
                                             >Three is the magic number</a
                                         >
@@ -122,9 +135,9 @@
                 </div>
             </nav>
             <!-- mobile search bar -->
-            <div class="w-full flex flex-col md:hidden items-center pb-2">
+            <div class="w-full flex flex-col md:hidden items-center pb-2 px-4">
                 <div
-                    class="flex flex-grow bg-white items-center h-10 w-4/5 rounded-md"
+                    class="flex flex-grow bg-white items-center h-10 w-full rounded-md shadow-md"
                 >
                     <input
                         class="bg-transparent font-semibold xs:text-md sm:text-lg pl-4 flex flex-grow focus:outline-none"
@@ -142,7 +155,7 @@
         <!-- <main class="mx-auto max-w-7xl"> -->
         <main class="mx-auto max-w-screen-2xl">
             <div
-                class="prods grid md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 grid-flow-row-dense md:px-6 lg:px-10"
+                class="prods grid mx-4 md:mx-0 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 grid-flow-row-dense md:px-6 lg:px-10"
             >
                 <div
                     class="relative hidden md:flex flex-col m-5 bg-white z-30 p-8 shadow-md hover:shadow-xl transform duration-500 hover:scale-105 cursor-pointer"
@@ -172,7 +185,7 @@
                     </div>
                 </div>
                 <div
-                    class="prod relative md:hidden mx-5 my-2 bg-white flex cursor-pointer shadow-md"
+                    class="prod relative md:hidden my-1 bg-white flex cursor-pointer shadow-md"
                 >
                     <img
                         src="https://elearn-ivory.vercel.app/_next/image?url=https%3A%2F%2Ffirebasestorage.googleapis.com%2Fv0%2Fb%2Felearn-ivory.appspot.com%2Fo%2Fimages%252Fscience.jpg%3Falt%3Dmedia%26token%3D73a111ef-56cc-4ffc-b7b0-1b991ade11ac&w=256&q=75"
@@ -227,172 +240,7 @@
                     </div>
                 </div>
                 <div
-                    class="prod relative md:hidden mx-5 my-2 bg-white flex cursor-pointer shadow-md"
-                >
-                    <img
-                        src="https://elearn-ivory.vercel.app/_next/image?url=https%3A%2F%2Ffirebasestorage.googleapis.com%2Fv0%2Fb%2Felearn-ivory.appspot.com%2Fo%2Fimages%252Fscience.jpg%3Falt%3Dmedia%26token%3D73a111ef-56cc-4ffc-b7b0-1b991ade11ac&w=256&q=75"
-                        alt=""
-                        class="shadow-md"
-                    />
-                    <div class="px-4 py-2 w-full">
-                        <p class="absolute top-2 right-2 text-xs italic">
-                            category
-                        </p>
-                        <h4 class="font-bold text-xl py-2">Title</h4>
-                        <p class="text-xs line-clamp-2 italic">
-                            hi masoom product free
-                        </p>
-                        <div
-                            class="flex w-full justify-between inline-flex items-baseline mt-1"
-                        >
-                            <p
-                                class="flex sm:text-md bg-gray-200 p-1 rounded-md text-blue-500 font-semibold"
-                            >
-                                $250
-                            </p>
-                            <p class="flex text-lg">ratings</p>
-                        </div>
-                    </div>
-                </div>
-                <div
-                    class="relative hidden md:flex flex-col m-5 bg-white z-30 p-8 shadow-md hover:shadow-xl transform duration-500 hover:scale-105 cursor-pointer"
-                >
-                    <image
-                        class="rounded w-full h-full"
-                        src="https://elearn-ivory.vercel.app/_next/image?url=https%3A%2F%2Ffirebasestorage.googleapis.com%2Fv0%2Fb%2Felearn-ivory.appspot.com%2Fo%2Fimages%252Fscience.jpg%3Falt%3Dmedia%26token%3D73a111ef-56cc-4ffc-b7b0-1b991ade11ac&w=256&q=75"
-                    />
-                    <p
-                        class="absolute top-3 right-4 text-xs text-gray-700 italic"
-                    >
-                        category
-                    </p>
-                    <h4 class="mt-2 font-bold text-xl md:text-2xl">{title}</h4>
-                    <p class="text-xs my-2 line-clamp-2 italic">
-                        {description}
-                    </p>
-                    <div
-                        class="font-bold justify-between inline-flex items-baseline"
-                    >
-                        <div
-                            class="text-black text-lg bg-gray-100 rounded-md p-1 px-2 text-blue-600"
-                        >
-                            $250
-                        </div>
-                        <div class="text-yellow-400">Ratings</div>
-                    </div>
-                </div>
-                <div
-                    class="prod relative md:hidden mx-5 my-2 bg-white flex cursor-pointer shadow-md"
-                >
-                    <img
-                        src="https://elearn-ivory.vercel.app/_next/image?url=https%3A%2F%2Ffirebasestorage.googleapis.com%2Fv0%2Fb%2Felearn-ivory.appspot.com%2Fo%2Fimages%252Fscience.jpg%3Falt%3Dmedia%26token%3D73a111ef-56cc-4ffc-b7b0-1b991ade11ac&w=256&q=75"
-                        alt=""
-                        class="shadow-md"
-                    />
-                    <div class="px-4 py-2 w-full">
-                        <p class="absolute top-2 right-2 text-xs italic">
-                            category
-                        </p>
-                        <h4 class="font-bold text-xl py-2">Title</h4>
-                        <p class="text-xs line-clamp-2 italic">
-                            hi masoom product free
-                        </p>
-                        <div
-                            class="flex w-full justify-between inline-flex items-baseline mt-1"
-                        >
-                            <p
-                                class="flex sm:text-md bg-gray-200 p-1 rounded-md text-blue-500 font-semibold"
-                            >
-                                $250
-                            </p>
-                            <p class="flex text-lg">ratings</p>
-                        </div>
-                    </div>
-                </div>
-                <div
-                    class="relative hidden md:flex flex-col m-5 bg-white z-30 p-8 shadow-md hover:shadow-xl transform duration-500 hover:scale-105 cursor-pointer"
-                >
-                    <image
-                        class="rounded w-full h-full"
-                        src="https://elearn-ivory.vercel.app/_next/image?url=https%3A%2F%2Ffirebasestorage.googleapis.com%2Fv0%2Fb%2Felearn-ivory.appspot.com%2Fo%2Fimages%252Fscience.jpg%3Falt%3Dmedia%26token%3D73a111ef-56cc-4ffc-b7b0-1b991ade11ac&w=256&q=75"
-                    />
-                    <p
-                        class="absolute top-3 right-4 text-xs text-gray-700 italic"
-                    >
-                        category
-                    </p>
-                    <h4 class="mt-2 font-bold text-xl md:text-2xl">{title}</h4>
-                    <p class="text-xs my-2 line-clamp-2 italic">
-                        {description}
-                    </p>
-                    <div
-                        class="font-bold justify-between inline-flex items-baseline"
-                    >
-                        <div
-                            class="text-black text-lg bg-gray-100 rounded-md p-1 px-2 text-blue-600"
-                        >
-                            $250
-                        </div>
-                        <div class="text-yellow-400">Ratings</div>
-                    </div>
-                </div>
-                <div
-                    class="prod relative md:hidden mx-5 my-2 bg-white flex cursor-pointer shadow-md"
-                >
-                    <img
-                        src="https://elearn-ivory.vercel.app/_next/image?url=https%3A%2F%2Ffirebasestorage.googleapis.com%2Fv0%2Fb%2Felearn-ivory.appspot.com%2Fo%2Fimages%252Fscience.jpg%3Falt%3Dmedia%26token%3D73a111ef-56cc-4ffc-b7b0-1b991ade11ac&w=256&q=75"
-                        alt=""
-                        class="shadow-md"
-                    />
-                    <div class="px-4 py-2 w-full">
-                        <p class="absolute top-2 right-2 text-xs italic">
-                            category
-                        </p>
-                        <h4 class="font-bold text-xl py-2">Title</h4>
-                        <p class="text-xs line-clamp-2 italic">
-                            hi masoom product free
-                        </p>
-                        <div
-                            class="flex w-full justify-between inline-flex items-baseline mt-1"
-                        >
-                            <p
-                                class="flex sm:text-md bg-gray-200 p-1 rounded-md text-blue-500 font-semibold"
-                            >
-                                $250
-                            </p>
-                            <p class="flex text-lg">ratings</p>
-                        </div>
-                    </div>
-                </div>
-                <div
-                    class="relative hidden md:flex flex-col m-5 bg-white z-30 p-8 shadow-md hover:shadow-xl transform duration-500 hover:scale-105 cursor-pointer"
-                >
-                    <image
-                        class="rounded w-full h-full"
-                        src="https://elearn-ivory.vercel.app/_next/image?url=https%3A%2F%2Ffirebasestorage.googleapis.com%2Fv0%2Fb%2Felearn-ivory.appspot.com%2Fo%2Fimages%252Fscience.jpg%3Falt%3Dmedia%26token%3D73a111ef-56cc-4ffc-b7b0-1b991ade11ac&w=256&q=75"
-                    />
-                    <p
-                        class="absolute top-3 right-4 text-xs text-gray-700 italic"
-                    >
-                        category
-                    </p>
-                    <h4 class="mt-2 font-bold text-xl md:text-2xl">{title}</h4>
-                    <p class="text-xs my-2 line-clamp-2 italic">
-                        {description}
-                    </p>
-                    <div
-                        class="font-bold justify-between inline-flex items-baseline"
-                    >
-                        <div
-                            class="text-black text-lg bg-gray-100 rounded-md p-1 px-2 text-blue-600"
-                        >
-                            $250
-                        </div>
-                        <div class="text-yellow-400">Ratings</div>
-                    </div>
-                </div>
-                <div
-                    class="prod relative md:hidden mx-5 my-2 bg-white flex cursor-pointer shadow-md"
+                    class="prod relative md:hidden my-2 bg-white flex cursor-pointer shadow-md"
                 >
                     <img
                         src="https://elearn-ivory.vercel.app/_next/image?url=https%3A%2F%2Ffirebasestorage.googleapis.com%2Fv0%2Fb%2Felearn-ivory.appspot.com%2Fo%2Fimages%252Fscience.jpg%3Falt%3Dmedia%26token%3D73a111ef-56cc-4ffc-b7b0-1b991ade11ac&w=256&q=75"

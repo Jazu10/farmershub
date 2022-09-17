@@ -12,7 +12,7 @@
         <link href="http://fonts.cdnfonts.com/css/elianto" rel="stylesheet" />
         <style>
             .image {
-                /* object-fit: cover; */
+                object-fit: contain;
                 width: 100%;
                 height: 100%;
                 border-radius: 10px;
@@ -29,8 +29,8 @@
                             class="h-64 md:h-80 rounded-lg bg-transparent mb-4"
                         >
                             <image
-                                class="image rounded-md h-full w-full object-cover"
-                                src="https://elearn-ivory.vercel.app/_next/image?url=https%3A%2F%2Ffirebasestorage.googleapis.com%2Fv0%2Fb%2Felearn-ivory.appspot.com%2Fo%2Fimages%252Fscience.jpg%3Falt%3Dmedia%26token%3D73a111ef-56cc-4ffc-b7b0-1b991ade11ac&w=256&q=75"
+                                class="image rounded-md h-full w-full object-contain"
+                                src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcREf48ilESASX02ivLsP2VyOz8O42vdYzc0uQ&usqp=CAU"
                             />
                         </div>
                         <div class="flex -mx-2 mb-4"></div>
@@ -76,44 +76,37 @@
                         cupiditate a est.
                     </p>
 
-                    <div class="flex py-4 space-x-4">
-                        <div class="relative">
+                    <div
+                        class="flex py-4 space-x-4 justify-between md:justify-start"
+                    >
+                        <div
+                            class="flex items-center text-2xl h-14 ring-gray-200 ring-2 rounded-md"
+                        >
                             <div
-                                class="text-center left-0 pt-2 right-0 absolute block text-xs uppercase text-gray-400 tracking-wide font-semibold"
+                                class="bg-gray-100 md:px-6 px-4 py-3 rounded-l-md cursor-pointer hover:bg-gray-200"
                             >
-                                Qty
+                                -
                             </div>
-                            <select
-                                class="cursor-pointer appearance-none rounded-xl border border-gray-200 pl-4 pr-8 h-14 flex items-end pb-1"
+                            <input
+                                type="number"
+                                name="qty"
+                                id="qty"
+                                value="100"
+                                disabled
+                                class="w-14 text-center bg-transparent"
+                            />
+                            <div
+                                class="bg-gray-100 px-4 md:px-6 py-3 rounded-r-md cursor-pointer hover:bg-gray-200"
                             >
-                                <option>1</option>
-                                <option>2</option>
-                                <option>3</option>
-                                <option>4</option>
-                                <option>5</option>
-                            </select>
-
-                            <svg
-                                class="w-5 h-5 text-gray-400 absolute right-0 bottom-0 mb-2 mr-2"
-                                xmlns="http://www.w3.org/2000/svg"
-                                fill="none"
-                                viewBox="0 0 24 24"
-                                stroke="currentColor"
-                            >
-                                <path
-                                    stroke-linecap="round"
-                                    stroke-linejoin="round"
-                                    stroke-width="2"
-                                    d="M8 9l4-4 4 4m0 6l-4 4-4-4"
-                                />
-                            </svg>
+                                +
+                            </div>
                         </div>
 
                         <button
                             type="button"
-                            class="h-14 px-6 py-2 font-semibold rounded-xl bg-indigo-600 hover:bg-indigo-500 text-white"
+                            class="h-14 px-4 py-2 md:px-6 font-semibold rounded-md bg-indigo-600 hover:bg-indigo-500 text-white"
                         >
-                            Add to Cart
+                            Add to cart
                         </button>
                     </div>
                 </div>
