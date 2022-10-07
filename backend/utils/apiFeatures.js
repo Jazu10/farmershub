@@ -5,7 +5,7 @@ class APIFeatures {
     }
 
     search() {
-        const keyword = this.queryStr.keyword
+        const name = this.queryStr.keyword
             ? {
                   name: {
                       $regex: this.queryStr.keyword,
@@ -13,8 +13,26 @@ class APIFeatures {
                   },
               }
             : {};
+        const seller = this.queryStr.keyword
+            ? {
+                  seller: {
+                      $regex: this.queryStr.keyword,
+                      $options: "i",
+                  },
+              }
+            : {};
+        const category = this.queryStr.keyword
+            ? {
+                  category: {
+                      $regex: this.queryStr.keyword,
+                      $options: "i",
+                  },
+              }
+            : {};
 
-        this.query = this.query.find({ ...keyword });
+        this.query = this.query.find({
+            $or: [{ ...name }, { ...seller }, { ...category }],
+        });
         return this;
     }
 

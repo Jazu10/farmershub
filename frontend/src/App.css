@@ -1,38 +1,49 @@
-.App {
-  text-align: center;
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+    html {
+        -webkit-tap-highlight-color: transparent;
+    }
 }
 
-.App-logo {
-  height: 40vmin;
-  pointer-events: none;
+@layer utilities {
+    .pb-safe{
+        padding-bottom: env(safe-area-inset-bottom);
+    }
+}
+.font-elianto {
+    font-family: "Elianto", sans-serif;
 }
 
-@media (prefers-reduced-motion: no-preference) {
-  .App-logo {
-    animation: App-logo-spin infinite 20s linear;
-  }
+.prods img {
+    width: 250px;
+    height: 200px;
+    align-self: center;
+    object-fit: cover;
 }
 
-.App-header {
-  background-color: #282c34;
-  min-height: 100vh;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  font-size: calc(10px + 2vmin);
-  color: white;
+@media screen and (min-device-width: 1024px) and (max-device-width: 1280px) {
+    .prods img {
+        width: 250px;
+        height: 200px;
+        align-self: center;
+        object-fit: cover;
+    }
 }
 
-.App-link {
-  color: #61dafb;
+.prod img {
+    width: 8rem;
+    height: 8rem;
+    align-self: center;
+    object-fit: cover;
 }
 
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
+.logo {
+    color: #2a9d8f;
+}
+
+body{
+    background: rgb(227, 248, 248)
 }
