@@ -8,12 +8,12 @@ function Header() {
                 <nav className="nav mx-auto max-w-screen-2xl flex py-2 px-4 md:py-6 w-full items-center justify-between md:justify-around">
                     {/* <!-- logo --> */}
                     <div className="logo flex">
-                        <text className="hidden lg:flex font-bold text-3xl font-elianto">
-                            Green Shoppee
-                        </text>
-                        <text className="logo font-bold text-3xl md:text-4xl lg:hidden font-elianto">
-                            GS
-                        </text>
+                        <div className="hidden lg:flex font-bold text-3xl font-elianto">
+                            Farmer's Hub
+                        </div>
+                        <div className="logo font-bold text-3xl md:text-4xl lg:hidden font-elianto">
+                            FH
+                        </div>
                     </div>
 
                     {/* <!-- search --> */}

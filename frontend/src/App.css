@@ -32,6 +32,11 @@
         object-fit: cover;
     }
 }
+@media screen and (min-device-width: 320px) and (max-device-width: 320px) {
+    .rating{
+        font-size:11px;
+    }
+}
 
 .prod img {
     width: 8rem;
@@ -41,9 +46,70 @@
 }
 
 .logo {
-    color: #2a9d8f;
+    color: #0c0c0c;
 }
 
 body{
-    background: rgb(227, 248, 248)
+    background: rgb(231, 231, 231)
+}
+
+/*Ratings*/
+.rating-outer {
+    display: inline-block;
+    position: relative;
+    font-family: FontAwesome;
+    color: #fdcc0d;
+}
+
+.rating-outer::before {
+    content: '\f006 \f006 \f006 \f006 \f006';
+}
+
+.rating-inner {
+    position: absolute;
+    top: 0;
+    left: 0;
+    white-space: nowrap;
+    overflow: hidden;
+    width: 0;
+}
+
+.rating-inner::before {
+    content: '\f005 \f005 \f005 \f005 \f005';
+    color: #f8ce0b;
+}
+/*Loader*/
+.loader {
+    display: flex;
+    align-self: center;
+    align-content: center;
+    align-items: center;
+    justify-self: center;
+    justify-content: center;
+    justify-items: center;
+    width: 80px;
+    height: 80px;
+    padding-left: 0;
+}
+
+.loader:after {
+    content: ' ';
+    display: flex;
+    width: 64px;
+    height: 64px;
+    margin: 8px;
+    border-radius: 50%;
+    border: 6px solid #fa9c23;
+    border-color: #fa9c23 transparent;
+    animation: lds-dual-ring 1.2s linear infinite;
+}
+
+@keyframes lds-dual-ring {
+    0% {
+        transform: rotate(0deg);
+    }
+
+    100% {
+        transform: rotate(360deg);
+    }
 }

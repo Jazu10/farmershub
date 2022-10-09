@@ -27,14 +27,15 @@ exports.getProducts = catchAsyncErrors(async (req, res, next) => {
 
     let products = await apiFeatures.query;
     let filteredProductsCount = products.length;
-
-    res.status(200).json({
-        success: true,
-        productsCount,
-        resPerPage,
-        filteredProductsCount,
-        products,
-    });
+    setTimeout(() => {
+        res.status(200).json({
+            success: true,
+            productsCount,
+            resPerPage,
+            filteredProductsCount,
+            products,
+        });
+    }, 2000);
 });
 
 // Get all products (Admin)  =>   /api/v1/admin/products
