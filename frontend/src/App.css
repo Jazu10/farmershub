@@ -81,12 +81,6 @@ body{
 /*Loader*/
 .loader {
     display: flex;
-    align-self: center;
-    align-content: center;
-    align-items: center;
-    justify-self: center;
-    justify-content: center;
-    justify-items: center;
     width: 80px;
     height: 80px;
     padding-left: 0;
