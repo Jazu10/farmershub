@@ -1,5 +1,8 @@
 import React from "react";
 import Headroom from "react-headroom";
+import { Link } from "react-router-dom";
+import { Search, MSearch } from "../../components";
+import { Route } from "react-router-dom";
 
 function Header() {
     return (
@@ -7,27 +10,24 @@ function Header() {
             <header className="header bg-gray-200 bg-clip-border backdrop-filter backdrop-blur-3xl bg-opacity-20 top-0 w-full sticky">
                 <nav className="nav mx-auto max-w-screen-2xl flex py-2 px-4 md:py-6 w-full items-center justify-between md:justify-around">
                     {/* <!-- logo --> */}
-                    <div className="logo flex">
-                        <div className="hidden lg:flex font-bold text-3xl font-elianto">
-                            Farmer's Hub
+                    <Link to="/">
+                        <div className="logo flex">
+                            <div className="hidden lg:flex font-bold text-3xl font-elianto cursor-pointer">
+                                Farmer's Hub
+                            </div>
+                            <div className="logo font-bold text-3xl md:text-4xl lg:hidden font-elianto cursor-pointer">
+                                FH
+                            </div>
                         </div>
-                        <div className="logo font-bold text-3xl md:text-4xl lg:hidden font-elianto">
-                            FH
-                        </div>
-                    </div>
+                    </Link>
 
                     {/* <!-- search --> */}
                     <div className="search hidden md:flex md:w-3/5">
-                        <div className="flex flex-grow bg-white items-center shadow-md rounded-md">
-                            <input
-                                className="sinput bg-transparent font-semibold pl-4 h-12 flex flex-grow focus:outline-none text-lg"
-                                type="text"
-                                placeholder="I'm searching for ..."
-                            />
-                            <div className="sbutton px-4 text-2xl cursor-pointer mb-1 hover:text-gray-500">
-                                <i className="fa fa-search"></i>
-                            </div>
-                        </div>
+                        <Route
+                            render={({ history }) => (
+                                <Search history={history} />
+                            )}
+                        />
                     </div>
 
                     {/* <!-- nav links --> */}
@@ -71,19 +71,9 @@ function Header() {
                         </ul>
                     </div>
                 </nav>
-                {/* <!-- mobile search bar --> */}
-                <div className="w-full flex flex-col md:hidden items-center pb-2 px-4">
-                    <div className="flex flex-grow bg-white items-center h-10 w-full rounded-md shadow-md">
-                        <input
-                            className="bg-transparent font-semibold xs:text-md sm:text-lg pl-4 flex flex-grow focus:outline-none"
-                            type="text"
-                            placeholder="I'm searching for ..."
-                        />
-                        <div className="px-4 text-xl cursor-pointer mb-1 hover:text-gray-500">
-                            <i className="fa fa-search"></i>
-                        </div>
-                    </div>
-                </div>
+                <Route
+                    render={({ history }) => <MSearch history={history} />}
+                />
             </header>
         </Headroom>
     );

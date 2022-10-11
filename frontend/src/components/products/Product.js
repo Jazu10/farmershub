@@ -70,7 +70,7 @@ function Product({
                             <p className="flex sm:text-md bg-gray-200 p-1 rounded-md text-blue-500 font-bold">
                                 ${price}
                             </p>
-                            <div className="rating text-md">
+                            <div className="text-md">
                                 <div className="rating-outer">
                                     <div
                                         className="rating-inner"

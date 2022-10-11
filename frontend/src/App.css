@@ -107,3 +107,39 @@ body{
         transform: rotate(360deg);
     }
 }
+
+.rating {
+    margin-top: 10rem;
+}
+
+.stars {
+    height: 100px;
+    display: flex;
+    align-items: center;
+    padding-left: 0;
+}
+
+.star {
+    display: inline;
+    list-style: none;
+    font-size: 3rem;
+    padding-left: 0.9rem;
+    color: #bebebe;
+}
+
+.star:first-child {
+    padding-left: 0;
+}
+
+.orange {
+    color: #fa9c23;
+}
+
+.yellow {
+    color: #fdcc0d;
+}
+
+.review_user {
+    font-size: 0.8rem;
+    color: grey;
+}
