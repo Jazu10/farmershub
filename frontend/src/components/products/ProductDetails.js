@@ -73,7 +73,7 @@ const ProductDetails = ({ match }) => {
                                     <div className="h-64 md:h-80 rounded-lg bg-transparent mb-4">
                                         <Carousel pause="hover">
                                             {product.images &&
-                                                product.images.map((image) => {
+                                                product.images.map((image) => (
                                                     <Carousel.Item
                                                         key={image.public_id}>
                                                         <img
@@ -82,8 +82,8 @@ const ProductDetails = ({ match }) => {
                                                             src={image.url}
                                                             alt={product.title}
                                                         />
-                                                    </Carousel.Item>;
-                                                })}
+                                                    </Carousel.Item>
+                                                ))}
                                         </Carousel>
                                     </div>
                                     <div className="flex -mx-2 mb-4"></div>
@@ -126,11 +126,17 @@ const ProductDetails = ({ match }) => {
                                 </p>
                                 <p className="font-bold text-xl">
                                     Status :
-                                        {product.stock > 0 ? (
-                                            <span className="text-blue-600"> In Stock</span>
-                                        ) : (
-                                            <span className="text-red-500"> Out of Stock</span>
-                                        )}
+                                    {product.stock > 0 ? (
+                                        <span className="text-blue-600">
+                                            {" "}
+                                            In Stock
+                                        </span>
+                                    ) : (
+                                        <span className="text-red-500">
+                                            {" "}
+                                            Out of Stock
+                                        </span>
+                                    )}
                                 </p>
 
                                 <div className="flex py-4 space-x-4 justify-between md:justify-start">

@@ -60,7 +60,7 @@ exports.getSingleProduct = catchAsyncErrors(async (req, res, next) => {
             success: true,
             product,
         });
-    }, 2000);
+    }, 0);
 });
 
 // Update Product   =>   /api/v1/admin/product/:id
