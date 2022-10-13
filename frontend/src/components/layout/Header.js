@@ -32,8 +32,8 @@ function Header() {
 
                     {/* <!-- nav links --> */}
                     <div className="flex">
-                        <ul className="nav flex items-center justify-evenly px-2 space-x-10 text-lg">
-                            <li className="">
+                        <ul className="nav flex items-center justify-evenly px-2  md:space-x-6 text-lg font-semibold">
+                            <li className="hover:bg-gray-300 px-4 py-2 rounded">
                                 <a className="" href="/">
                                     cart
                                 </a>
@@ -67,6 +67,11 @@ function Header() {
                                         </li>
                                     </ul>
                                 </div>
+                            </li>
+                            <li className="hover:bg-gray-300 -mr-4 px-4 py-2 rounded">
+                                <Link to="/login" className="">
+                                    Login
+                                </Link>
                             </li>
                         </ul>
                     </div>

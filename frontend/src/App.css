@@ -13,6 +13,8 @@
         padding-bottom: env(safe-area-inset-bottom);
     }
 }
+
+
 .font-elianto {
     font-family: "Elianto", sans-serif;
 }
