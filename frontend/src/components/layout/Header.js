@@ -3,8 +3,18 @@ import Headroom from "react-headroom";
 import { Link } from "react-router-dom";
 import { Search, MSearch } from "../../components";
 import { Route } from "react-router-dom";
-
+import { useAlert } from "react-alert";
+import { useDispatch, useSelector } from "react-redux";
+import { logout } from "../../actions/userActions";
 function Header() {
+    const alert = useAlert();
+    const dispatch = useDispatch();
+    const { user, loading } = useSelector((state) => state.auth);
+
+    const logoutHandler = () => {
+        dispatch(logout());
+        alert.success("Logged out successfully!");
+    };
     return (
         <Headroom>
             <header className="header bg-gray-200 bg-clip-border backdrop-filter backdrop-blur-3xl bg-opacity-20 top-0 w-full sticky">
@@ -32,47 +42,74 @@ function Header() {
 
                     {/* <!-- nav links --> */}
                     <div className="flex">
-                        <ul className="nav flex items-center justify-evenly px-2  md:space-x-6 text-lg font-semibold">
-                            <li className="hover:bg-gray-300 px-4 py-2 rounded">
-                                <a className="" href="/">
-                                    cart
-                                </a>
-                            </li>
-                            <li className="">
-                                <div className="group inline-block relative">
-                                    <button className="inline-flex items-center">
-                                        <span className="">do</span>
-                                    </button>
-                                    <ul className="dropdown bg-white border-gray-300 border-2 rounded-md absolute hidden text-gray-700 group-hover:block w-44 -mx-36">
-                                        <li className="">
-                                            <a
-                                                className="dropelements rounded-t-md hover:bg-gray-200 py-2 px-4 block whitespace-no-wrap"
-                                                href="/#">
-                                                One
-                                            </a>
+                        <ul className="nav flex items-center justify-between px-2 space-x-3 md:space-x-6 text-lg font-semibold">
+                            <Link to="/cart">
+                                <li className="hover:bg-gray-400 px-4 py-2 rounded">
+                                    Cart
+                                </li>
+                            </Link>
+                            {user ? (
+                                <li className="">
+                                    <div className="group inline-block relative">
+                                        <button className="inline-flex items-center bg-gray-300 space-x-3 hover:bg-gray-400 p-2 rounded-md">
+                                            <img
+                                                src={
+                                                    user.avatar &&
+                                                    user.avatar.url
+                                                }
+                                                height={30}
+                                                width={30}
+                                                className="h-[30px] w-[30px] rounded-full ring-2 ring-yellow-500 object-cover"
+                                                alt=""
+                                            />
+                                            <span className="hidden md:flex">
+                                                {user && user.name}
+                                            </span>
+                                        </button>
+                                        <ul className="dropdown bg-white border-gray-300 border-2 rounded-md absolute hidden text-gray-700 group-hover:block w-44 -mx-[7.5rem] md:-mx-11">
+                                            <li className="">
+                                                {user &&
+                                                user.role === "admin" ? (
+                                                    <Link
+                                                        to="/dashboard"
+                                                        className="dropelements rounded-t-md hover:bg-gray-200 py-2 px-4 block whitespace-no-wrap">
+                                                        Dashboard
+                                                    </Link>
+                                                ) : (
+                                                    <Link
+                                                        to="/orders/me"
+                                                        className="dropelements rounded-t-md hover:bg-gray-200 py-2 px-4 block whitespace-no-wrap">
+                                                        Orders
+                                                    </Link>
+                                                )}
+                                            </li>
+                                            <li className="">
+                                                <Link
+                                                    to="/me"
+                                                    className="dropelements hover:bg-gray-200 py-2 px-4 block whitespace-no-wrap">
+                                                    Profile
+                                                </Link>
+                                            </li>
+                                            <li className="">
+                                                <Link
+                                                    to="/"
+                                                    onClick={logoutHandler}
+                                                    className="dropelements rounded-b-md text-red-500 hover:bg-gray-200 py-2 px-4 block whitespace-no-wrap">
+                                                    Logout
+                                                </Link>
+                                            </li>
+                                        </ul>
+                                    </div>
+                                </li>
+                            ) : (
+                                !loading && (
+                                    <Link to="/login" className="">
+                                        <li className="hover:bg-gray-300 -mr-4 px-4 py-2 rounded">
+                                            Login
                                         </li>
-                                        <li className="">
-                                            <a
-                                                className="dropelements hover:bg-gray-200 py-2 px-4 block whitespace-no-wrap"
-                                                href="/#">
-                                                Two
-                                            </a>
-                                        </li>
-                                        <li className="">
-                                            <a
-                                                className="dropelements rounded-b-md hover:bg-gray-200 py-2 px-4 block whitespace-no-wrap"
-                                                href="/#">
-                                                Three is the magic number
-                                            </a>
-                                        </li>
-                                    </ul>
-                                </div>
-                            </li>
-                            <li className="hover:bg-gray-300 -mr-4 px-4 py-2 rounded">
-                                <Link to="/login" className="">
-                                    Login
-                                </Link>
-                            </li>
+                                    </Link>
+                                )
+                            )}
                         </ul>
                     </div>
                 </nav>

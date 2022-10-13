@@ -10,7 +10,7 @@ const Register = ({ history }) => {
 
     const { name, email, password } = user;
 
-    const [avatar, setAvatar] = useState("/avatar.png");
+    const [avatar, setAvatar] = useState("");
     const [avatarPrev, setAvatarPrev] = useState("/avatar.png");
 
     const alert = useAlert();
@@ -56,7 +56,7 @@ const Register = ({ history }) => {
     };
     return (
         <div>
-            <MetaData title={"Register - ecommerce"} />
+            <MetaData title={"Register"} />
             <div className="w-full h-[84vH] md:h-auto max-w-lg mx-auto md:my-16 md:p-10 p-5 bg-white md:border md:shadow-lg md:rounded-md">
                 <form onSubmit={submitHandler} encType="multipart/form-data">
                     <h1 className="text-center font-bold text-xl pb-5 text-gray-700">

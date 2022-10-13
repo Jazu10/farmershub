@@ -10,12 +10,15 @@ const crypto = require("crypto");
 
 // Register a user   => /api/v1/register
 exports.registerUser = catchAsyncErrors(async (req, res, next) => {
+
     const result = await cloudinary.v2.uploader.upload(req.body.avatar, {
         folder: "avatars",
         width: 150,
         crop: "scale",
     });
+    
     const { name, email, password } = req.body;
+
 
     const user = await User.create({
         name,

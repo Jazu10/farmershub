@@ -61,7 +61,7 @@ const ProductDetails = ({ match }) => {
 
     return (
         <div>
-            <MetaData title={`${product.name} - ecommerce`} />
+            <MetaData title={`${product.name}`} />
             {loading ? (
                 <Loading />
             ) : (
