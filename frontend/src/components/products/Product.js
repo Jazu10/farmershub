@@ -19,7 +19,7 @@ function Product({
             <Link to={`/product/${_id}`}>
                 <div className="relative hidden md:flex flex-col m-5 bg-white p-8 pb-5 shadow-md hover:shadow-xl transform duration-500 hover:scale-105 cursor-pointer">
                     <img
-                        className="rounded w-full h-full"
+                        className="rounded h-[200px] object-cover"
                         loading="lazy"
                         src={images[0].url}
                         alt=""

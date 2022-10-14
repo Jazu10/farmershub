@@ -19,21 +19,7 @@
     font-family: "Elianto", sans-serif;
 }
 
-.prods img {
-    width: 250px;
-    height: 200px;
-    align-self: center;
-    object-fit: cover;
-}
 
-@media screen and (min-device-width: 1024px) and (max-device-width: 1280px) {
-    .prods img {
-        width: 250px;
-        height: 200px;
-        align-self: center;
-        object-fit: cover;
-    }
-}
 @media screen and (min-device-width: 320px) and (max-device-width: 320px) {
     .ratings{
         font-size:11px;

@@ -62,11 +62,11 @@ function Header() {
                                                 className="h-[30px] w-[30px] rounded-full ring-2 ring-yellow-500 object-cover"
                                                 alt=""
                                             />
-                                            <span className="hidden md:flex">
+                                            <span className="hidden lg:flex">
                                                 {user && user.name}
                                             </span>
                                         </button>
-                                        <ul className="dropdown bg-white border-gray-300 border-2 rounded-md absolute hidden text-gray-700 group-hover:block w-44 -mx-[7.5rem] md:-mx-11">
+                                        <ul className="dropdown bg-white border-gray-300 border-2 rounded-md absolute hidden text-gray-700 group-hover:block w-44 -mx-[7.5rem] lg:-mx-11">
                                             <li className="">
                                                 {user &&
                                                 user.role === "admin" ? (
