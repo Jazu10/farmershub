@@ -7,6 +7,7 @@ export { default as MSearch } from "./layout/MSearch";
 export { default as Login } from "./user/Login";
 export { default as Register } from "./user/Register";
 export { default as Profile } from "./user/Profile";
+export { default as UpdateProfile } from "./user/UpdateProfile";
 
 export { default as ProductDetails } from "./products/ProductDetails";
 

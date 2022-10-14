@@ -1,7 +1,7 @@
 import "./App.css";
 import { Header, Home, ProductDetails } from "./components/index";
 import { BrowserRouter as Router, Route } from "react-router-dom";
-import { Login, Register, Profile } from "./components";
+import { Login, Register, Profile, UpdateProfile } from "./components";
 import { useEffect } from "react";
 import { loadUser } from "./actions/userActions";
 import store from "./store";
@@ -20,6 +20,7 @@ function App() {
             <Route path="/login" exact component={Login} />
             <Route path="/register" exact component={Register} />
             <ProtectedRoute path="/me" exact component={Profile} />
+            <ProtectedRoute path="/me/update" exact component={UpdateProfile} />
         </Router>
     );
 }

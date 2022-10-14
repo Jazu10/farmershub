@@ -66,7 +66,7 @@ function Header() {
                                                 {user && user.name}
                                             </span>
                                         </button>
-                                        <ul className="dropdown bg-white border-gray-300 border-2 rounded-md absolute hidden text-gray-700 group-hover:block w-44 -mx-[7.5rem] lg:-mx-11">
+                                        <ul className="dropdown bg-white border-gray-300 border-2 rounded-md absolute hidden text-gray-700 group-hover:block w-44 right-0">
                                             <li className="">
                                                 {user &&
                                                 user.role === "admin" ? (
