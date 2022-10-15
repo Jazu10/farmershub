@@ -1,7 +1,6 @@
 import React, { useState, useEffect } from "react";
 import { MetaData } from "../../components";
 import { useAlert } from "react-alert";
-import { Link } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
 import {
     updateProfile,
@@ -40,14 +39,14 @@ const UpdateProfile = ({ history }) => {
             history.push("/me");
             dispatch({ type: UPDATE_PROFILE_RESET });
         }
-    }, [dispatch, alert, error, history, isUpdated]);
+    }, [dispatch, alert, error, history, isUpdated, user]);
 
     const submitHandler = (e) => {
         e.preventDefault();
         const formData = new FormData();
-        formData.append("name", name);
-        formData.append("email", email);
-        formData.append("avatar", avatar);
+        formData.set("name", name);
+        formData.set("email", email);
+        formData.set("avatar", avatar);
         dispatch(updateProfile(formData));
     };
 
@@ -63,7 +62,7 @@ const UpdateProfile = ({ history }) => {
     };
     return (
         <div>
-            <MetaData title={"Register"} />
+            <MetaData title={"Update Profile"} />
             <div className="w-full h-[84vH] md:h-auto max-w-lg mx-auto md:my-16 md:p-10 p-5 bg-white md:border md:shadow-lg md:rounded-md">
                 <form onSubmit={submitHandler} encType="multipart/form-data">
                     <h1 className="text-center font-bold text-xl pb-5 text-gray-700">

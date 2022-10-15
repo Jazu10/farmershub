@@ -71,16 +71,17 @@ exports.forgotPassword = catchAsyncErrors(async (req, res, next) => {
     await user.save({ validateBeforeSave: false });
 
     // Create reset password url
-    const resetUrl = `${req.protocol}://${req.get(
-        "host",
-    )}/password/reset/${resetToken}`;
+    const resetUrl = `${process.env.FRONTEND_URL}:/password/reset/${resetToken}`;
+    // const resetUrl = `${req.protocol}://${req.get(
+    //     "host",
+    // )}/password/reset/${resetToken}`;
 
     const message = `Your password reset token is as follow:\n\n${resetUrl}\n\nIf you have not requested this email, then ignore it.`;
 
     try {
         await sendEmail({
             email: user.email,
-            subject: "ShopIT Password Recovery",
+            subject: "Farmer's Hub Password Recovery",
             message,
         });
 
