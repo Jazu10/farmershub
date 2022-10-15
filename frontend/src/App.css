@@ -131,3 +131,150 @@ body{
     font-size: 0.8rem;
     color: grey;
 }
+
+/* checkout steps */
+ .checkout-progress div {
+     box-sizing: border-box;
+ }
+
+ .checkout-progress {
+     display: block;
+     clear: both;
+     margin: 20px auto;
+     width: auto;
+     font-family: sans-serif;
+     overflow: auto;
+ }
+
+ .step {
+     margin: 0;
+     border: 0;
+     letter-spacing: 1px;
+     line-height: 30px;
+     padding: 5px 10px 5px 15px;
+     color: black;
+     text-decoration: none;
+     cursor: default;
+     font-weight: bold;
+     float: left;
+     height: auto;
+ }
+
+ .incomplete {
+     background: white;
+ }
+
+ .active-step {
+     background: #fa9c23;
+     color: #fff;
+ }
+
+ .triangle-active {
+     float: left;
+     width: 0;
+     border-top: 20px solid transparent;
+     border-left: 15px solid #fa9c23;
+     border-bottom: 20px solid transparent;
+     margin-left: 0px;
+ }
+
+ .triangle2-active {
+     width: 0;
+     float: left;
+     border-top: 20px solid #fa9c23;
+     border-left: 15px solid #e5e7eb;
+     border-bottom: 20px solid #fa9c23;
+     margin-right: 0px;
+ }
+
+ .triangle-incomplete {
+     float: left;
+     width: 0;
+     border-top: 20px solid transparent;
+     border-left: 15px solid white;
+     border-bottom: 20px solid transparent;
+     margin-left: 0px;
+ }
+
+ .triangle2-incomplete {
+     width: 0;
+     float: left;
+     border-top: 20px solid white;
+     border-left: 15px solid #e5e7eb;
+     border-bottom: 20px solid white;
+     margin-right: 0px;
+ }
+
+@media screen and (min-device-width:320px) and (max-device-width: 540px) {
+    .checkout-progress div {
+            box-sizing: border-box;
+        }
+    
+        .checkout-progress {
+            display: block;
+            clear: both;
+            margin: 20px auto;
+            width: auto;
+            font-family: sans-serif;
+            overflow: auto;
+        }
+    
+        .step {
+            margin: 0;
+            border: 0;
+            letter-spacing: 1px;
+            line-height: 30px;
+            padding: 2px;
+            color: black;
+            text-decoration: none;
+            cursor: default;
+            font-weight: bold;
+            float: left;
+            height: auto;
+        }
+    
+        .incomplete {
+            background: white;
+        }
+    
+        .active-step {
+            background: #fa9c23;
+            color: #fff;
+        }
+    
+        .triangle-active {
+            float: left;
+            width: 0;
+            border-top: 17px solid transparent;
+            border-left: 12px solid #fa9c23;
+            border-bottom: 17px solid transparent;
+            margin-left: 0px;
+        }
+    
+        .triangle2-active {
+            width: 0;
+            float: left;
+            border-top: 17px solid #fa9c23;
+            border-left: 12px solid #e5e7eb;
+            border-bottom: 17px solid #fa9c23;
+            margin-right: 0px;
+        }
+    
+        .triangle-incomplete {
+            float: left;
+            width: 0;
+            border-top: 17px solid transparent;
+            border-left: 12px solid white;
+            border-bottom: 17px solid transparent;
+            margin-left: 0px;
+        }
+    
+        .triangle2-incomplete {
+            width: 0;
+            float: left;
+            border-top: 17px solid white;
+            border-left: 12px solid #e5e7eb;
+            border-bottom: 17px solid white;
+            margin-right: 0px;
+        }
+}

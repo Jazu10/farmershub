@@ -13,6 +13,8 @@ import {
     UpdatePassword,
     ForgotPassword,
     NewPassword,
+    Cart,
+    Shipping,
 } from "./components";
 
 function App() {
@@ -40,6 +42,8 @@ function App() {
                 exact
                 component={NewPassword}
             />
+            <Route path="/cart" exact component={Cart} />
+            <ProtectedRoute path="/shipping" exact component={Shipping} />
         </Router>
     );
 }

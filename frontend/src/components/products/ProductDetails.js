@@ -4,8 +4,11 @@ import { getProductDetails, clearErrors } from "../../actions/productActions";
 import { useAlert } from "react-alert";
 import { Loading, MetaData } from "../../components";
 import { Carousel } from "react-bootstrap";
+import { addItemToCart } from "../../actions/cartActions";
 
 const ProductDetails = ({ match }) => {
+    const [quantity, setQuantity] = useState(1);
+
     const dispatch = useDispatch();
     const alert = useAlert();
     const { loading, error, product } = useSelector(
@@ -20,6 +23,29 @@ const ProductDetails = ({ match }) => {
             dispatch(clearErrors());
         }
     }, [dispatch, alert, error, match.params.id]);
+
+    const increaseQty = () => {
+        const count = document.querySelector(".count");
+
+        if (count.valueAsNumber >= product.stock) return;
+
+        const qty = count.valueAsNumber + 1;
+        setQuantity(qty);
+    };
+
+    const decreaseQty = () => {
+        const count = document.querySelector(".count");
+
+        if (count.valueAsNumber <= 1) return;
+
+        const qty = count.valueAsNumber - 1;
+        setQuantity(qty);
+    };
+
+    const addToCart = () => {
+        dispatch(addItemToCart(match.params.id, quantity));
+        alert.success("Item added to cart");
+    };
 
     function setUserRatings() {
         const stars = document.querySelectorAll(".star");
@@ -93,12 +119,12 @@ const ProductDetails = ({ match }) => {
                                 <h2 className="mb-2 leading-tight tracking-tight font-bold text-gray-800 text-2xl md:text-3xl">
                                     {product.name}
                                 </h2>
-                                <p className="text-gray-500 text-sm">
+                                <div className="text-gray-500 text-sm">
                                     By
                                     <p className="text-indigo-600 hover:underline">
                                         {product.seller}
                                     </p>
-                                </p>
+                                </div>
 
                                 <div className="flex items-center space-x-4 my-4">
                                     <div>
@@ -111,14 +137,14 @@ const ProductDetails = ({ match }) => {
                                             </span>
                                         </div>
                                     </div>
-                                    <div className="flex-1">
+                                    {/* <div className="flex-1">
                                         <p className="text-green-500 text-xl font-semibold">
                                             Save 12%
                                         </p>
                                         <p className="text-gray-600 text-sm">
                                             Inclusive of all Taxes.
                                         </p>
-                                    </div>
+                                    </div> */}
                                 </div>
 
                                 <p className="text-gray-800">
@@ -127,39 +153,44 @@ const ProductDetails = ({ match }) => {
                                 <p className="font-bold text-xl">
                                     Status :
                                     {product.stock > 0 ? (
-                                        <span className="text-blue-600">
-                                            {" "}
+                                        <span className="text-blue-600 ml-2">
                                             In Stock
                                         </span>
                                     ) : (
-                                        <span className="text-red-500">
-                                            {" "}
+                                        <span className="text-red-500 ml-2">
                                             Out of Stock
                                         </span>
                                     )}
                                 </p>
 
                                 <div className="flex py-4 space-x-4 justify-between md:justify-start">
-                                    <div className="flex items-center text-2xl h-14 ring-gray-300 ring-2 rounded-md">
-                                        <div className="bg-gray-300 md:px-6 px-4 py-3 rounded-l-md cursor-pointer hover:bg-gray-400">
+                                    <div className="flex items-center justify-center text-2xl h-14 ring-gray-300 ring-2 rounded-md">
+                                        <button
+                                            onClick={decreaseQty}
+                                            className="bg-gray-300 md:px-6 px-4 py-3 rounded-l-md cursor-pointer hover:bg-gray-400">
                                             -
-                                        </div>
+                                        </button>
                                         <input
                                             type="number"
-                                            name="qty"
-                                            id="qty"
-                                            value="100"
-                                            disabled
-                                            className="w-14 text-center bg-transparent"
+                                            value={quantity}
+                                            readOnly
+                                            className="count p-2 h-full w-20 text-center text-black focus:outline-none bg-transparent"
                                         />
-                                        <div className="bg-gray-300 px-4 md:px-6 py-3 rounded-r-md cursor-pointer hover:bg-gray-400">
+                                        <button
+                                            onClick={increaseQty}
+                                            className=" bg-gray-300 px-4 md:px-6 py-3 rounded-r-md cursor-pointer hover:bg-gray-400">
                                             +
-                                        </div>
+                                        </button>
                                     </div>
-
                                     <button
                                         type="button"
-                                        className="h-14 px-4 py-2 md:px-6 font-semibold rounded-md bg-indigo-600 hover:bg-indigo-500 text-white">
+                                        disabled={product.stock === 0}
+                                        onClick={addToCart}
+                                        className={`h-14 px-4 py-2 md:px-6 font-semibold rounded-md bg-indigo-600 hover:bg-indigo-500 text-white ${
+                                            product.stock === 0
+                                                ? "cursor-not-allowed"
+                                                : "cursor-pointer"
+                                        } `}>
                                         Add to cart
                                     </button>
                                 </div>
