@@ -10,11 +10,19 @@ const orderSchema = mongoose.Schema({
             type: String,
             required: true,
         },
-        phoneNo: {
-            type: String,
+        phone: {
+            type: Number,
             required: true,
         },
         postalCode: {
+            type: String,
+            required: true,
+        },
+        state: {
+            type: String,
+            required: true,
+        },
+        district: {
             type: String,
             required: true,
         },

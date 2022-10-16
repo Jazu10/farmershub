@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import React, { useState } from "react";
 import { MetaData } from "../../components";
 import { useDispatch, useSelector } from "react-redux";
 import { saveShippingInfo } from "../../actions/cartActions";
@@ -11,14 +11,39 @@ const Shipping = ({ history }) => {
     const [postalCode, setPostalCode] = useState(shippingInfo.postalCode);
     const [phone, setPhone] = useState(shippingInfo.phone);
     const [country, setCountry] = useState(shippingInfo.country);
-
+    const [state, setState] = useState(shippingInfo.state);
+    const [district, setDistrict] = useState(shippingInfo.district);
+    const districts = [
+        "Kasargod",
+        "Kannur",
+        "Wayanad",
+        "Kozhikode",
+        "Malappuram",
+        "Palakkad",
+        "Thrissur",
+        "Ernakulam",
+        "Idukki",
+        "Kottayam",
+        "Alappuzha",
+        "Pathanamthitta",
+        "Kollam",
+        "Thiruvananthapuram",
+    ];
     const dispatch = useDispatch();
 
     const submitHandler = (e) => {
         e.preventDefault();
         // console.log({ address, city, phone, postalCode, country });
         dispatch(
-            saveShippingInfo({ address, city, phone, postalCode, country }),
+            saveShippingInfo({
+                address,
+                city,
+                phone,
+                postalCode,
+                country,
+                state,
+                district,
+            }),
         );
         history.push("/confirm");
     };
@@ -40,7 +65,7 @@ const Shipping = ({ history }) => {
                             Address
                         </label>
                         <textarea
-                            className="w-full bg-gray-200 rounded py-3 px-4 leading-tight focus:outline-none"
+                            className="w-full bg-gray-200 rounded py-3 h-[5.4rem] px-4 leading-tight focus:outline-none"
                             type="text"
                             placeholder="Enter your address"
                             name="address"
@@ -91,27 +116,56 @@ const Shipping = ({ history }) => {
                             value={phone}
                             onChange={(e) => setPhone(e.target.value)}
                         />
+
+                        <label
+                            className="block uppercase tracking-wide text-gray-700 text-xs font-bold my-3 mt-4"
+                            htmlFor="country">
+                            Country
+                        </label>
+                        <select
+                            className="w-full bg-gray-200 rounded py-3 px-4 leading-tight focus:outline-none"
+                            onChange={(e) => setCountry(e.target.value)}
+                            defaultValue={country}>
+                            <option value="">Select country</option>
+                            <option value="India">India</option>
+                        </select>
+                        <label
+                            className="block uppercase tracking-wide text-gray-700 text-xs font-bold my-3 mt-4"
+                            htmlFor="state">
+                            State
+                        </label>
+                        <select
+                            className="w-full bg-gray-200 rounded py-3 px-4 leading-tight focus:outline-none"
+                            onChange={(e) => setState(e.target.value)}
+                            defaultValue={state}>
+                            <option value="">Select State</option>
+                            <option value="Kerala">Kerala</option>
+                        </select>
+                        <label
+                            className="block uppercase tracking-wide text-gray-700 text-xs font-bold my-3 mt-4"
+                            htmlFor="district">
+                            District
+                        </label>
+                        <select
+                            className="w-full bg-gray-200 rounded py-3 px-4 leading-tight focus:outline-none"
+                            onChange={(e) => setDistrict(e.target.value)}
+                            defaultValue={district}>
+                            <option value="">Select District</option>
+                            {districts.map((item, index) => (
+                                <option key={index} value={item}>
+                                    {item}
+                                </option>
+                            ))}
+                        </select>
                     </div>
-                    <label
-                        className="block uppercase tracking-wide text-gray-700 text-xs font-bold my-3 mt-4"
-                        htmlFor="country">
-                        Country
-                    </label>
-                    <select
-                        className="w-full bg-gray-200 rounded py-3 px-4 leading-tight focus:outline-none mb-5"
-                        onChange={(e) => setCountry(e.target.value)}
-                        defaultValue={country}>
-                        <option value="">Select country</option>
-                        <option value="India">India</option>
-                    </select>
                     <button
-                        className={`w-full p-3 my-3 bg-indigo-600 hover:bg-indigo-700 text-white rounded shadow ${
+                        className={`w-full p-3 my-3 bg-indigo-600 hover:bg-indigo-700 text-white font-bold rounded shadow ${
                             loading
                                 ? "cursor-not-allowed bg-blue-500"
                                 : "cursor-pointer"
                         }`}
                         disabled={loading ? true : false}>
-                        Submit
+                        Checkout
                     </button>
                 </form>
             </div>

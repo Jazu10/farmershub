@@ -13,6 +13,10 @@ export { default as ForgotPassword } from "./user/ForgotPassword";
 export { default as NewPassword } from "./user/NewPassword";
 export { default as Cart } from "./cart/Cart";
 export { default as Shipping } from "./cart/Shipping";
+export { default as ConfirmOrder } from "./cart/ConfirmOrder";
+export { default as Payment } from "./cart/Payment";
+export { default as OrderSuccess } from "./cart/OrderSuccess";
+
 
 export { default as ProductDetails } from "./products/ProductDetails";
 

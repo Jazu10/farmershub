@@ -35,7 +35,7 @@ exports.getProducts = catchAsyncErrors(async (req, res, next) => {
             filteredProductsCount,
             products,
         });
-    }, 2000);
+    }, 0);
 });
 
 // Get all products (Admin)  =>   /api/v1/admin/products

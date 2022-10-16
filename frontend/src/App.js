@@ -1,7 +1,7 @@
 import "./App.css";
 import { Header, Home, ProductDetails } from "./components/index";
 import { BrowserRouter as Router, Route } from "react-router-dom";
-import { useEffect } from "react";
+import React, { useEffect } from "react";
 import { loadUser } from "./actions/userActions";
 import store from "./store";
 import ProtectedRoute from "./components/route/ProtectedRoute";
@@ -15,6 +15,9 @@ import {
     NewPassword,
     Cart,
     Shipping,
+    ConfirmOrder,
+    Payment,
+    OrderSuccess,
 } from "./components";
 
 function App() {
@@ -44,6 +47,9 @@ function App() {
             />
             <Route path="/cart" exact component={Cart} />
             <ProtectedRoute path="/shipping" exact component={Shipping} />
+            <ProtectedRoute path="/confirm" exact component={ConfirmOrder} />
+            <ProtectedRoute path="/payment" exact component={Payment} />
+            <ProtectedRoute path="/success" exact component={OrderSuccess} />
         </Router>
     );
 }
