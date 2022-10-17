@@ -3,6 +3,12 @@
     "version": "0.1.0",
     "private": true,
     "dependencies": {
+        "@emotion/react": "^11.10.4",
+        "@emotion/styled": "^11.10.4",
+        "@material-ui/icons": "^4.11.3",
+        "@mui/material": "^5.4.1",
+        "@mui/system": "^5.4.1",
+        "@mui/x-data-grid": "^5.17.7",
         "@tailwindcss/line-clamp": "^0.4.2",
         "@testing-library/jest-dom": "^5.11.4",
         "@testing-library/react": "^11.1.0",

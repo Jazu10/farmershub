@@ -165,7 +165,7 @@ const Shipping = ({ history }) => {
                                 : "cursor-pointer"
                         }`}
                         disabled={loading ? true : false}>
-                        Checkout
+                        Next
                     </button>
                 </form>
             </div>

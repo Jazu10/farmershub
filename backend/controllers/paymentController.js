@@ -15,26 +15,15 @@ exports.processPayment = catchAsyncErrors(async (req, res, next) => {
             amount: req.body.amount, // amount in smallest currency unit
             currency: "INR",
             receipt: crypto.randomBytes(10).toString("hex"),
-            notes: {
-                name: req.body.name,
-                email: req.body.email,
-                phone: req.body.phone,
-                address: req.body.address,
-                city: req.body.city,
-                postalCode: req.body.postalCode,
-                district: req.body.district,
-                state: req.body.state,
-                country: req.body.country,
-            },
         };
 
         const order = await instance.orders.create(options);
 
-        if (!order) return res.status(500).send("Some error occured");
+        if (!order) return next(new ErrorHandler("Some error occured", 500));
 
         res.status(200).json({ order: order });
     } catch (error) {
-        return next(new ErrorHandler(error.message, "500"));
+        return next(new ErrorHandler(error.message, 500));
     }
 });
 
@@ -61,9 +50,9 @@ exports.verify = catchAsyncErrors(async (req, res, next) => {
                 message: "Payment successfull",
             });
         } else {
-            return res.status(400).json({ message: "Invalid signature sent!" });
+            return next(new ErrorHandler("Invalid Signature", "500"));
         }
     } catch (error) {
-        res.status(500).json({ message: "Internal Server Error!" });
+        return next(new ErrorHandler(error.message, "500"));
     }
 });

@@ -18,6 +18,8 @@ import {
     ConfirmOrder,
     Payment,
     OrderSuccess,
+    ListOrders,
+    OrderDetails,
 } from "./components";
 
 function App() {
@@ -50,6 +52,8 @@ function App() {
             <ProtectedRoute path="/confirm" exact component={ConfirmOrder} />
             <ProtectedRoute path="/payment" exact component={Payment} />
             <ProtectedRoute path="/success" exact component={OrderSuccess} />
+            <ProtectedRoute path="/orders/me" exact component={ListOrders} />
+            <ProtectedRoute path="/order/:id" exact component={OrderDetails} />
         </Router>
     );
 }

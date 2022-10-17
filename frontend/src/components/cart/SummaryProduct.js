@@ -1,29 +1,22 @@
 import React from "react";
 import CurrencyFormat from "react-currency-format";
+import { Link } from "react-router-dom";
 
-const SummaryProduct = ({
-    id,
-    name,
-    quantity,
-    price,
-    stock,
-    image,
-    description,
-}) => {
+const SummaryProduct = ({ id, name, quantity, price, image }) => {
     return (
         <div className="grid grid-cols-5">
             <img
                 className="h-[140] w-[140] object-contain"
-                height={140}
-                width={140}
-                src="/avatar.png"
+                height={130}
+                width={130}
+                src={image}
                 alt=""
             />
             <div className="col-span-3 mx-5">
-                <p className="mb-4">{name}</p>
-                <p className="hidden md:flex text-xs lg:w-[80%] xl:w-auto italic md:line-clamp-3 my-2 mb-3">
-                    {description}
-                </p>
+                <Link to={`/product/${id}`} className="hover:text-yellow-400">
+                    <p className="mb-4">{name}</p>
+                </Link>
+
                 <CurrencyFormat
                     value={price}
                     displayType={"text"}

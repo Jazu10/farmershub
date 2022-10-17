@@ -16,7 +16,8 @@ export { default as Shipping } from "./cart/Shipping";
 export { default as ConfirmOrder } from "./cart/ConfirmOrder";
 export { default as Payment } from "./cart/Payment";
 export { default as OrderSuccess } from "./cart/OrderSuccess";
-
+export { default as ListOrders } from "./order/ListOrders";
+export { default as OrderDetails } from "./order/OrderDetails";
 
 export { default as ProductDetails } from "./products/ProductDetails";
 

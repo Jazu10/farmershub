@@ -2,8 +2,9 @@ import axios from "axios";
 import {
     ADD_TO_CART,
     REMOVE_ITEM_CART,
-    EMPTY_CART,
     SAVE_SHIPPING_INFO,
+    SAVE_PRICE_INFO,
+    EMPTY_CART,
 } from "../constants/cartConstants";
 
 export const addItemToCart = (id, quantity) => async (dispatch, getState) => {
@@ -39,11 +40,10 @@ export const removeItemFromCart = (id) => async (dispatch, getState) => {
         JSON.stringify(getState().cart.cartItems),
     );
 };
-export const emptyCart = () => async (dispatch, getState) => {
+export const emptyCart = () => async (dispatch) => {
     dispatch({
         type: EMPTY_CART,
     });
-
 };
 
 export const saveShippingInfo = (data) => async (dispatch) => {
@@ -53,4 +53,11 @@ export const saveShippingInfo = (data) => async (dispatch) => {
     });
 
     localStorage.setItem("shippingInfo", JSON.stringify(data));
+};
+
+export const savePriceInfo = (data) => async (dispatch) => {
+    dispatch({
+        type: SAVE_PRICE_INFO,
+        payload: data,
+    });
 };

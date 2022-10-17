@@ -1,13 +1,15 @@
 import React from "react";
 import { MetaData } from "../../components";
-import { useSelector } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import CheckoutSteps from "./CheckoutSteps";
 import CurrencyFormat from "react-currency-format";
 import SummaryProduct from "./SummaryProduct";
+import { savePriceInfo } from "../../actions/cartActions";
 
 const ConfirmOrder = ({ history }) => {
     const { cartItems, shippingInfo } = useSelector((state) => state.cart);
     const { user } = useSelector((state) => state.auth);
+    const dispatch = useDispatch();
 
     const itemPrice = cartItems.reduce(
         (acc, item) => acc + item.quantity * item.price,
@@ -26,7 +28,8 @@ const ConfirmOrder = ({ history }) => {
             totalPrice,
             taxPrice: 0,
         };
-        sessionStorage.setItem("orderInfo", JSON.stringify(data));
+        dispatch(savePriceInfo(data));
+
         history.push("/payment");
     };
     return (
@@ -91,13 +94,12 @@ const ConfirmOrder = ({ history }) => {
                                 stock={item.stock}
                                 image={item.image}
                                 price={item.price}
-                                description={item.description}
                             />
                         ))}
                     </div>
                 </div>
                 {cartItems.length > 0 && (
-                    <div className="bg-white lg:w-[180vw] xl:w-[120vw] p-6 md:my-5  md:mx-6 lg:mr-16 h-fit shadow-md items-center lg:top-28 lg:sticky">
+                    <div className="bg-white lg:w-[100vw] xl:w-[50vw] p-6 md:my-5  md:mx-6 lg:mr-16 h-fit shadow-md items-center lg:top-28 lg:sticky">
                         <>
                             <h2 className="text-2xl mb-4 ">Order Summary</h2>
                             <hr />

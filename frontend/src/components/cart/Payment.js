@@ -8,47 +8,43 @@ import { createOrder, clearErrors } from "../../actions/orderActions";
 
 const Payment = ({ history }) => {
     const [razorpayApiKey, setRazorpayApiKey] = useState("");
+    const [loading, setLoading] = useState(false);
 
-    const { cartItems, shippingInfo } = useSelector((state) => state.cart);
-    const { user } = useSelector((state) => state.auth);
-    const [orderInfo, setOrderInfo] = useState(
-        sessionStorage.getItem("orderInfo")
-            ? JSON.parse(sessionStorage.getItem("orderInfo"))
-            : "",
+    const { cartItems, shippingInfo, priceInfo } = useSelector(
+        (state) => state.cart,
     );
+    const { user } = useSelector((state) => state.auth);
     const dispatch = useDispatch();
 
     const { error } = useSelector((state) => state.newOrder);
     const alert = useAlert();
 
-    sessionStorage.clear();
-
-    let payable = orderInfo.totalPrice;
+    const payable = priceInfo.totalPrice;
 
     const order = {
         orderItems: cartItems,
         shippingInfo,
     };
 
-    if (orderInfo) {
-        order.itemsPrice = orderInfo.itemPrice;
-        order.shippingPrice = orderInfo.shippingPrice;
-        order.taxPrice = orderInfo.taxPrice;
-        order.totalPrice = orderInfo.totalPrice;
-    }
+    order.itemsPrice = priceInfo.itemPrice;
+    order.shippingPrice = priceInfo.shippingPrice;
+    order.taxPrice = priceInfo.taxPrice;
+    order.totalPrice = priceInfo.totalPrice;
 
     useEffect(() => {
         if (error) {
             alert.error(error);
             dispatch(clearErrors());
         }
-        if (!orderInfo) history.push("/");
+        if (!priceInfo.totalPrice) {
+            history.push("/");
+        }
         async function getRazorPayKey() {
             const { data } = await axios.get("/api/v1/razorpayapi");
             setRazorpayApiKey(data.apiKey);
         }
         getRazorPayKey();
-    }, [dispatch, alert, error, history]);
+    }, [dispatch, alert, error, history, priceInfo]);
 
     const config = {
         headers: {
@@ -62,15 +58,16 @@ const Payment = ({ history }) => {
             amount: data.amount,
             currency: "INR",
             name: user.name,
-            email: user.email,
-            phone: shippingInfo.phone,
-            address: {
-                address: shippingInfo.address,
-                city: shippingInfo.city,
-                postalCode: shippingInfo.postalCode,
-                district: shippingInfo.district,
-                state: shippingInfo.state,
-                country: shippingInfo.country,
+            prefill: {
+                name: user.name,
+                email: user.email,
+                contact: shippingInfo.phone,
+            },
+            notes: {
+                name: user.name,
+                email: user.email,
+                phone: shippingInfo.phone,
+                address: `${shippingInfo.address}, ${shippingInfo.city}, ${shippingInfo.postalCode}, ${shippingInfo.district}, ${shippingInfo.state}, ${shippingInfo.country}`,
             },
             order_id: data.id,
             handler: async (response) => {
@@ -81,15 +78,18 @@ const Payment = ({ history }) => {
                         response,
                         config,
                     );
-                    alert.success(data.message);
-                    order.paymentInfo = {
-                        id: data.razorpay_payment_id,
-                        status: data.status,
-                    };
-                    dispatch(createOrder(order));
-                    history.push("/success");
+                    if (data.status === "success") {
+                        alert.success(data.message);
+                        order.paymentInfo = {
+                            id: data.razorpay_payment_id,
+                            status: data.status,
+                        };
+                        dispatch(createOrder(order));
+                        history.push("/success");
+                    }
                 } catch (error) {
-                    alert.error(error.message);
+                    alert.error(error.response.data.message);
+                    setLoading(false);
                 }
             },
             theme: {
@@ -111,27 +111,28 @@ const Payment = ({ history }) => {
 
     const handlePayment = async (e) => {
         e.preventDefault();
-        try {
-            const { data } = await axios.post(
-                `/api/v1/payment/process`,
-                {
-                    amount: orderInfo.totalPrice * 100,
-                    name: user.name,
-                    email: user.email,
-                    phone: shippingInfo.phone,
-                    address: shippingInfo.address,
-                    city: shippingInfo.city,
-                    postalCode: shippingInfo.postalCode,
-                    district: shippingInfo.district,
-                    state: shippingInfo.state,
-                    country: shippingInfo.country,
-                },
-                config,
-            );
-            initPayment(data.order);
-        } catch (error) {
-            alert.error(error.message);
-        }
+        const script = document.createElement("script");
+        script.src = "https://checkout.razorpay.com/v1/checkout.js";
+        script.onerror = () => {
+            alert("Razorpay SDK failed to load. Are you online?");
+        };
+        script.onload = async () => {
+            try {
+                setLoading(true);
+                const { data } = await axios.post(
+                    `/api/v1/payment/process`,
+                    {
+                        amount: priceInfo.totalPrice * 100,
+                    },
+                    config,
+                );
+                initPayment(data.order);
+            } catch (error) {
+                alert.error(error.response.data.message);
+                setLoading(false);
+            }
+        };
+        document.body.appendChild(script);
     };
     return (
         <div className="max-w-screen-2xl mx-auto">
@@ -145,6 +146,7 @@ const Payment = ({ history }) => {
                         Payment
                     </h1>
                     <button
+                        disabled={loading}
                         className={`w-full p-3 my-3 bg-indigo-600 hover:bg-indigo-700 text-white font-bold rounded shadow-md`}>
                         $ {payable} - Pay now
                     </button>
