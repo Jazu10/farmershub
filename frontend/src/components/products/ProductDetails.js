@@ -1,10 +1,15 @@
 import React, { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { getProductDetails, clearErrors } from "../../actions/productActions";
 import { useAlert } from "react-alert";
 import { Loading, MetaData } from "../../components";
 import { Carousel } from "react-bootstrap";
+import {
+    getProductDetails,
+    newReview,
+    clearErrors,
+} from "../../actions/productActions";
 import { addItemToCart } from "../../actions/cartActions";
+import { NEW_REVIEW_RESET } from "../../constants/productConstants";
 
 const ProductDetails = ({ match }) => {
     const [quantity, setQuantity] = useState(1);
@@ -14,15 +19,33 @@ const ProductDetails = ({ match }) => {
     const { loading, error, product } = useSelector(
         (state) => state.productDetails,
     );
+
+    const { user } = useSelector((state) => state.auth);
+    const { error: reviewError, success } = useSelector(
+        (state) => state.newReview,
+    );
+
     const [rating, setRating] = useState(0);
     const [comment, setComment] = useState("");
+
     useEffect(() => {
         dispatch(getProductDetails(match.params.id));
+
         if (error) {
             alert.error(error);
             dispatch(clearErrors());
         }
-    }, [dispatch, alert, error, match.params.id]);
+
+        if (reviewError) {
+            alert.error(reviewError);
+            dispatch(clearErrors());
+        }
+
+        if (success) {
+            alert.success("Review Posted Successfully");
+            dispatch({ type: NEW_REVIEW_RESET });
+        }
+    }, [dispatch, alert, error, reviewError, success, match.params.id]);
 
     const increaseQty = () => {
         const count = document.querySelector(".count");
@@ -84,6 +107,16 @@ const ProductDetails = ({ match }) => {
             });
         }
     }
+
+    const reviewHandler = (e) => {
+        e.preventDefault();
+        const formData = new FormData();
+
+        formData.set("rating", rating);
+        formData.set("comment", comment);
+        formData.set("productId", match.params.id);
+        dispatch(newReview(formData));
+    };
 
     return (
         <div>
@@ -197,12 +230,12 @@ const ProductDetails = ({ match }) => {
                             </div>
                         </div>
                     </div>
-                    <div className="flex px-4 md:px-12 lg:px-20 mt-10 md:mt-20 w-full md:w-[50%]">
-                        {product.name ? (
+                    <div className="flex px-4 md:px-12 lg:px-20 mt-10 md:mt-20 w-full md:w-[50%] cursor-default">
+                        {user ? (
                             <div
-                                className="flex flex-col w-full cursor-pointer"
+                                className="flex flex-col w-full"
                                 onClickCapture={setUserRatings}>
-                                <ul className="stars justify-center md:justify-start">
+                                <ul className="stars justify-center md:justify-start cursor-pointer">
                                     <li className="star">
                                         <i className="fa fa-star"></i>
                                     </li>
@@ -221,18 +254,56 @@ const ProductDetails = ({ match }) => {
                                 </ul>
 
                                 <textarea
-                                    name="review"
-                                    id="review"
+                                    name="comment"
+                                    id="comment"
+                                    value={comment}
+                                    onChange={(e) => setComment(e.target.value)}
                                     className="rounded-md focus:ring-2 focus:ring-yellow-300 focus:outline-none mt-3"></textarea>
                                 <button
                                     type="button"
+                                    onClick={reviewHandler}
                                     className="h-14 my-4 px-4 py-2 md:px-6 font-semibold rounded-md bg-yellow-400 hover:bg-yellow-500 text-white"
                                     // onClick={setUserRatings}
                                 >
                                     Submit Your Review
                                 </button>
+
+                                <hr />
+                                <hr />
+                                <div className="my-10 bg-white space-y-5 rounded-md">
+                                    {product.reviews &&
+                                        product.reviews.length > 0 &&
+                                        product.reviews.map((review, i) => (
+                                            <div key={review._id}>
+                                                <p className="my-2 p-2 pb-0 text-2xl font-semibold text-yellow-500">
+                                                    {review.name}
+                                                </p>
+                                                <div
+                                                    key={i}
+                                                    className="flex flex-row text-xl px-2 mb-3 pb-1 text-gray-600 italic">
+                                                    <br />
+                                                    <p>{review.comment}</p>
+                                                    <p className="flex-grow"></p>
+                                                    <div className="rating-outer">
+                                                        <div
+                                                            className="rating-inner"
+                                                            style={{
+                                                                width: `${
+                                                                    (review.rating /
+                                                                        5) *
+                                                                    100
+                                                                }%`,
+                                                            }}></div>
+                                                    </div>
+                                                    <hr />
+                                                </div>
+                                            </div>
+                                        ))}
+                                </div>
                             </div>
-                        ) : null}
+                        ) : (
+                            <p className="text-2xl">Login to post review</p>
+                        )}
                     </div>
                 </>
             )}

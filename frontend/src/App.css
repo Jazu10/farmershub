@@ -26,6 +26,8 @@
     }
 }
 
+
+
 .prod img {
     width: 8rem;
     height: 8rem;
@@ -37,8 +39,18 @@
     color: #0c0c0c;
 }
 
+
+::-webkit-scrollbar {
+    display: none;
+}
+.sidebar {
+    -ms-overflow-style: none;
+        scrollbar-width: none;
+}
+
 body{
-    background: rgb(231, 231, 231)
+    background: rgb(231, 231, 231);
+    
 }
 
 /*Ratings*/

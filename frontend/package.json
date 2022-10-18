@@ -23,6 +23,8 @@
         "react-dom": "^17.0.2",
         "react-headroom": "^3.2.1",
         "react-helmet": "^6.1.0",
+        "react-icons": "^4.6.0",
+        "react-pro-sidebar": "^0.5.0",
         "react-pagination-bar": "^2.0.1",
         "react-redux": "^7.2.2",
         "react-router-dom": "^5.2.0",
@@ -57,8 +59,6 @@
             "last 1 safari version"
         ]
     },
-    "proxy": "http://localhost:4000",
-    "allowedHosts": "all",
     "devDependencies": {
         "autoprefixer": "^10.4.12",
         "postcss": "^8.4.17",

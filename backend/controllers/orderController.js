@@ -28,6 +28,10 @@ exports.newOrder = catchAsyncErrors(async (req, res, next) => {
         user: req.user._id,
     });
 
+    order.orderItems.forEach(async (item) => {
+        await updateStock(item.product, item.quantity);
+    });
+
     res.status(200).json({
         success: true,
         order,
@@ -88,9 +92,9 @@ exports.updateOrder = catchAsyncErrors(async (req, res, next) => {
         );
     }
 
-    order.orderItems.forEach(async (item) => {
-        await updateStock(item.product, item.quantity);
-    });
+    // order.orderItems.forEach(async (item) => {
+    //     await updateStock(item.product, item.quantity);
+    // });
 
     (order.orderStatus = req.body.status), (order.deliveredAt = Date.now());
 

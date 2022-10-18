@@ -271,3 +271,115 @@
         </main>
     </body>
 </html>
+
+
+<!-- import React, { useState } from "react";
+import { Link } from "react-router-dom";
+import { FaList, FaRegHeart } from "react-icons/fa";
+
+const Sidebar = () => {
+    const [showSidebar, setShowSidebar] = useState(false);
+    const [toggle, setToggle] = useState(false);
+
+    return (
+        <>
+            {showSidebar ? (
+                <button
+                    className="flex text-4xl text-black items-center cursor-pointer fixed left-4  md:left-12 md:top-18 z-50"
+                    onClick={() => setShowSidebar(!showSidebar)}>
+                    x
+                </button>
+            ) : (
+                <svg
+                    onClick={() => setShowSidebar(!showSidebar)}
+                    className="fixed  z-50 flex items-center text-black cursor-pointer left-4 md:left-12 md:top-18"
+                    fill="black"
+                    viewBox="0 0 100 80"
+                    width="40"
+                    height="40">
+                    <rect width="100" height="10"></rect>
+                    <rect y="30" width="100" height="10"></rect>
+                    <rect y="60" width="100" height="10"></rect>
+                </svg>
+            )}
+            <main
+                className={`top-16 left-0 p-10 pl-0 mt-20 mb-5 ml-10 text-white w-[90%] md:w-[40%] lg:w-[30%] xl:w-[20%] fixed h-full z-40  ease-in-out duration-300 ${
+                    showSidebar ? "translate-y-0 " : "translate-y-full"
+                }`}
+                aria-label="Sidebar">
+                <div className="overflow-y-auto py-4 px-3 bg-gray-50 rounded dark:bg-gray-800">
+                    <ul className="space-y-2">
+                        <li>
+                            <Link
+                                to="/dashboard"
+                                className="flex items-center p-2 text-base font-normal text-gray-900 rounded-lg dark:text-white hover:bg-gray-100 dark:hover:bg-gray-700">
+                                <span className="ml-3">Dashboard</span>
+                            </Link>
+                        </li>
+                        <li>
+                            <a
+                                href="#"
+                                className="flex items-center p-2 text-base font-normal text-gray-900 rounded-lg dark:text-white hover:bg-gray-100 dark:hover:bg-gray-700">
+                                <span className="flex-1 ml-3 whitespace-nowrap">
+                                    Products
+                                </span>
+                            </a>
+                        </li>
+                        <li>
+                            <a
+                                href="#"
+                                className="flex items-center p-2 text-base font-normal text-gray-900 rounded-lg dark:text-white hover:bg-gray-100 dark:hover:bg-gray-700">
+                                <span className="flex-1 ml-3 whitespace-nowrap">
+                                    Orders
+                                </span>
+                            </a>
+                        </li>
+                        <li>
+                            <a
+                                href="#"
+                                className="flex items-center p-2 text-base font-normal text-gray-900 rounded-lg dark:text-white hover:bg-gray-100 dark:hover:bg-gray-700">
+                                <span className="flex-1 ml-3 whitespace-nowrap">
+                                    Users
+                                </span>
+                            </a>
+                        </li>
+                        <li>
+                            <a
+                                href="#"
+                                className="flex items-center p-2 text-base font-normal text-gray-900 rounded-lg dark:text-white hover:bg-gray-100 dark:hover:bg-gray-700">
+                                <span className="flex-1 ml-3 whitespace-nowrap">
+                                    Reviews
+                                </span>
+                            </a>
+                        </li>
+                        {/* <li>
+                            <button
+                                type="button"
+                                className="flex items-center p-2 w-full text-base font-normal text-gray-900 rounded-lg transition duration-75 group hover:bg-gray-100 dark:text-white dark:hover:bg-gray-700"
+                                onClick={() => setToggle(!toggle)}>
+                                <span className="flex-1 ml-3 text-left whitespace-nowrap">
+                                    Products
+                                </span>
+                            </button>
+                            <ul
+                                id="dropdown-example"
+                                className={`py-2 space-y-2 transition ease-in-out duration-300 ${
+                                    toggle ? "block" : "hidden"
+                                }`}>
+                                <li>
+                                    <a
+                                        href="#"
+                                        className="flex items-center p-2 pl-11 w-full text-base font-normal text-gray-900 rounded-lg transition ease-in-out duration-300 group hover:bg-gray-100 dark:text-white dark:hover:bg-gray-700">
+                                        Products
+                                    </a>
+                                </li>
+                            </ul>
+                        </li> */}
+                    </ul>
+                </div>
+            </main>
+            <div className="pt-20">Hello</div>
+        </>
+    );
+};
+export default Sidebar; -->

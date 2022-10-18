@@ -20,6 +20,8 @@ import {
     OrderSuccess,
     ListOrders,
     OrderDetails,
+    Dashboard,
+    ProductList,
 } from "./components";
 
 function App() {
@@ -54,6 +56,18 @@ function App() {
             <ProtectedRoute path="/success" exact component={OrderSuccess} />
             <ProtectedRoute path="/orders/me" exact component={ListOrders} />
             <ProtectedRoute path="/order/:id" exact component={OrderDetails} />
+            <ProtectedRoute
+                path="/admin/products"
+                exact
+                component={ProductList}
+            />
+
+            <ProtectedRoute
+                path="/dashboard"
+                isAdmin={true}
+                exact
+                component={Dashboard}
+            />
         </Router>
     );
 }
