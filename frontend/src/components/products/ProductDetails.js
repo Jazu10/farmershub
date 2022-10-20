@@ -2,7 +2,6 @@ import React, { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { useAlert } from "react-alert";
 import { Loading, MetaData } from "../../components";
-import { Carousel } from "react-bootstrap";
 import {
     getProductDetails,
     newReview,
@@ -10,6 +9,8 @@ import {
 } from "../../actions/productActions";
 import { addItemToCart } from "../../actions/cartActions";
 import { NEW_REVIEW_RESET } from "../../constants/productConstants";
+import { Carousel } from "react-responsive-carousel";
+import "react-responsive-carousel/lib/styles/carousel.min.css";
 
 const ProductDetails = ({ match }) => {
     const [quantity, setQuantity] = useState(1);
@@ -48,7 +49,7 @@ const ProductDetails = ({ match }) => {
     }, [dispatch, alert, error, reviewError, success, match.params.id]);
 
     const increaseQty = () => {
-        const count = document.querySelector(".count");
+        const count = document.querySelector(".counter");
 
         if (count.valueAsNumber >= product.stock) return;
 
@@ -57,7 +58,7 @@ const ProductDetails = ({ match }) => {
     };
 
     const decreaseQty = () => {
-        const count = document.querySelector(".count");
+        const count = document.querySelector(".counter");
 
         if (count.valueAsNumber <= 1) return;
 
@@ -125,186 +126,208 @@ const ProductDetails = ({ match }) => {
                 <Loading />
             ) : (
                 <>
-                    <div className="flex px-4 md:px-12 lg:px-20 mt-6 justify-evenly">
-                        <div className="flex flex-col md:flex-row -mx-4">
-                            <div className="md:flex-1 px-4">
-                                <div>
-                                    <div className="h-64 md:h-80 rounded-lg bg-transparent mb-4">
-                                        <Carousel pause="hover">
-                                            {product.images &&
-                                                product.images.map((image) => (
-                                                    <Carousel.Item
-                                                        key={image.public_id}>
-                                                        <img
-                                                            loading="lazy"
-                                                            className="image rounded-md h-full w-full object-contain"
-                                                            src={image.url}
-                                                            alt={product.title}
-                                                        />
-                                                    </Carousel.Item>
-                                                ))}
-                                        </Carousel>
-                                    </div>
-                                    <div className="flex -mx-2 mb-4"></div>
-                                </div>
-                            </div>
-                            <div className="md:flex-1 px-4">
-                                <h2 className="mb-2 leading-tight tracking-tight font-bold text-gray-800 text-2xl md:text-3xl">
-                                    {product.name}
-                                </h2>
-                                <div className="text-gray-500 text-sm">
-                                    By
-                                    <p className="text-indigo-600 hover:underline">
-                                        {product.seller}
-                                    </p>
-                                </div>
+                    <section className="text-gray-600 body-font overflow-hidden">
+                        <div className="container px-5 pt-6 mx-auto">
+                            <div className="lg:w-[95%] mx-auto flex flex-wrap justify-between">
+                                <Carousel
+                                    autoPlay
+                                    infiniteLoop
+                                    stopOnHover
+                                    showStatus={false}
+                                    showIndicators={false}
+                                    showThumbs={false}
+                                    interval={3000}
+                                    className="lg:w-[50%]">
+                                    {product.images &&
+                                        product.images.map((image) => (
+                                            <div key={image.public_id}>
+                                                <img
+                                                    loading="lazy"
+                                                    className="object-contain"
+                                                    src={image.url}
+                                                    alt={product.title}
+                                                    height={300}
+                                                />
+                                            </div>
+                                        ))}
+                                </Carousel>
 
-                                <div className="flex items-center space-x-4 my-4">
-                                    <div>
-                                        <div className="rounded-lg bg-gray-100 flex py-2 px-3">
-                                            <span className="text-indigo-400 mr-1 mt-1">
-                                                $
+                                <div className="lg:w-1/2 w-full lg:pl-10 lg:py-6 mt-6 lg:mt-0">
+                                    <h2 className="text-sm title-font text-gray-500 tracking-widest">
+                                        Sold by: {product && product.seller}
+                                    </h2>
+                                    <h1 className="text-gray-900 text-3xl title-font font-medium mb-1">
+                                        {product && product.name}
+                                    </h1>
+                                    <div className="flex mb-4">
+                                        <span className="flex items-center">
+                                            <div className="rating-outer">
+                                                <div
+                                                    className="rating-inner"
+                                                    style={{
+                                                        width: `${
+                                                            (product.ratings /
+                                                                5) *
+                                                            100
+                                                        }%`,
+                                                    }}></div>
+                                            </div>
+                                            <span className="text-gray-600 ml-3">
+                                                {product &&
+                                                    product.numOfReviews}{" "}
+                                                Reviews
                                             </span>
-                                            <span className="font-bold text-indigo-600 text-3xl">
-                                                {product.price}
+                                        </span>
+                                    </div>
+                                    <p className="leading-relaxed">
+                                        {product && product.description}
+                                    </p>
+                                    <div className="flex mt-3 items-center pb-3 border-b-2 border-gray-100 mb-3"></div>
+                                    <div className="flex flex-row justify-between">
+                                        <p className="font-bold text-xl mt-2">
+                                            Status :
+                                            {product.stock > 0 ? (
+                                                <span className="text-blue-600 ml-2">
+                                                    In Stock
+                                                </span>
+                                            ) : (
+                                                <span className="text-red-500 ml-2">
+                                                    Out of Stock
+                                                </span>
+                                            )}
+                                        </p>
+                                        <p className="font-bold text-xl mt-2">
+                                            1 Unit :
+                                            <span className="text-green-500 ml-2">
+                                                {product.unit} Kg
                                             </span>
+                                        </p>
+                                    </div>
+                                    <div className="flex mt-3 items-center pb-3 border-b-2 border-gray-100 mb-3"></div>
+                                    <div className="">
+                                        <p>Select the quantity</p>
+                                        <div className="vertical-center">
+                                            <div className="custom-number-input h-10 w-32">
+                                                <div className="flex flex-row h-10 w-full rounded-lg relative bg-transparent mt-1">
+                                                    <button
+                                                        onClick={decreaseQty}
+                                                        className=" bg-gray-300 text-gray-600 hover:text-gray-700 hover:bg-gray-400 h-full w-20 rounded-l cursor-pointer outline-none">
+                                                        <span className="m-auto text-2xl font-thin">
+                                                            -
+                                                        </span>
+                                                    </button>
+                                                    <input
+                                                        type="number"
+                                                        value={quantity}
+                                                        readOnly
+                                                        className="counter focus:outline-none text-center w-full bg-gray-300 font-semibold text-md hover:text-black focus:text-black  md:text-basecursor-default flex items-center text-gray-700  outline-none"
+                                                        name="custom-input-number"></input>
+                                                    <button
+                                                        onClick={increaseQty}
+                                                        className="bg-gray-300 text-gray-600 hover:text-gray-700 hover:bg-gray-400 h-full w-20 rounded-r cursor-pointer">
+                                                        <span className="m-auto text-2xl font-thin">
+                                                            +
+                                                        </span>
+                                                    </button>
+                                                </div>
+                                            </div>
                                         </div>
                                     </div>
-                                    {/* <div className="flex-1">
-                                        <p className="text-green-500 text-xl font-semibold">
-                                            Save 12%
-                                        </p>
-                                        <p className="text-gray-600 text-sm">
-                                            Inclusive of all Taxes.
-                                        </p>
-                                    </div> */}
-                                </div>
+                                    <div className="flex mt-3 items-center pb-3 border-b-2 border-gray-100 mb-3"></div>
 
-                                <p className="text-gray-800">
-                                    {product.description}
-                                </p>
-                                <p className="font-bold text-xl">
-                                    Status :
-                                    {product.stock > 0 ? (
-                                        <span className="text-blue-600 ml-2">
-                                            In Stock
+                                    <div className="flex">
+                                        <span className="title-font font-medium text-2xl text-gray-900">
+                                            ₹ {product && product.price}
                                         </span>
-                                    ) : (
-                                        <span className="text-red-500 ml-2">
-                                            Out of Stock
-                                        </span>
-                                    )}
-                                </p>
-
-                                <div className="flex py-4 space-x-4 justify-between md:justify-start">
-                                    <div className="flex items-center justify-center text-2xl h-14 ring-gray-300 ring-2 rounded-md">
                                         <button
-                                            onClick={decreaseQty}
-                                            className="bg-gray-300 md:px-6 px-4 py-3 rounded-l-md cursor-pointer hover:bg-gray-400">
-                                            -
-                                        </button>
-                                        <input
-                                            type="number"
-                                            value={quantity}
-                                            readOnly
-                                            className="count p-2 h-full w-20 text-center text-black focus:outline-none bg-transparent"
-                                        />
-                                        <button
-                                            onClick={increaseQty}
-                                            className=" bg-gray-300 px-4 md:px-6 py-3 rounded-r-md cursor-pointer hover:bg-gray-400">
-                                            +
+                                            onClick={addToCart}
+                                            className={`flex ml-auto text-white bg-indigo-500 border-0 py-2 px-6 focus:outline-none hover:bg-indigo-600 rounded ${
+                                                product.stock === 0
+                                                    ? "cursor-not-allowed"
+                                                    : "cursor-pointer"
+                                            }`}>
+                                            Add to cart
                                         </button>
                                     </div>
-                                    <button
-                                        type="button"
-                                        disabled={product.stock === 0}
-                                        onClick={addToCart}
-                                        className={`h-14 px-4 py-2 md:px-6 font-semibold rounded-md bg-indigo-600 hover:bg-indigo-500 text-white ${
-                                            product.stock === 0
-                                                ? "cursor-not-allowed"
-                                                : "cursor-pointer"
-                                        } `}>
-                                        Add to cart
-                                    </button>
                                 </div>
                             </div>
                         </div>
-                    </div>
-                    <div className="flex px-4 md:px-12 lg:px-20 mt-10 md:mt-20 w-full md:w-[50%] cursor-default">
-                        {user ? (
-                            <div
-                                className="flex flex-col w-full"
-                                onClickCapture={setUserRatings}>
-                                <ul className="stars justify-center md:justify-start cursor-pointer">
-                                    <li className="star">
-                                        <i className="fa fa-star"></i>
-                                    </li>
-                                    <li className="star">
-                                        <i className="fa fa-star"></i>
-                                    </li>
-                                    <li className="star">
-                                        <i className="fa fa-star"></i>
-                                    </li>
-                                    <li className="star">
-                                        <i className="fa fa-star"></i>
-                                    </li>
-                                    <li className="star">
-                                        <i className="fa fa-star"></i>
-                                    </li>
-                                </ul>
+                        <div className="flex px-4 md:px-12 lg:px-20 w-full cursor-default">
+                            {user ? (
+                                <div
+                                    className="flex flex-col w-full"
+                                    onClickCapture={setUserRatings}>
+                                    <ul className="stars justify-center md:justify-start cursor-pointer">
+                                        <li className="star">
+                                            <i className="fa fa-star"></i>
+                                        </li>
+                                        <li className="star">
+                                            <i className="fa fa-star"></i>
+                                        </li>
+                                        <li className="star">
+                                            <i className="fa fa-star"></i>
+                                        </li>
+                                        <li className="star">
+                                            <i className="fa fa-star"></i>
+                                        </li>
+                                        <li className="star">
+                                            <i className="fa fa-star"></i>
+                                        </li>
+                                    </ul>
 
-                                <textarea
-                                    name="comment"
-                                    id="comment"
-                                    value={comment}
-                                    onChange={(e) => setComment(e.target.value)}
-                                    className="rounded-md focus:ring-2 focus:ring-yellow-300 focus:outline-none mt-3"></textarea>
-                                <button
-                                    type="button"
-                                    onClick={reviewHandler}
-                                    className="h-14 my-4 px-4 py-2 md:px-6 font-semibold rounded-md bg-yellow-400 hover:bg-yellow-500 text-white"
-                                    // onClick={setUserRatings}
-                                >
-                                    Submit Your Review
-                                </button>
+                                    <textarea
+                                        name="comment"
+                                        id="comment"
+                                        value={comment}
+                                        onChange={(e) =>
+                                            setComment(e.target.value)
+                                        }
+                                        className="rounded-md focus:ring-2 p-2 focus:ring-yellow-300 focus:outline-none mt-3"></textarea>
+                                    <button
+                                        type="button"
+                                        onClick={reviewHandler}
+                                        className="h-14 my-4 px-4 py-2 md:px-6 font-semibold rounded-md bg-yellow-400 hover:bg-yellow-500 text-white">
+                                        Submit Your Review
+                                    </button>
 
-                                <hr />
-                                <hr />
-                                <div className="my-10 bg-white space-y-5 rounded-md">
-                                    {product.reviews &&
-                                        product.reviews.length > 0 &&
-                                        product.reviews.map((review, i) => (
-                                            <div key={review._id}>
-                                                <p className="my-2 p-2 pb-0 text-2xl font-semibold text-yellow-500">
-                                                    {review.name}
-                                                </p>
-                                                <div
-                                                    key={i}
-                                                    className="flex flex-row text-xl px-2 mb-3 pb-1 text-gray-600 italic">
-                                                    <br />
-                                                    <p>{review.comment}</p>
-                                                    <p className="flex-grow"></p>
-                                                    <div className="rating-outer">
-                                                        <div
-                                                            className="rating-inner"
-                                                            style={{
-                                                                width: `${
-                                                                    (review.rating /
-                                                                        5) *
-                                                                    100
-                                                                }%`,
-                                                            }}></div>
+                                    <div className="mt-10 mb-4 bg-white space-y-5 rounded-md">
+                                        {product.reviews &&
+                                            product.reviews.length > 0 &&
+                                            product.reviews.map((review, i) => (
+                                                <div key={review._id}>
+                                                    <p className="my-2 p-2 pb-0 text-2xl font-semibold text-yellow-500">
+                                                        {review.name}
+                                                    </p>
+                                                    <div
+                                                        key={i}
+                                                        className="flex flex-row text-xl px-2 mb-3 pb-1 text-gray-600 italic">
+                                                        <br />
+                                                        <p>{review.comment}</p>
+                                                        <p className="flex-grow"></p>
+                                                        <div className="rating-outer">
+                                                            <div
+                                                                className="rating-inner"
+                                                                style={{
+                                                                    width: `${
+                                                                        (review.rating /
+                                                                            5) *
+                                                                        100
+                                                                    }%`,
+                                                                }}></div>
+                                                        </div>
+                                                        <hr />
                                                     </div>
-                                                    <hr />
                                                 </div>
-                                            </div>
-                                        ))}
+                                            ))}
+                                    </div>
                                 </div>
-                            </div>
-                        ) : (
-                            <p className="text-2xl">Login to post review</p>
-                        )}
-                    </div>
+                            ) : (
+                                <p className="text-2xl mb-4">
+                                    Login to post review
+                                </p>
+                            )}
+                        </div>
+                    </section>
                 </>
             )}
         </div>

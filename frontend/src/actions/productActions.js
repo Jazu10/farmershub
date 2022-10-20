@@ -10,10 +10,12 @@ import {
     NEW_REVIEW_REQUEST,
     NEW_REVIEW_SUCCESS,
     NEW_REVIEW_FAIL,
-    NEW_REVIEW_RESET,
     ADMIN_PRODUCTS_REQUEST,
     ADMIN_PRODUCTS_SUCCESS,
     ADMIN_PRODUCTS_FAIL,
+    NEW_PRODUCT_REQUEST,
+    NEW_PRODUCT_SUCCESS,
+    NEW_PRODUCT_FAIL,
     CLEAR_ERRORS,
 } from "../constants/productConstants";
 
@@ -76,6 +78,28 @@ export const getAdminProducts = () => async (dispatch) => {
     } catch (error) {
         dispatch({
             type: ADMIN_PRODUCTS_FAIL,
+            payload: error.response.data.message,
+        });
+    }
+};
+
+export const createProduct = (productData) => async (dispatch) => {
+    try {
+        const config = {
+            headers: {
+                "Content-Type": "application/json",
+            },
+        };
+        dispatch({ type: NEW_PRODUCT_REQUEST });
+        const { data } = await axios.post(
+            "/api/v1/admin/product/new",
+            productData,
+            config,
+        );
+        dispatch({ type: NEW_PRODUCT_SUCCESS, payload: data });
+    } catch (error) {
+        dispatch({
+            type: NEW_PRODUCT_FAIL,
             payload: error.response.data.message,
         });
     }

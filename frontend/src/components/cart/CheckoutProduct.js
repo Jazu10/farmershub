@@ -38,46 +38,55 @@ const CheckoutProduct = ({
     return (
         <div className="grid grid-cols-5">
             <img
-                className="h-[200] w-[200] object-contain"
+                className="object-contain"
                 height={200}
                 width={200}
-                src="/avatar.png"
+                src={image}
                 alt=""
             />
             <div className="col-span-3 mx-5">
                 <Link to={`/product/${id}`} className="hover:text-yellow-500">
                     <p className="mb-4">{name}</p>
                 </Link>
-                <p className="hidden md:flex text-xs lg:w-[80%] xl:w-auto italic md:line-clamp-3 my-2 mb-3">
+                <p className="hidden md:flex text-xs lg:w-[80%] italic md:line-clamp-3 my-2 mb-3">
                     {description}
                 </p>
                 <CurrencyFormat
                     value={price}
                     displayType={"text"}
                     thousandSeparator={true}
-                    prefix={"$"}
-                    className="text-blue-600 align-end font-bold  text-xl md:text-2xl px-2 py-1 bg-gray-200 rounded-md"
+                    prefix={"₹"}
+                    className="text-blue-600 align-end font-bold  text-lg  px-2 py-1 bg-gray-200 rounded-md"
                 />
             </div>
             <div className="flex flex-col space-y-2 self-end justify-self-end">
-                <div className="flex items-center justify-center text-xl md:text-2xl h-10 md:h-12 ring-gray-300 ring-2 rounded-md">
-                    <button
-                        onClick={() => decreaseQty(id, quantity)}
-                        className="bg-gray-300 md:px-4 p-2 rounded-l-md cursor-pointer hover:bg-gray-400">
-                        -
-                    </button>
-                    <input
-                        type="number"
-                        value={quantity}
-                        readOnly
-                        className="count p-2 text-sm h-full w-10 md:w-16 text-center text-black focus:outline-none bg-transparent"
-                    />
-                    <button
-                        onClick={() => increaseQty(id, quantity, stock)}
-                        className=" bg-gray-300 p-2 md:px-4 rounded-r-md cursor-pointer hover:bg-gray-400">
-                        +
-                    </button>
+                <div className="vertical-center">
+                    <div className="custom-number-input h-10 w-32">
+                        <div className="flex flex-row h-10 w-full rounded-lg relative bg-transparent mt-1">
+                            <button
+                                onClick={() => decreaseQty(id, quantity)}
+                                className=" bg-gray-300 text-gray-600 hover:text-gray-700 hover:bg-gray-400 h-full w-20 rounded-l cursor-pointer outline-none">
+                                <span className="m-auto text-2xl font-thin">
+                                    -
+                                </span>
+                            </button>
+                            <input
+                                type="number"
+                                value={quantity}
+                                readOnly
+                                className="counter focus:outline-none text-center w-full bg-gray-300 font-semibold text-md hover:text-black focus:text-black  md:text-basecursor-default flex items-center text-gray-700  outline-none"
+                                name="custom-input-number"></input>
+                            <button
+                                onClick={() => increaseQty(id, quantity, stock)}
+                                className="bg-gray-300 text-gray-600 hover:text-gray-700 hover:bg-gray-400 h-full w-20 rounded-r cursor-pointer">
+                                <span className="m-auto text-2xl font-thin">
+                                    +
+                                </span>
+                            </button>
+                        </div>
+                    </div>
                 </div>
+
                 <button
                     onClick={() => removeCartItemHandler(id)}
                     className="py-3 px-2 text-xs md:text-sm font-bold rounded-md bg-red-500 hover:bg-red-600 text-white">

@@ -5,18 +5,20 @@ import { useSelector } from "react-redux";
 import CheckoutProduct from "./CheckoutProduct";
 import CurrencyFormat from "react-currency-format";
 
-const Cart = ({history}) => {
+const Cart = ({ history }) => {
     const { cartItems } = useSelector((state) => state.cart);
 
     const checkoutHandler = () => {
-        history.push(`/login?redirect=shipping`)
-    }
+        history.push(`/login?redirect=shipping`);
+    };
     return (
         <div className="lg:flex max-w-screen-2xl mx-auto">
             <MetaData title={"Cart"} />
             <div
-                className={`flex-grow md:mx-0 md:px-6  mx-auto m-5 mb-0 ${
-                    cartItems.length === 0 ? "lg:px-16" : "lg:pl-16"
+                className={`flex-grow w-full md:mx-0 md:px-6  mx-auto m-5 lg:mb-5 ${
+                    cartItems.length === 0
+                        ? "lg:px-16"
+                        : "lg:pl-16 lg:max-w-[650px] xl:max-w-[950px]"
                 }`}>
                 <div className="flex flex-col p-5 space-y-10 bg-white shadow-md">
                     <h1 className="text-3xl border-b pb-4">
@@ -43,7 +45,7 @@ const Cart = ({history}) => {
                 </div>
             </div>
             {cartItems.length > 0 && (
-                <div className="bg-white lg:w-[180vw] xl:w-[120vw] p-6 md:my-5  md:mx-6 lg:mr-16 h-fit shadow-md items-center lg:top-28 lg:sticky">
+                <div className="bg-white lg:w-[40vw] p-6 md:my-5  md:mx-6 lg:mr-16 h-fit shadow-md items-center lg:top-28 lg:sticky">
                     <>
                         <h2 className="text-2xl mb-4 ">Order Summary</h2>
                         <hr />
@@ -70,7 +72,7 @@ const Cart = ({history}) => {
                                 )}`}
                                 displayType={"text"}
                                 thousandSeparator={true}
-                                prefix={"$"}
+                                prefix={"₹"}
                                 className="text-blue-600 text-xl font-bold px-2 py-1 bg-gray-200 rounded-md"
                             />
                         </div>

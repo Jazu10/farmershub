@@ -148,7 +148,7 @@ const Payment = ({ history }) => {
                     <button
                         disabled={loading}
                         className={`w-full p-3 my-3 bg-indigo-600 hover:bg-indigo-700 text-white font-bold rounded shadow-md`}>
-                        $ {payable} - Pay now
+                        ₹ {payable} - Pay now
                     </button>
                 </form>
             </div>

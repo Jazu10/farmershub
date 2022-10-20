@@ -78,20 +78,7 @@ const Home = ({ match }) => {
         setPrice([0, 100000]);
     };
 
-    const categories = [
-        "Electronics",
-        "Cameras",
-        "Laptops",
-        "Accessories",
-        "Headphones",
-        "Food",
-        "Books",
-        "Clothes/Shoes",
-        "Beauty/Health",
-        "Sports",
-        "Outdoor",
-        "Home",
-    ];
+    const categories = ["Vegetables", "Fruits"];
 
     return (
         <>

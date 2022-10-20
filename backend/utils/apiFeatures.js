@@ -30,9 +30,11 @@ class APIFeatures {
               }
             : {};
 
-        this.query = this.query.find({
-            $or: [{ ...name }, { ...seller }, { ...category }],
-        });
+        this.query = this.query
+            .find({
+                $or: [{ ...name }, { ...seller }, { ...category }],
+            })
+            .sort({ createdAt: -1, stock: -1 });
         return this;
     }
 
@@ -50,7 +52,9 @@ class APIFeatures {
             (match) => `$${match}`,
         );
 
-        this.query = this.query.find(JSON.parse(queryStr));
+        this.query = this.query
+            .find(JSON.parse(queryStr))
+            .sort({ createdAt: -1, stock: -1 });
         return this;
     }
 

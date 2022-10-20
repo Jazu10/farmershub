@@ -18,6 +18,14 @@ function Product({
         <>
             <Link to={`/product/${_id}`}>
                 <div className="relative hidden md:flex flex-col m-5 bg-white p-8 pb-5 shadow-md hover:shadow-xl transform duration-500 hover:scale-105 cursor-pointer">
+                    {stock === 0 && (
+                        <>
+                            <div className="absolute flex w-full h-full bg-white opacity-40 top-0 right-0 left-0 bottom-0 items-center justify-center"></div>
+                            <p className="absolute py-2 left-0 top-40 text-center font-bold w-full bg-white opacity-100 text-red-500">
+                                Out of Stock
+                            </p>
+                        </>
+                    )}
                     <img
                         className="rounded h-[200px] object-cover"
                         loading="lazy"
@@ -38,7 +46,7 @@ function Product({
                     </p>
                     <div className="font-bold justify-between inline-flex items-baseline">
                         <div className="text-lg bg-gray-100 rounded-md p-1 px-2 text-blue-600">
-                            $ {price}
+                            ₹ {price}
                         </div>
                         <div className="text-lg font-normal">
                             <div className="rating-outer">
@@ -52,6 +60,14 @@ function Product({
                     </div>
                 </div>
                 <div className="prod relative md:hidden my-1 bg-white flex cursor-pointer shadow-md">
+                    {stock === 0 && (
+                        <>
+                            <div className="absolute flex w-full h-full bg-white opacity-40 top-0 right-0 left-0 bottom-0 items-center justify-center"></div>
+                            <p className="absolute py-2 left-0 top-12 text-center font-bold w-full bg-white opacity-100 text-red-500">
+                                Out of Stock
+                            </p>
+                        </>
+                    )}
                     <img src={images[0].url} alt="" className="shadow-md" />
                     <div className="px-4 py-2 w-full">
                         <p className="absolute top-2 left-34 text-xs italic">
@@ -68,7 +84,7 @@ function Product({
                         </p>
                         <div className="flex w-full justify-between items-center mt-1">
                             <p className="flex sm:text-md bg-gray-200 p-1 rounded-md text-blue-500 font-bold">
-                                ${price}
+                                ₹ {price}
                             </p>
                             <div className="ratings text-md">
                                 <div className="rating-outer">

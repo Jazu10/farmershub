@@ -40,7 +40,7 @@ const ConfirmOrder = ({ history }) => {
             </div>
             <div className="lg:flex lg:mt-4">
                 <div
-                    className={`flex-grow md:mx-0 md:px-6  mx-auto m-5 mb-0 ${
+                    className={`flex-grow md:mx-0 md:px-6  mx-auto m-5 lg:mb-5 ${
                         cartItems.length === 0 ? "lg:px-16" : "lg:pl-16"
                     }`}>
                     <div className="flex flex-col p-5 space-y-6 bg-white shadow-md">
@@ -126,7 +126,7 @@ const ConfirmOrder = ({ history }) => {
                                     value={itemPrice}
                                     displayType={"text"}
                                     thousandSeparator={true}
-                                    prefix={"$"}
+                                    prefix={"₹"}
                                     className="text-blue-600 text-xl font-bold px-2 py-1 bg-gray-200 rounded-md"
                                 />
                             </div>
@@ -137,7 +137,7 @@ const ConfirmOrder = ({ history }) => {
                                     value={shippingPrice}
                                     displayType={"text"}
                                     thousandSeparator={true}
-                                    prefix={"$"}
+                                    prefix={"₹"}
                                     className="text-blue-600 text-xl font-bold px-2 py-1 bg-gray-200 rounded-md"
                                 />
                             </div>
@@ -148,7 +148,7 @@ const ConfirmOrder = ({ history }) => {
                                     value={totalPrice}
                                     displayType={"text"}
                                     thousandSeparator={true}
-                                    prefix={"$"}
+                                    prefix={"₹"}
                                     className="text-green-500 text-xl font-bold px-2 py-1 bg-gray-200 rounded-md"
                                 />
                             </div>

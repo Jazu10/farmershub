@@ -21,7 +21,7 @@ const SummaryProduct = ({ id, name, quantity, price, image }) => {
                     value={price}
                     displayType={"text"}
                     thousandSeparator={true}
-                    prefix={"$"}
+                    prefix={"₹"}
                     className="text-blue-600 font-bold  text-xl md:text-2xl px-2 py-1 bg-gray-200 rounded-md"
                 />
             </div>

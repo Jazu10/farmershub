@@ -4,6 +4,8 @@ export { default as Loader } from "./layout/Loader";
 export { default as Loading } from "./layout/Loading";
 export { default as Search } from "./layout/Search";
 export { default as MSearch } from "./layout/MSearch";
+export { default as Sidebar } from "./admin/Sidebar";
+
 export { default as Login } from "./user/Login";
 export { default as Register } from "./user/Register";
 export { default as Profile } from "./user/Profile";
@@ -19,8 +21,9 @@ export { default as OrderSuccess } from "./cart/OrderSuccess";
 export { default as ListOrders } from "./order/ListOrders";
 export { default as OrderDetails } from "./order/OrderDetails";
 export { default as ProductDetails } from "./products/ProductDetails";
-export { default as ProductList } from "./admin/ProductList";
 
 export { default as Dashboard } from "./admin/Dashboard";
+export { default as ProductList } from "./admin/ProductList";
+export { default as NewProduct } from "./admin/NewProduct";
 
 export { default as Home } from "./Home";

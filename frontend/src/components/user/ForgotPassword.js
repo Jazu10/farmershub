@@ -61,7 +61,7 @@ const ForgotPassword = ({ history }) => {
                                 : "cursor-pointer"
                         }`}
                         disabled={loading ? true : false}>
-                        Update
+                        Send Link
                     </button>
                 </form>
             </div>

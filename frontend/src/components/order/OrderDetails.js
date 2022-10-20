@@ -29,7 +29,7 @@ const OrderDetails = ({ match }) => {
             alert.error(error);
             dispatch(clearErrors());
         }
-    }, [dispatch, error, match.params.id]);
+    }, [dispatch, error, alert, match.params.id]);
 
     const shippingDetails =
         shippingInfo &&
@@ -92,14 +92,14 @@ const OrderDetails = ({ match }) => {
                                 </h1>
                                 <p
                                     className={`mt-2 ${
-                                        order.orderStatus &&
-                                        String(order.orderStatus).includes(
+                                        order &&
+                                        String(orderStatus).includes(
                                             "Delivered",
                                         )
                                             ? "text-green-500"
                                             : "text-red-500"
                                     }`}>
-                                    <b>{order && order.orderStatus}</b>
+                                    <b>{order && orderStatus}</b>
                                 </p>
                             </div>
                         </div>
@@ -125,6 +125,12 @@ const OrderDetails = ({ match }) => {
                                     price={item.price}
                                 />
                             ))}
+                        <h1 className="text-2xl text-right border-b pb-4">
+                            Total Price:
+                            <span className="ml-2">
+                                ₹ {order && totalPrice}
+                            </span>
+                        </h1>
                     </div>
                 </>
             )}
