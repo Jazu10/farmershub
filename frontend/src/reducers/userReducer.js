@@ -99,6 +99,7 @@ export const userReducer = (state = {}, action) => {
         case UPDATE_PASSWORD_RESET:
             return {
                 ...state,
+                loading: false,
                 isUpdated: false,
             };
         case UPDATE_PROFILE_FAIL:
@@ -125,7 +126,6 @@ export const forgotPasswordReducer = (state = {}, action) => {
             return {
                 ...state,
                 loading: true,
-
                 error: null,
             };
         case FORGOT_PASSWORD_SUCCESS:
@@ -138,6 +138,7 @@ export const forgotPasswordReducer = (state = {}, action) => {
         case NEW_PASSWORD_SUCCESS:
             return {
                 ...state,
+                loading: false,
                 success: action.payload,
             };
 

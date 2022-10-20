@@ -25,5 +25,6 @@ export { default as ProductDetails } from "./products/ProductDetails";
 export { default as Dashboard } from "./admin/Dashboard";
 export { default as ProductList } from "./admin/ProductList";
 export { default as NewProduct } from "./admin/NewProduct";
+export { default as UpdateProduct } from "./admin/UpdateProduct";
 
 export { default as Home } from "./Home";

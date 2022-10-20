@@ -23,6 +23,7 @@ import {
     Dashboard,
     ProductList,
     NewProduct,
+    UpdateProduct,
 } from "./components";
 
 function App() {
@@ -73,6 +74,11 @@ function App() {
                 path="/admin/product"
                 exact
                 component={NewProduct}
+            />
+            <ProtectedRoute
+                path="/admin/product/:id"
+                exact
+                component={UpdateProduct}
             />
         </Router>
     );

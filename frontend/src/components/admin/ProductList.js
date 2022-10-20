@@ -7,11 +7,16 @@ import { Link } from "react-router-dom";
 import Box from "@mui/material/Box";
 import { DataGrid, GridToolbar } from "@mui/x-data-grid";
 import Sidebar from "../admin/Sidebar";
+import { deleteProduct } from "../../actions/productActions";
+import { DELETE_PRODUCT_RESET } from "../../constants/productConstants";
 
 const ProductList = ({ history }) => {
     const alert = useAlert();
     const dispatch = useDispatch();
     const { loading, error, products } = useSelector((state) => state.products);
+    const { error: deleteError, isDeleted } = useSelector(
+        (state) => state.product,
+    );
 
     useEffect(() => {
         dispatch(getAdminProducts());
@@ -19,7 +24,20 @@ const ProductList = ({ history }) => {
             alert.error(error);
             dispatch(clearErrors());
         }
-    }, [dispatch, alert, error]);
+        if (deleteError) {
+            alert.error(deleteError);
+            dispatch(clearErrors());
+        }
+        if (isDeleted) {
+            alert.success("Product deleted successfully");
+            history.push("/admin/products");
+            dispatch({ type: DELETE_PRODUCT_RESET });
+        }
+    }, [dispatch, alert, error, deleteError, isDeleted, history]);
+
+    const deleteProductHandler = (id) => {
+        dispatch(deleteProduct(id));
+    };
 
     const columns = [
         { field: "id", headerName: "Product ID", flex: 1, minWidth: 220 },
@@ -64,11 +82,20 @@ const ProductList = ({ history }) => {
             headerName: "Action",
             renderCell: (cellValues) => {
                 return (
-                    <div className="flex flex-row space-x-2">
+                    <div className="flex flex-row space-x-4">
                         <Link to={`/product/${cellValues.row.id}`}>
                             <i className="fa fa-eye p-2 text-white bg-blue-500 rounded-md"></i>
                         </Link>
-                        <button className="p-2 py-1 text-white bg-red-500 rounded-md">
+                        <Link to={`/admin/product/${cellValues.row.id}`}>
+                            <button className="p-2 py-1 text-white bg-yellow-400 rounded-md">
+                                <i className="fa fa-edit"></i>
+                            </button>
+                        </Link>
+                        <button
+                            onClick={() =>
+                                deleteProductHandler(cellValues.row.id)
+                            }
+                            className="p-2 py-1 text-white bg-red-500 rounded-md">
                             <i className="fa fa-trash"></i>
                         </button>
                     </div>
@@ -103,7 +130,7 @@ const ProductList = ({ history }) => {
             ) : (
                 <>
                     <h1 className="mt-4 text-2xl font-bold flex justify-center">
-                        My Orders
+                        All Products
                     </h1>
                     <Box className="bg-white w-[90%] h-[65vh] mx-auto mt-10 rounded-md">
                         <DataGrid
