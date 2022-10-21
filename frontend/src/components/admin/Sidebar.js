@@ -8,10 +8,9 @@ import {
     SidebarContent,
 } from "react-pro-sidebar";
 
-import { FaList, FaRegHeart } from "react-icons/fa";
+import { FaList, FaUsers, FaStar } from "react-icons/fa";
 import { FiHome, FiArrowLeftCircle, FiArrowRightCircle } from "react-icons/fi";
-import { RiPencilLine } from "react-icons/ri";
-import { BiCog } from "react-icons/bi";
+import { RiShoppingCartFill } from "react-icons/ri";
 import { Link } from "react-router-dom";
 
 import "react-pro-sidebar/dist/css/styles.css";
@@ -60,19 +59,19 @@ const Sidebar = () => {
                                 </MenuItem>
                             </SubMenu>
 
-                            <MenuItem icon={<FaRegHeart />}>
+                            <MenuItem icon={<RiShoppingCartFill />}>
                                 <Link className="" to="/admin/orders">
                                     <p className="text-black">Orders</p>
                                 </Link>
                             </MenuItem>
 
-                            <MenuItem icon={<RiPencilLine />}>
+                            <MenuItem icon={<FaUsers />}>
                                 <Link className="" to="/admin/users">
                                     <p className="text-black">Users</p>
                                 </Link>
                             </MenuItem>
 
-                            <MenuItem icon={<BiCog />}>
+                            <MenuItem icon={<FaStar />}>
                                 <Link className="" to="/admin/reviews">
                                     <p className="text-black">Reviews</p>
                                 </Link>

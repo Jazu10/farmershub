@@ -1,19 +1,21 @@
-import React, { useEffect } from "react";
+import React, { useState, useEffect } from "react";
 import { Loading, MetaData } from "../../components";
 import { useAlert } from "react-alert";
 import { useDispatch, useSelector } from "react-redux";
-import { getOrderDetails, clearErrors } from "../../actions/orderActions";
+import {
+    getOrderDetails,
+    updateOrder,
+    clearErrors,
+} from "../../actions/orderActions";
 import SummaryProduct from "../cart/SummaryProduct";
+import { Sidebar } from "../";
+import { UPDATE_ORDER_RESET } from "../../constants/orderConstants";
 
-const OrderDetails = ({ match }) => {
+const ProcessOrder = ({ match }) => {
     const alert = useAlert();
     const dispatch = useDispatch();
 
-    const {
-        loading,
-        error,
-        order = {},
-    } = useSelector((state) => state.orderDetails);
+    const { loading, order = {} } = useSelector((state) => state.orderDetails);
     const {
         shippingInfo,
         orderItems,
@@ -22,14 +24,32 @@ const OrderDetails = ({ match }) => {
         totalPrice,
         orderStatus,
     } = order;
+    const { error, isUpdated } = useSelector((state) => state.order);
+
+    const orderId = match.params.id;
+
+    const [status, setStatus] = useState(order ? orderStatus : "");
 
     useEffect(() => {
-        dispatch(getOrderDetails(match.params.id));
+        dispatch(getOrderDetails(orderId));
+
         if (error) {
             alert.error(error);
             dispatch(clearErrors());
         }
-    }, [dispatch, error, alert, match.params.id]);
+
+        if (isUpdated) {
+            alert.success("Order updated successfully");
+            dispatch({ type: UPDATE_ORDER_RESET });
+        }
+    }, [dispatch, alert, error, isUpdated, orderId]);
+
+    const updateOrderHandler = (id) => {
+        const formData = new FormData();
+        formData.set("status", status);
+
+        dispatch(updateOrder(id, formData));
+    };
 
     const shippingDetails =
         shippingInfo &&
@@ -37,16 +57,19 @@ const OrderDetails = ({ match }) => {
 
     const isPaid =
         paymentInfo && paymentInfo.status === "success" ? true : false;
+
     return (
         <div className="max-w-screen-2xl mx-auto">
             <MetaData title={"Order Details"} />
+            <Sidebar />
+
             {loading ? (
                 <Loading />
             ) : (
                 <>
-                    <div className="flex flex-col p-5 space-y-6 bg-white max-w-screen-md mx-auto shadow-md">
+                    <div className="flex flex-col p-5 space-y-6 bg-white max-w-screen-md mx-auto shadow-md mb-6">
                         <h1 className="text-2xl">
-                            <p className="mb-2">Order # {order._id}</p>
+                            <p className="mb-2">Process Order # {order._id}</p>
                             <hr />
                         </h1>
                         <div className="grid grid-cols-6 text-lg">
@@ -146,6 +169,23 @@ const OrderDetails = ({ match }) => {
                                 ₹ {order && totalPrice}
                             </span>
                         </h1>
+                        <div className="flex flex-row text-xl items-center justify-evenly">
+                            <h2 className="font-bold text-blue-500">Status</h2>
+                            <select
+                                className="focus:outline-none p-2 text-lg bg-gray-200 rounded-md"
+                                name="status"
+                                value={status}
+                                onChange={(e) => setStatus(e.target.value)}>
+                                <option value="Processing">Processing</option>
+                                <option value="Shipped">Shipped</option>
+                                <option value="Delivered">Delivered</option>
+                            </select>
+                            <button
+                                className="bg-blue-500 text-lg hover:bg-blue-600 p-2 rounded text-white"
+                                onClick={() => updateOrderHandler(order._id)}>
+                                Update Order
+                            </button>
+                        </div>
                     </div>
                 </>
             )}
@@ -153,4 +193,4 @@ const OrderDetails = ({ match }) => {
     );
 };
 
-export default OrderDetails;
+export default ProcessOrder;

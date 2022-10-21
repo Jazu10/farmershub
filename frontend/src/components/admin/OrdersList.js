@@ -2,22 +2,27 @@ import React, { useEffect } from "react";
 import { Loading, MetaData } from "..";
 import { useAlert } from "react-alert";
 import { useDispatch, useSelector } from "react-redux";
-import { myOrders, deleteOrder, clearErrors } from "../../actions/orderActions";
 import { Link } from "react-router-dom";
 import Box from "@mui/material/Box";
 import { DataGrid, GridToolbar } from "@mui/x-data-grid";
+import Sidebar from "../admin/Sidebar";
+import {
+    allOrders,
+    deleteOrder,
+    clearErrors,
+} from "../../actions/orderActions";
 import { DELETE_ORDER_RESET } from "../../constants/orderConstants";
 
-const ListOrrder = ({ history }) => {
+const OrdersList = ({ history }) => {
     const alert = useAlert();
     const dispatch = useDispatch();
-    const { loading, error, orders } = useSelector((state) => state.myOrders);
+    const { loading, error, orders } = useSelector((state) => state.allOrders);
     const { error: deleteError, isDeleted } = useSelector(
         (state) => state.order,
     );
 
     useEffect(() => {
-        dispatch(myOrders());
+        dispatch(allOrders());
         if (error) {
             alert.error(error);
             dispatch(clearErrors());
@@ -28,15 +33,11 @@ const ListOrrder = ({ history }) => {
         }
 
         if (isDeleted) {
-            alert.success("Order Cancelled, Refund has been initiated");
-            history.push("/orders/me");
+            alert.success("Order deleted, Refund has been initiated");
+            history.push("/admin/orders");
             dispatch({ type: DELETE_ORDER_RESET });
         }
     }, [dispatch, alert, deleteError, isDeleted, history, error]);
-
-    const deleteOrderHandler = (id) => {
-        dispatch(deleteOrder(id));
-    };
 
     const columns = [
         { field: "id", headerName: "Order ID", flex: 1, minWidth: 220 },
@@ -96,6 +97,11 @@ const ListOrrder = ({ history }) => {
                         <Link to={`/order/${cellValues.row.id}`}>
                             <i className="fa fa-eye p-2 text-white bg-blue-500 rounded-md"></i>
                         </Link>
+                        <Link to={`/admin/order/${cellValues.row.id}`}>
+                            <button className="p-2 py-1 text-white bg-yellow-400 rounded-md">
+                                <i className="fa fa-edit"></i>
+                            </button>
+                        </Link>
                         {cellValues.row.status === "Processing" && (
                             <button
                                 onClick={() =>
@@ -129,15 +135,20 @@ const ListOrrder = ({ history }) => {
         return data;
     };
 
+    const deleteOrderHandler = (id) => {
+        dispatch(deleteOrder(id));
+    };
     return (
         <div className="max-w-screen-2xl mx-auto">
-            <MetaData title={"My Orders"} />
+            <MetaData title={"All Orders"} />
+            <Sidebar />
+
             {loading ? (
                 <Loading />
             ) : (
                 <>
                     <h1 className="mt-4 text-2xl font-bold flex justify-center">
-                        My Orders
+                        All Orders
                     </h1>
                     <Box className="bg-white w-[90%] h-[65vh] mx-auto mt-10 rounded-md">
                         <DataGrid
@@ -162,4 +173,4 @@ const ListOrrder = ({ history }) => {
     );
 };
 
-export default ListOrrder;
+export default OrdersList;

@@ -3,6 +3,8 @@ const Product = require("../models/product");
 
 const ErrorHandler = require("../utils/errorHandler");
 const catchAsyncErrors = require("../middlewares/catchAsyncErrors");
+const Razorpay = require("razorpay");
+const crypto = require("crypto");
 
 // Create a new order   =>  /api/v1/order/new
 exports.newOrder = catchAsyncErrors(async (req, res, next) => {
@@ -113,6 +115,14 @@ async function updateStock(id, quantity) {
     await product.save({ validateBeforeSave: false });
 }
 
+async function addStock(id, quantity) {
+    const product = await Product.findById(id);
+
+    product.stock = product.stock + quantity;
+
+    await product.save({ validateBeforeSave: false });
+}
+
 // Delete order   =>   /api/v1/admin/order/:id
 exports.deleteOrder = catchAsyncErrors(async (req, res, next) => {
     const order = await Order.findById(req.params.id);
@@ -120,6 +130,24 @@ exports.deleteOrder = catchAsyncErrors(async (req, res, next) => {
     if (!order) {
         return next(new ErrorHandler("No Order found with this ID", 404));
     }
+
+    order.orderItems.forEach(async (item) => {
+        await addStock(item.product, item.quantity);
+    });
+
+    const instance = new Razorpay({
+        key_id: process.env.RAZORPAY_API,
+        key_secret: process.env.RAZORPAY_SECRET,
+    });
+
+    let refundPrice =
+        order.totalPrice - Math.round((order.totalPrice * 3) / 100);
+
+    instance.payments.refund(order.paymentInfo.id, {
+        amount: refundPrice * 100,
+        speed: "optimum",
+        receipt: crypto.randomBytes(10).toString("hex"),
+    });
 
     await order.remove();
 

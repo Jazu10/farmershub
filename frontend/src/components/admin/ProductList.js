@@ -2,12 +2,15 @@ import React, { useEffect } from "react";
 import { Loading, MetaData } from "..";
 import { useAlert } from "react-alert";
 import { useDispatch, useSelector } from "react-redux";
-import { getAdminProducts, clearErrors } from "../../actions/productActions";
+import {
+    getAdminProducts,
+    deleteProduct,
+    clearErrors,
+} from "../../actions/productActions";
 import { Link } from "react-router-dom";
 import Box from "@mui/material/Box";
 import { DataGrid, GridToolbar } from "@mui/x-data-grid";
 import Sidebar from "../admin/Sidebar";
-import { deleteProduct } from "../../actions/productActions";
 import { DELETE_PRODUCT_RESET } from "../../constants/productConstants";
 
 const ProductList = ({ history }) => {
@@ -65,11 +68,11 @@ const ProductList = ({ history }) => {
             headerName: "Stock",
             renderCell: (cellValues) => {
                 return cellValues.row.stock !== 0 ? (
-                    <p className="p-2 py-1 rounded-full border-2 border-green-400 text-green-400">
+                    <p className="p-4 py-1 rounded-full  bg-green-400 text-white">
                         {cellValues.row.stock}
                     </p>
                 ) : (
-                    <p className="p-2 py-1 rounded-full border-2 border-red-500 text-red-500">
+                    <p className="p-4 py-1 rounded-full  bg-red-500 text-white">
                         {cellValues.row.stock}
                     </p>
                 );

@@ -24,6 +24,8 @@ import {
     ProductList,
     NewProduct,
     UpdateProduct,
+    OrdersList,
+    ProcessOrder,
 } from "./components";
 
 function App() {
@@ -79,6 +81,12 @@ function App() {
                 path="/admin/product/:id"
                 exact
                 component={UpdateProduct}
+            />
+            <ProtectedRoute path="/admin/orders" exact component={OrdersList} />
+            <ProtectedRoute
+                path="/admin/order/:id"
+                exact
+                component={ProcessOrder}
             />
         </Router>
     );

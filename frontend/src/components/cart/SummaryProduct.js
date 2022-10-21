@@ -14,7 +14,7 @@ const SummaryProduct = ({ id, name, quantity, price, image }) => {
             />
             <div className="col-span-3 mx-5">
                 <Link to={`/product/${id}`} className="hover:text-yellow-400">
-                    <p className="mb-4">{name}</p>
+                    <p className="mb-4 text-xl">{name}</p>
                 </Link>
 
                 <CurrencyFormat
@@ -22,7 +22,7 @@ const SummaryProduct = ({ id, name, quantity, price, image }) => {
                     displayType={"text"}
                     thousandSeparator={true}
                     prefix={"₹"}
-                    className="text-blue-600 font-bold  text-xl md:text-2xl px-2 py-1 bg-gray-200 rounded-md"
+                    className="text-blue-600 font-bold  text-lg px-2 py-1 bg-gray-200 rounded-md"
                 />
             </div>
             <div className="flex flex-col -ml-14 text-sm md:text-xl self-end justify-self-end">

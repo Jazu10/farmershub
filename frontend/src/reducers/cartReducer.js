@@ -39,6 +39,7 @@ export const cartReducer = (
             };
 
         case EMPTY_CART:
+            localStorage.removeItem("cartItems");
             return {
                 ...state,
                 cartItems: [],

@@ -241,6 +241,9 @@ const ProductDetails = ({ match }) => {
                                         </span>
                                         <button
                                             onClick={addToCart}
+                                            disabled={
+                                                product && product.stock === 0
+                                            }
                                             className={`flex ml-auto text-white bg-indigo-500 border-0 py-2 px-6 focus:outline-none hover:bg-indigo-600 rounded ${
                                                 product.stock === 0
                                                     ? "cursor-not-allowed"
