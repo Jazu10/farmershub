@@ -34,7 +34,7 @@ class APIFeatures {
             .find({
                 $or: [{ ...name }, { ...seller }, { ...category }],
             })
-            .sort({ createdAt: -1, stock: -1 });
+            .sort({ stock: -1, createdAt: -1 });
         return this;
     }
 
@@ -54,7 +54,7 @@ class APIFeatures {
 
         this.query = this.query
             .find(JSON.parse(queryStr))
-            .sort({ createdAt: -1, stock: -1 });
+            .sort({ stock: -1, createdAt: -1 });
         return this;
     }
 

@@ -26,6 +26,8 @@ import {
     UpdateProduct,
     OrdersList,
     ProcessOrder,
+    UsersList,
+    UpdateUser,
 } from "./components";
 
 function App() {
@@ -88,6 +90,8 @@ function App() {
                 exact
                 component={ProcessOrder}
             />
+            <ProtectedRoute path="/admin/users" exact component={UsersList} />
+            <ProtectedRoute path="/admin/user/:id" exact component={UpdateUser} />
         </Router>
     );
 }

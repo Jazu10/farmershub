@@ -6,7 +6,7 @@ import { useDispatch, useSelector } from "react-redux";
 
 import { getAdminProducts } from "../../actions/productActions";
 import { allOrders } from "../../actions/orderActions";
-// import { allUsers } from "../../actions/userActions";
+import { allUsers } from "../../actions/userActions";
 import { Link } from "react-router-dom";
 import { Loading } from "../";
 
@@ -14,7 +14,7 @@ const Dashboard = () => {
     const dispatch = useDispatch();
 
     const { products } = useSelector((state) => state.products);
-    // const { users } = useSelector((state) => state.allUsers);
+    const { users } = useSelector((state) => state.allUsers);
     const { orders, totalAmount, loading } = useSelector(
         (state) => state.allOrders,
     );
@@ -26,11 +26,18 @@ const Dashboard = () => {
                 outOfStock += 1;
             }
         });
+    let customers = 0;
+    users &&
+        users.forEach((user) => {
+            if (user.role === "admin") {
+                customers += 1;
+            }
+        });
 
     useEffect(() => {
         dispatch(getAdminProducts());
         dispatch(allOrders());
-        // dispatch(allUsers());
+        dispatch(allUsers());
     }, [dispatch]);
 
     return (
@@ -72,8 +79,8 @@ const Dashboard = () => {
 
                     <Link to="/admin/users">
                         <div className="flex flex-col items-center justify-center bg-cyan-600 m-5 p-8 pb-5 hover:shadow-lg">
-                            <h1 className="text-2xl">Users</h1>
-                            <h1 className="text-2xl font-bold">4</h1>
+                            <h1 className="text-2xl">Customers</h1>
+                            <h1 className="text-2xl font-bold">{customers}</h1>
                             <hr />
                             <h3 className="text-sm text-left italic w-full mt-2">
                                 View Details
@@ -82,7 +89,7 @@ const Dashboard = () => {
                     </Link>
                     <div className="flex flex-col items-center justify-center bg-orange-400 m-5 p-8 pb-5">
                         <h1 className="text-2xl">Out of Stock</h1>
-                        <h1 className="text-2xl font-bold">3</h1>
+                        <h1 className="text-2xl font-bold">{outOfStock}</h1>
                         <hr />
                     </div>
                 </div>

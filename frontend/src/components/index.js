@@ -28,6 +28,10 @@ export { default as NewProduct } from "./admin/NewProduct";
 export { default as UpdateProduct } from "./admin/UpdateProduct";
 export { default as OrdersList } from "./admin/OrdersList";
 export { default as ProcessOrder } from "./admin/ProcessOrder";
+export { default as UsersList } from "./admin/UsersList";
+export { default as UpdateUser } from "./admin/UpdateUser";
+
+
 
 
 
