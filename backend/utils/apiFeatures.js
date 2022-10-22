@@ -21,9 +21,9 @@ class APIFeatures {
                   },
               }
             : {};
-        const category = this.queryStr.keyword
+        const location = this.queryStr.keyword
             ? {
-                  category: {
+                  location: {
                       $regex: this.queryStr.keyword,
                       $options: "i",
                   },
@@ -32,7 +32,7 @@ class APIFeatures {
 
         this.query = this.query
             .find({
-                $or: [{ ...name }, { ...seller }, { ...category }],
+                $or: [{ ...name }, { ...seller }, { ...location }],
             })
             .sort({ stock: -1, createdAt: -1 });
         return this;

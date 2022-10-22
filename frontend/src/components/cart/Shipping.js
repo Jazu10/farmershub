@@ -81,7 +81,7 @@ const Shipping = ({ history }) => {
                         <input
                             className="w-full bg-gray-200 rounded py-3 px-4 leading-tight focus:outline-none"
                             type="text"
-                            placeholder="Enter your email id"
+                            placeholder="Enter your city"
                             name="city"
                             value={city}
                             onChange={(e) => setCity(e.target.value)}

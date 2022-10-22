@@ -51,6 +51,12 @@ const ProductList = ({ history }) => {
             minWidth: 100,
         },
         {
+            field: "seller",
+            headerName: "Seller",
+            flex: 1,
+            minWidth: 100,
+        },
+        {
             field: "price",
             headerName: "Price",
             renderCell: (cellValues) => {
@@ -117,6 +123,7 @@ const ProductList = ({ history }) => {
                 data.push({
                     id: product._id,
                     name: product.name,
+                    seller: product.seller,
                     price: `${product.price}`,
                     stock: product.stock,
                     actions: product._id,

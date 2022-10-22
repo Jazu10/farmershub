@@ -30,9 +30,6 @@ export { default as OrdersList } from "./admin/OrdersList";
 export { default as ProcessOrder } from "./admin/ProcessOrder";
 export { default as UsersList } from "./admin/UsersList";
 export { default as UpdateUser } from "./admin/UpdateUser";
-
-
-
-
+export { default as ProductReview } from "./admin/ProductReview";
 
 export { default as Home } from "./Home";

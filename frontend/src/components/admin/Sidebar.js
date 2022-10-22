@@ -20,7 +20,7 @@ const Sidebar = () => {
     const [menuCollapse, setMenuCollapse] = useState(true);
     return (
         <>
-            <div id="sidebar" className="top-36">
+            <div id="sidebar" className="top-36 opacity-70 md:opacity-100">
                 {/* collapsed props to change menu size using menucollapse state */}
                 <ProSidebar collapsed={menuCollapse}>
                     <SidebarHeader>

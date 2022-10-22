@@ -203,9 +203,12 @@ const ProductDetails = ({ match }) => {
                                             </span>
                                         </p>
                                     </div>
-                                    <div className="flex mt-3 items-center pb-3 border-b-2 border-gray-100 mb-3"></div>
-                                    <div className="">
-                                        <p>Select the quantity</p>
+                                    <div className="flex mt-3  items-center pb-3 border-b-2 border-gray-100 mb-3"></div>
+
+                                    <div className="flex flex-row justify-between">
+                                        <h2 className="flex font-bold text-xl mt-2">
+                                            {product.location}
+                                        </h2>
                                         <div className="vertical-center">
                                             <div className="custom-number-input h-10 w-32">
                                                 <div className="flex flex-row h-10 w-full rounded-lg relative bg-transparent mt-1">
