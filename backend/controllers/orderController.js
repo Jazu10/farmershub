@@ -131,27 +131,39 @@ exports.deleteOrder = catchAsyncErrors(async (req, res, next) => {
         return next(new ErrorHandler("No Order found with this ID", 404));
     }
 
-    order.orderItems.forEach(async (item) => {
-        await addStock(item.product, item.quantity);
-    });
+    if (order.paymentInfo.refund_id !== "") {
+        return next(
+            new ErrorHandler("You have already refunded this order", 400),
+        );
+    } else {
+        order.orderItems.forEach(async (item) => {
+            await addStock(item.product, item.quantity);
+        });
 
-    const instance = new Razorpay({
-        key_id: process.env.RAZORPAY_API,
-        key_secret: process.env.RAZORPAY_SECRET,
-    });
+        const instance = new Razorpay({
+            key_id: process.env.RAZORPAY_API,
+            key_secret: process.env.RAZORPAY_SECRET,
+        });
 
-    let refundPrice =
-        order.totalPrice - Math.round((order.totalPrice * 3) / 100);
+        let refundPrice =
+            order.totalPrice - Math.round((order.totalPrice * 3) / 100);
 
-    instance.payments.refund(order.paymentInfo.id, {
-        amount: refundPrice * 100,
-        speed: "optimum",
-        receipt: crypto.randomBytes(10).toString("hex"),
-    });
-
-    await order.remove();
+        await instance.payments
+            .refund(order.paymentInfo.id, {
+                amount: refundPrice * 100,
+                speed: "optimum",
+                receipt: crypto.randomBytes(10).toString("hex"),
+            })
+            .then(async (resp) => {
+                order.paymentInfo.refund_id = resp.id;
+                order.orderStatus = "Refunded";
+                order.totalPrice = order.totalPrice - refundPrice;
+                await order.save();
+            });
+    }
 
     res.status(200).json({
         success: true,
+        order,
     });
 });

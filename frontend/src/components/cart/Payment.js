@@ -147,7 +147,9 @@ const Payment = ({ history }) => {
                     </h1>
                     <button
                         disabled={loading}
-                        className={`w-full p-3 my-3 bg-indigo-600 hover:bg-indigo-700 text-white font-bold rounded shadow-md`}>
+                        className={`w-full p-3 my-3 bg-indigo-600 hover:bg-indigo-700 text-white font-bold rounded shadow-md ${
+                            loading && "cursor-not-allowed"
+                        }`}>
                         ₹ {payable} - Pay now
                     </button>
                 </form>

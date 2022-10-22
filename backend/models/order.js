@@ -64,9 +64,15 @@ const orderSchema = mongoose.Schema({
     paymentInfo: {
         id: {
             type: String,
+            required: true,
+        },
+        refund_id: {
+            type: String,
+            default: "",
         },
         status: {
             type: String,
+            required: true,
         },
     },
     paidAt: {

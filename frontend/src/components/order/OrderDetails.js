@@ -4,6 +4,7 @@ import { useAlert } from "react-alert";
 import { useDispatch, useSelector } from "react-redux";
 import { getOrderDetails, clearErrors } from "../../actions/orderActions";
 import SummaryProduct from "../cart/SummaryProduct";
+import { Sidebar } from "../";
 
 const OrderDetails = ({ match }) => {
     const alert = useAlert();
@@ -22,6 +23,7 @@ const OrderDetails = ({ match }) => {
         totalPrice,
         orderStatus,
     } = order;
+    const { user: admin } = useSelector((state) => state.auth);
 
     useEffect(() => {
         dispatch(getOrderDetails(match.params.id));
@@ -38,8 +40,9 @@ const OrderDetails = ({ match }) => {
     const isPaid =
         paymentInfo && paymentInfo.status === "success" ? true : false;
     return (
-        <div className="max-w-screen-2xl mx-auto">
+        <div className="max-w-screen-2xl mx-auto mb-5">
             <MetaData title={"Order Details"} />
+            {admin && admin.role === "admin" && <Sidebar />}
             {loading ? (
                 <Loading />
             ) : (
@@ -59,22 +62,33 @@ const OrderDetails = ({ match }) => {
                                 </div>
                                 <div className="w-full flex flex-row">
                                     <h1 className="font-semibold">Phone: </h1>
-                                    <h1 className="italic text-gray-700 ml-10">
+                                    <h1 className="italic text-gray-700 ml-[2.6rem]">
                                         {shippingInfo && shippingInfo.phone}
                                     </h1>
                                 </div>
                                 <div className="w-full flex flex-row">
                                     <h1 className="font-semibold">Address: </h1>
-                                    <h1 className=" italic text-gray-700 ml-6">
+                                    <h1 className=" italic text-gray-700 ml-[1.6rem]">
                                         {shippingDetails}
                                     </h1>
                                 </div>
                                 <div className="w-full flex flex-row">
                                     <h1 className="font-semibold">Razorpay:</h1>
-                                    <h1 className=" italic text-gray-700 ml-3">
+                                    <h1 className=" italic text-gray-700 ml-[1rem]">
                                         {paymentInfo && paymentInfo.id}
                                     </h1>
                                 </div>
+                                {paymentInfo && paymentInfo.refund_id !== "" && (
+                                    <div className="w-full flex flex-row">
+                                        <h1 className="font-semibold">
+                                            Refund:
+                                        </h1>
+                                        <h1 className=" italic text-gray-700 ml-[2rem]">
+                                            {paymentInfo &&
+                                                paymentInfo.refund_id}
+                                        </h1>
+                                    </div>
+                                )}
                             </div>
                         </div>
                         <hr />
@@ -106,6 +120,9 @@ const OrderDetails = ({ match }) => {
                                             "text-yellow-400") ||
                                         (order &&
                                             orderStatus === "Processing" &&
+                                            "text-red-500") ||
+                                        (order &&
+                                            orderStatus === "Refunded" &&
                                             "text-red-500")
                                     }`}>
                                     <b>{order && orderStatus}</b>

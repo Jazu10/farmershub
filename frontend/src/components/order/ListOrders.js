@@ -69,6 +69,12 @@ const ListOrrder = ({ history }) => {
                             {cellValues.row.status}
                         </p>
                     );
+                else if (cellValues.row.status === "Refunded")
+                    return (
+                        <p className="p-2 py-1 rounded-full bg-red-500 text-white">
+                            {cellValues.row.status}
+                        </p>
+                    );
                 else if (cellValues.row.status === "Shipped")
                     return (
                         <p className="p-2 py-1 rounded-full bg-yellow-500 text-white">

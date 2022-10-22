@@ -76,6 +76,12 @@ const OrdersList = ({ history }) => {
                             {cellValues.row.status}
                         </p>
                     );
+                else if (cellValues.row.status === "Refunded")
+                    return (
+                        <p className="p-2 py-1 rounded-full bg-red-500 text-white">
+                            {cellValues.row.status}
+                        </p>
+                    );
                 else
                     return (
                         cellValues.row.status === "Processing" && (
@@ -97,11 +103,15 @@ const OrdersList = ({ history }) => {
                         <Link to={`/order/${cellValues.row.id}`}>
                             <i className="fa fa-eye p-2 text-white bg-blue-500 rounded-md"></i>
                         </Link>
-                        <Link to={`/admin/order/${cellValues.row.id}`}>
-                            <button className="p-2 py-1 text-white bg-yellow-400 rounded-md">
-                                <i className="fa fa-edit"></i>
-                            </button>
-                        </Link>
+                        {["Processing", "Shipped"].includes(
+                            cellValues.row.status,
+                        ) && (
+                            <Link to={`/admin/order/${cellValues.row.id}`}>
+                                <button className="p-2 py-1 text-white bg-yellow-400 rounded-md">
+                                    <i className="fa fa-edit"></i>
+                                </button>
+                            </Link>
+                        )}
                         {cellValues.row.status === "Processing" && (
                             <button
                                 onClick={() =>
