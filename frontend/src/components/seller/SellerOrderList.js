@@ -5,39 +5,24 @@ import { useDispatch, useSelector } from "react-redux";
 import { Link } from "react-router-dom";
 import Box from "@mui/material/Box";
 import { DataGrid, GridToolbar } from "@mui/x-data-grid";
-import Sidebar from "../admin/Sidebar";
-import {
-    allOrders,
-    deleteOrder,
-    clearErrors,
-} from "../../actions/orderActions";
-import { DELETE_ORDER_RESET } from "../../constants/orderConstants";
+import { SellerSidebar } from "../";
+import { sellerOrders, clearErrors } from "../../actions/orderActions";
 
-const OrdersList = ({ history }) => {
+const SellerOrdersList = ({ match, history }) => {
     const alert = useAlert();
     const dispatch = useDispatch();
     const { loading, error, orders } = useSelector((state) => state.allOrders);
-    const { error: deleteError, isDeleted } = useSelector(
-        (state) => state.order,
-    );
+
+    const userId = match.params.id;
 
     useEffect(() => {
-        dispatch(allOrders());
+        dispatch(sellerOrders(userId));
+
         if (error) {
             alert.error(error);
             dispatch(clearErrors());
         }
-        if (deleteError) {
-            alert.error(deleteError);
-            dispatch(clearErrors());
-        }
-
-        if (isDeleted) {
-            alert.success("Order deleted, Refund has been initiated");
-            history.push("/admin/orders");
-            dispatch({ type: DELETE_ORDER_RESET });
-        }
-    }, [dispatch, alert, deleteError, isDeleted, history, error]);
+    }, [dispatch, alert, history, userId, error]);
 
     const columns = [
         { field: "id", headerName: "Order ID", flex: 1, minWidth: 220 },
@@ -65,32 +50,19 @@ const OrdersList = ({ history }) => {
             field: "status",
             headerName: "Status",
             renderCell: (cellValues) => {
-                if (cellValues.row.status === "Delivered")
-                    return (
-                        <p className="p-2 py-1 rounded-full bg-green-400 text-white">
-                            {cellValues.row.status}
-                        </p>
-                    );
-                else if (cellValues.row.status === "Shipped")
-                    return (
-                        <p className="p-2 py-1 rounded-full bg-yellow-500 text-white">
-                            {cellValues.row.status}
-                        </p>
-                    );
-                else if (cellValues.row.status === "Refunded")
+                if (cellValues.row.status === "Refunded")
                     return (
                         <p className="p-2 py-1 rounded-full bg-red-500 text-white">
-                            {cellValues.row.status}
+                            Cancelled
                         </p>
                     );
-                else
+                else if (cellValues.row.status === "Delivered")
                     return (
-                        cellValues.row.status === "Processing" && (
-                            <p className="p-2 py-1 rounded-full bg-red-500 text-white">
-                                {cellValues.row.status}
-                            </p>
-                        )
+                        <p className="p-2 py-1 rounded-full bg-green-400 text-white">
+                            Delivered
+                        </p>
                     );
+                else return "";
             },
             flex: 1,
             minWidth: 100,
@@ -101,10 +73,10 @@ const OrdersList = ({ history }) => {
             renderCell: (cellValues) => {
                 return (
                     <div className="flex flex-row space-x-4">
-                        <Link to={`/order/${cellValues.row.id}`}>
+                        <Link to={`/seller/order/${cellValues.row.id}`}>
                             <i className="fa fa-eye p-2 text-white bg-blue-500 rounded-md"></i>
                         </Link>
-                        {["Processing", "Shipped"].includes(
+                        {/* {["Processing", "Shipped"].includes(
                             cellValues.row.status,
                         ) && (
                             <Link to={`/admin/order/${cellValues.row.id}`}>
@@ -121,7 +93,7 @@ const OrdersList = ({ history }) => {
                                 className="p-2 py-1 text-white bg-red-500 rounded-md">
                                 <i className="fa fa-trash"></i>
                             </button>
-                        )}
+                        )} */}
                     </div>
                 );
             },
@@ -147,13 +119,10 @@ const OrdersList = ({ history }) => {
         return data;
     };
 
-    const deleteOrderHandler = (id) => {
-        dispatch(deleteOrder(id));
-    };
     return (
         <div className="max-w-screen-2xl mx-auto">
             <MetaData title={"All Orders"} />
-            <Sidebar />
+            <SellerSidebar />
 
             {loading ? (
                 <Loading />
@@ -185,4 +154,4 @@ const OrdersList = ({ history }) => {
     );
 };
 
-export default OrdersList;
+export default SellerOrdersList;

@@ -2,11 +2,11 @@ import React, { useEffect } from "react";
 import { Loading, MetaData } from "../../components";
 import { useAlert } from "react-alert";
 import { useDispatch, useSelector } from "react-redux";
-import { getOrderDetails, clearErrors } from "../../actions/orderActions";
+import { getSellerOrderDetails, clearErrors } from "../../actions/orderActions";
 import SummaryProduct from "../cart/SummaryProduct";
 import { Sidebar, SellerSidebar } from "../";
 
-const OrderDetails = ({ match }) => {
+const SellerOrderDetails = ({ match }) => {
     const alert = useAlert();
     const dispatch = useDispatch();
 
@@ -20,18 +20,18 @@ const OrderDetails = ({ match }) => {
         orderItems,
         paymentInfo,
         user,
-        totalPrice,
         orderStatus,
+        totalPrice,
     } = order;
     const { user: admin } = useSelector((state) => state.auth);
 
     useEffect(() => {
-        dispatch(getOrderDetails(match.params.id));
+        dispatch(getSellerOrderDetails(match.params.id, admin._id));
         if (error) {
             alert.error(error);
             dispatch(clearErrors());
         }
-    }, [dispatch, error, alert, match.params.id]);
+    }, [dispatch, error, alert, match.params.id, admin._id]);
 
     const shippingDetails =
         shippingInfo &&
@@ -109,10 +109,50 @@ const OrderDetails = ({ match }) => {
                                 </p>
                             </div>
                             <div>
-                                <h1 className="font-semibold text-xl">
-                                    Order Status
-                                </h1>
-                                <p
+                                {order && orderStatus === "Refunded" && (
+                                    <>
+                                        <h1 className="font-semibold text-xl">
+                                            Order Status
+                                        </h1>
+
+                                        <p
+                                            className={`mt-2 ${
+                                                order &&
+                                                orderStatus === "Refunded" &&
+                                                "text-red-500"
+                                            }`}>
+                                            <b>
+                                                {order &&
+                                                orderStatus === "Refunded"
+                                                    ? "Cancelled"
+                                                    : ""}
+                                            </b>
+                                        </p>
+                                    </>
+                                )}
+                                {order && orderStatus === "Delivered" && (
+                                    <>
+                                        <h1 className="font-semibold text-xl">
+                                            Order Status
+                                        </h1>
+
+                                        <p
+                                            className={`mt-2 ${
+                                                order &&
+                                                orderStatus === "Delivered" &&
+                                                "text-green-400"
+                                            }`}>
+                                            <b>
+                                                {order &&
+                                                orderStatus === "Delivered"
+                                                    ? "Delivered"
+                                                    : ""}
+                                            </b>
+                                        </p>
+                                    </>
+                                )}
+
+                                {/* <p
                                     className={`mt-2 ${
                                         (order &&
                                             orderStatus === "Delivered" &&
@@ -126,9 +166,9 @@ const OrderDetails = ({ match }) => {
                                         (order &&
                                             orderStatus === "Refunded" &&
                                             "text-red-500")
-                                    }`}>
-                                    <b>{order && orderStatus}</b>
-                                </p>
+                                    }`
+                                    <b>Refunded</b>
+                                </p>*/}
                             </div>
                         </div>
                         <hr />
@@ -153,12 +193,12 @@ const OrderDetails = ({ match }) => {
                                     price={item.price}
                                 />
                             ))}
-                        <h1 className="text-xl text-right border-b pb-4">
+                        {/* <h1 className="text-xl text-right border-b pb-4">
                             Shipping Price:
                             <span className="ml-2">
                                 ₹ {totalPrice > 5000 ? "250" : "500"}
                             </span>
-                        </h1>
+                        </h1> */}
                         <h1 className="text-2xl text-right border-b pb-4">
                             Total Price:
                             <span className="ml-2">
@@ -172,4 +212,4 @@ const OrderDetails = ({ match }) => {
     );
 };
 
-export default OrderDetails;
+export default SellerOrderDetails;

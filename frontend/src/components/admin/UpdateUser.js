@@ -13,10 +13,10 @@ import { Sidebar, Loading } from "../";
 const UpdateUser = ({ match, history }) => {
     const { error, isUpdated } = useSelector((state) => state.user);
     const { user, loading } = useSelector((state) => state.userDetails);
-    const [name, setName] = useState(user && user.name);
-    const [email, setEmail] = useState(user && user.email);
+    const [name, setName] = useState();
+    const [email, setEmail] = useState();
 
-    const [role, setRole] = useState(user && user.role);
+    const [role, setRole] = useState();
 
     const alert = useAlert();
     const dispatch = useDispatch();
@@ -24,13 +24,13 @@ const UpdateUser = ({ match, history }) => {
     const userId = match.params.id;
 
     useEffect(() => {
-        // if (user && user._id !== userId) {
-        dispatch(getUserDetails(userId));
-        // } else {
-        //     setName(user.name);
-        //     setEmail(user.email);
-        //     setRole(user.role);
-        // }
+        if (user && user._id !== userId) {
+            dispatch(getUserDetails(userId));
+        } else {
+            setName(user.name);
+            setEmail(user.email);
+            setRole(user.role);
+        }
 
         if (error) {
             alert.error(error);
@@ -46,7 +46,7 @@ const UpdateUser = ({ match, history }) => {
                 type: UPDATE_USER_RESET,
             });
         }
-    }, [dispatch, alert, error, history, isUpdated, userId]);
+    }, [dispatch, alert, error, history, user, isUpdated, userId]);
 
     const submitHandler = (e) => {
         e.preventDefault();
@@ -109,7 +109,9 @@ const UpdateUser = ({ match, history }) => {
                                 value={role}
                                 className="w-full bg-gray-200 rounded py-3 px-4 leading-tight focus:outline-none"
                                 onChange={(e) => setRole(e.target.value)}>
-                                <option value="user">User</option>
+                                <option value="user">Customer</option>
+                                <option value="seller">Farmer</option>
+
                                 <option value="admin">Admin</option>
                             </select>
                         </div>

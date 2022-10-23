@@ -2,23 +2,30 @@ import React, { useEffect } from "react";
 import { Loading, MetaData } from "..";
 import { useAlert } from "react-alert";
 import { useDispatch, useSelector } from "react-redux";
+import {
+    getSellerProducts,
+    deleteSellerProduct,
+    clearErrors,
+} from "../../actions/productActions";
 import { Link } from "react-router-dom";
 import Box from "@mui/material/Box";
 import { DataGrid, GridToolbar } from "@mui/x-data-grid";
-import Sidebar from "../admin/Sidebar";
-import { allUsers, deleteUser, clearErrors } from "../../actions/userActions";
-import { DELETE_USER_RESET } from "../../constants/userConstants";
+import SellerSidebar from "./SellerSidebar";
+import { DELETE_PRODUCT_RESET } from "../../constants/productConstants";
 
-const UsersList = ({ history }) => {
+const SellerProducts = ({ match, history }) => {
     const alert = useAlert();
     const dispatch = useDispatch();
-    const { loading, error, users } = useSelector((state) => state.allUsers);
+    const { loading, error, products } = useSelector((state) => state.products);
     const { error: deleteError, isDeleted } = useSelector(
-        (state) => state.user,
+        (state) => state.product,
     );
 
+    const userId = match.params.id;
+
     useEffect(() => {
-        dispatch(allUsers());
+        dispatch(getSellerProducts(userId));
+
         if (error) {
             alert.error(error);
             dispatch(clearErrors());
@@ -27,17 +34,19 @@ const UsersList = ({ history }) => {
             alert.error(deleteError);
             dispatch(clearErrors());
         }
-
         if (isDeleted) {
-            alert.success("User Deleted!");
-            history.push("/admin/users");
-
-            dispatch({ type: DELETE_USER_RESET });
+            alert.success("Product deleted successfully");
+            history.push(`/seller/products/${userId}`);
+            dispatch({ type: DELETE_PRODUCT_RESET });
         }
-    }, [dispatch, alert, deleteError, isDeleted, history, error]);
+    }, [dispatch, alert, error, deleteError, userId, isDeleted, history]);
+
+    const deleteProductHandler = (id) => {
+        dispatch(deleteSellerProduct(id));
+    };
 
     const columns = [
-        { field: "id", headerName: "User ID", flex: 1, minWidth: 220 },
+        { field: "id", headerName: "Product ID", flex: 1, minWidth: 220 },
         {
             field: "name",
             headerName: "Name",
@@ -45,41 +54,37 @@ const UsersList = ({ history }) => {
             minWidth: 100,
         },
         {
-            field: "email",
-            headerName: "Email",
+            field: "seller",
+            headerName: "Seller",
             flex: 1,
             minWidth: 100,
         },
         {
-            field: "role",
-            headerName: "Role",
+            field: "price",
+            headerName: "Price",
             renderCell: (cellValues) => {
-                if (cellValues.row.role === "user")
-                    return (
-                        <p className="p-2 py-1 rounded-full bg-green-400 text-white">
-                            Customer
-                        </p>
-                    );
-                else if (cellValues.row.role === "seller")
-                    return (
-                        <p className="p-2 py-1 rounded-full bg-yellow-400 text-white">
-                            Farmer
-                        </p>
-                    );
-                else if (cellValues.row.role === "admin")
-                    return (
-                        <p className="p-2 py-1 rounded-full bg-red-500 text-white">
-                            Admin
-                        </p>
-                    );
-                else
-                    return (
-                        cellValues.row.role === "farmer" && (
-                            <p className="p-2 py-1 rounded-full bg-red-500 text-white">
-                                Farmer
-                            </p>
-                        )
-                    );
+                return (
+                    <p className="font-bold text-blue-600 p-2 py-1 rounded-md bg-gray-200">
+                        $ {cellValues.row.price}
+                    </p>
+                );
+            },
+            flex: 1,
+            minWidth: 100,
+        },
+        {
+            field: "stock",
+            headerName: "Stock",
+            renderCell: (cellValues) => {
+                return cellValues.row.stock !== 0 ? (
+                    <p className="p-4 py-1 rounded-full  bg-green-400 text-white">
+                        {cellValues.row.stock}
+                    </p>
+                ) : (
+                    <p className="p-4 py-1 rounded-full  bg-red-500 text-white">
+                        {cellValues.row.stock}
+                    </p>
+                );
             },
             flex: 1,
             minWidth: 100,
@@ -90,14 +95,18 @@ const UsersList = ({ history }) => {
             renderCell: (cellValues) => {
                 return (
                     <div className="flex flex-row space-x-4">
-                        <Link to={`/admin/user/${cellValues.row.id}`}>
+                        <Link to={`/product/${cellValues.row.id}`}>
+                            <i className="fa fa-eye p-2 text-white bg-blue-500 rounded-md"></i>
+                        </Link>
+                        <Link to={`/seller/product/${cellValues.row.id}`}>
                             <button className="p-2 py-1 text-white bg-yellow-400 rounded-md">
                                 <i className="fa fa-edit"></i>
                             </button>
                         </Link>
-
                         <button
-                            onClick={() => deleteUserHandler(cellValues.row.id)}
+                            onClick={() =>
+                                deleteProductHandler(cellValues.row.id)
+                            }
                             className="p-2 py-1 text-white bg-red-500 rounded-md">
                             <i className="fa fa-trash"></i>
                         </button>
@@ -110,39 +119,35 @@ const UsersList = ({ history }) => {
         },
     ];
 
-    const setUsers = () => {
+    const setProducts = () => {
         const data = [];
-        users &&
-            users.forEach((user) =>
+        products &&
+            products.forEach((product) =>
                 data.push({
-                    id: user._id,
-                    name: user.name,
-                    email: user.email,
-                    role: user.role,
-                    actions: user._id,
+                    id: product._id,
+                    name: product.name,
+                    seller: product.seller,
+                    price: `${product.price}`,
+                    stock: product.stock,
+                    actions: product._id,
                 }),
             );
         return data;
     };
-
-    const deleteUserHandler = (id) => {
-        dispatch(deleteUser(id));
-    };
     return (
         <div className="max-w-screen-2xl mx-auto">
-            <MetaData title={"All Users"} />
-            <Sidebar />
-
+            <MetaData title={"All Products"} />
+            <SellerSidebar />
             {loading ? (
                 <Loading />
             ) : (
                 <>
                     <h1 className="mt-4 text-2xl font-bold flex justify-center">
-                        All Users
+                        All Products
                     </h1>
                     <Box className="bg-white w-[90%] h-[65vh] mx-auto mt-10 rounded-md">
                         <DataGrid
-                            rows={setUsers()}
+                            rows={setProducts()}
                             columns={columns}
                             pageSize={10}
                             rowsPerPageOptions={[10]}
@@ -163,4 +168,4 @@ const UsersList = ({ history }) => {
     );
 };
 
-export default UsersList;
+export default SellerProducts;

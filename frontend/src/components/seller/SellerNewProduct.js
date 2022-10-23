@@ -2,15 +2,11 @@ import React, { useState, useEffect } from "react";
 import { MetaData } from "..";
 import { useAlert } from "react-alert";
 import { useDispatch, useSelector } from "react-redux";
-import {
-    updateProduct,
-    getProductDetails,
-    clearErrors,
-} from "../../actions/productActions";
-import { Sidebar } from "../index";
-import { UPDATE_PRODUCT_RESET } from "../../constants/productConstants";
+import { createSellerProduct, clearErrors } from "../../actions/productActions";
+import { SellerSidebar } from "../index";
+import { NEW_PRODUCT_RESET } from "../../constants/productConstants";
 
-const UpdateProduct = ({ match, history }) => {
+const SellerNewProduct = ({ history }) => {
     const alert = useAlert();
     const dispatch = useDispatch();
     const [name, setName] = useState("");
@@ -22,10 +18,13 @@ const UpdateProduct = ({ match, history }) => {
     const [unit, setUnit] = useState("");
 
     const [images, setImages] = useState([]);
-    const [oldImages, setOldImages] = useState([]);
-
     const [imagesPreview, setImagesPreview] = useState([]);
-    // const [seller, setSeller] = useState(user ? user.name : "");
+
+    const { loading, error, success } = useSelector(
+        (state) => state.newProduct,
+    );
+    const { user } = useSelector((state) => state.auth);
+    const [seller, setSeller] = useState(user ? user.name : "");
 
     const categories = ["Vegetables", "Fruits"];
     const districts = [
@@ -45,55 +44,18 @@ const UpdateProduct = ({ match, history }) => {
         "Thiruvananthapuram",
     ];
 
-    const { error, product } = useSelector((state) => state.productDetails);
-    const {
-        loading,
-        error: updateError,
-        isUpdated,
-    } = useSelector((state) => state.product);
-
-    const productId = match.params.id;
-
     useEffect(() => {
-        if (product && product._id !== productId)
-            dispatch(getProductDetails(productId));
-        else {
-            setName(product.name);
-            setPrice(product.price);
-            setDescription(product.description);
-            setCategory(product.category);
-            setLocation(product.location);
-            setStock(product.stock);
-            setUnit(product.unit);
-
-            setOldImages(product.images);
-        }
         if (error) {
             alert.error(error);
             dispatch(clearErrors());
         }
 
-        if (updateError) {
-            alert.error(updateError);
-            dispatch(clearErrors());
-        }
-
-        if (isUpdated) {
-            alert.success("Product updated successfully");
+        if (success) {
+            alert.success("Product created successfully");
             history.push("/admin/products");
-            dispatch({ type: UPDATE_PRODUCT_RESET });
+            dispatch({ type: NEW_PRODUCT_RESET });
         }
-    }, [
-        dispatch,
-        error,
-        updateError,
-        alert,
-        history,
-        product,
-        product._id,
-        productId,
-        isUpdated,
-    ]);
+    }, [dispatch, alert, error, success, history]);
 
     const submitHandler = (e) => {
         e.preventDefault();
@@ -102,6 +64,7 @@ const UpdateProduct = ({ match, history }) => {
         formData.set("price", price);
         formData.set("description", description);
         formData.set("category", category);
+        formData.set("seller", seller);
         formData.set("stock", stock);
         formData.set("location", location);
         formData.set("unit", unit);
@@ -109,15 +72,13 @@ const UpdateProduct = ({ match, history }) => {
         images.forEach((image) => {
             formData.append("images", image);
         });
-        dispatch(updateProduct(product._id, formData));
+        dispatch(createSellerProduct(formData));
     };
 
     const onChange = (e) => {
         const files = Array.from(e.target.files);
         setImagesPreview([]);
         setImages([]);
-        setOldImages([]);
-
         files.forEach((file) => {
             const reader = new FileReader();
             reader.onload = () => {
@@ -132,15 +93,14 @@ const UpdateProduct = ({ match, history }) => {
             reader.readAsDataURL(file);
         });
     };
-
     return (
         <div>
-            <MetaData title={"Update Product"} />
-            <Sidebar />
+            <MetaData title={"Create Product"} />
+            <SellerSidebar />
             <div className="w-full pl-20 h-fit md:h-auto max-w-lg mx-auto md:my-16 md:p-10 p-5 bg-white md:border md:shadow-lg md:rounded-md">
                 <form onSubmit={submitHandler} encType="multipart/form-data">
                     <h1 className="text-center font-bold text-xl pb-5 text-gray-700">
-                        Update Product
+                        Add Product
                     </h1>
                     <div className="flex flex-wrap mb-6">
                         <label
@@ -191,7 +151,7 @@ const UpdateProduct = ({ match, history }) => {
                         <select
                             className="w-full bg-gray-200 rounded py-3 px-4 leading-tight focus:outline-none"
                             onChange={(e) => setCategory(e.target.value)}
-                            value={category}>
+                            defaultValue={category}>
                             <option value="">Select category</option>
                             {categories.map((item, index) => (
                                 <option key={index} value={item}>
@@ -233,7 +193,7 @@ const UpdateProduct = ({ match, history }) => {
                         <select
                             className="w-full bg-gray-200 rounded py-3 px-4 leading-tight focus:outline-none"
                             onChange={(e) => setLocation(e.target.value)}
-                            value={location}>
+                            defaultValue={location}>
                             <option value="">Select Location</option>
                             {districts.map((item, index) => (
                                 <option key={index} value={item}>
@@ -254,17 +214,6 @@ const UpdateProduct = ({ match, history }) => {
                             multiple
                             onChange={onChange}
                         />
-                        {oldImages &&
-                            oldImages.map((img) => (
-                                <img
-                                    key={img.url}
-                                    src={img.url}
-                                    width={80}
-                                    height={80}
-                                    alt="Old Images Preview"
-                                    className="mt-3 mr-2 object-contain"
-                                />
-                            ))}
                         {imagesPreview.map((img, i) => (
                             <img
                                 src={img}
@@ -283,7 +232,7 @@ const UpdateProduct = ({ match, history }) => {
                                 : "cursor-pointer"
                         }`}
                         disabled={loading ? true : false}>
-                        Update Product
+                        Add Product
                     </button>
                 </form>
             </div>
@@ -291,4 +240,4 @@ const UpdateProduct = ({ match, history }) => {
     );
 };
 
-export default UpdateProduct;
+export default SellerNewProduct;

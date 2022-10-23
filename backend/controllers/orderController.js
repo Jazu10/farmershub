@@ -69,7 +69,7 @@ exports.myOrders = catchAsyncErrors(async (req, res, next) => {
 
 // Get all orders - ADMIN  =>   /api/v1/admin/orders/
 exports.allOrders = catchAsyncErrors(async (req, res, next) => {
-    const orders = await Order.find();
+    const orders = await Order.find().populate("user", "name");
 
     let totalAmount = 0;
 
@@ -165,5 +165,84 @@ exports.deleteOrder = catchAsyncErrors(async (req, res, next) => {
     res.status(200).json({
         success: true,
         order,
+    });
+});
+
+exports.getSellerOrders = catchAsyncErrors(async (req, res, next) => {
+    const product = await Product.find({ user: req.params.id });
+    const orders = await Order.find().populate("user", "name");
+
+    let orderList = [];
+    let productId = [];
+    let totalAmount = 0;
+
+    product.forEach((item) => productId.push(item._id.toString()));
+
+    orders.forEach((item) => {
+        let order = { orderItems: [], totalPrice: 0 };
+        item.orderItems.forEach((i) => {
+            if (productId.includes(i.product.toString())) {
+                order._id = item._id;
+                order.shippingInfo = item.shippingInfo;
+                order.user = item.user;
+                order.createdAt = item.createdAt;
+                order.orderItems = [...order.orderItems, i];
+                order.orderStatus = item.orderStatus;
+                if (item.orderStatus === "Refunded") {
+                    order.totalPrice = 0;
+                } else {
+                    order.totalPrice += i.price * i.quantity;
+                    totalAmount += i.price * i.quantity;
+                }
+
+                orderList.push(order);
+            }
+        });
+    });
+
+    const key = "_id";
+
+    const unique = [
+        ...new Map(orderList.map((item) => [item[key], item])).values(),
+    ];
+
+    res.status(200).json({
+        success: true,
+        orders: unique,
+        totalAmount: totalAmount,
+    });
+});
+
+exports.sellerOrderDetails = catchAsyncErrors(async (req, res, next) => {
+    const product = await Product.find({ user: req.body.userid });
+    const orders = await Order.findOne({ _id: req.body.id }).populate(
+        "user",
+        "name",
+    );
+
+    let productId = [];
+    let order = { orderItems: [], totalPrice: 0 };
+
+    product.forEach((item) => productId.push(item._id.toString()));
+    order.shippingInfo = orders.shippingInfo;
+    order.user = orders.user;
+    order.paymentInfo = orders.paymentInfo;
+    order.orderStatus = orders.orderStatus;
+    order.createdAt = orders.createdAt;
+    orders.orderItems.forEach((item) => {
+        if (productId.includes(item.product.toString())) {
+            order._id = item._id;
+            order.orderItems = [...order.orderItems, item];
+            if (orders.orderStatus === "Refunded") {
+                order.totalPrice = 0;
+            } else {
+                order.totalPrice += item.price * item.quantity;
+            }
+        }
+    });
+
+    res.status(200).json({
+        success: true,
+        order: order,
     });
 });

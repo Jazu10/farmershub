@@ -32,4 +32,14 @@ export { default as UsersList } from "./admin/UsersList";
 export { default as UpdateUser } from "./admin/UpdateUser";
 export { default as ProductReview } from "./admin/ProductReview";
 
+export { default as SellerRoute } from "./route/SellerRoute";
+export { default as SellerSidebar } from "./seller/SellerSidebar";
+export { default as SellerDashboard } from "./seller/SellerDashboard";
+export { default as SellerProductList } from "./seller/SellerProductList";
+export { default as SellerNewProduct } from "./seller/SellerNewProduct";
+export { default as UpdateSellerProduct } from "./seller/UpdateSellerProduct";
+export { default as SellerProductReview } from "./seller/SellerProductReview";
+export { default as SellerOrderList } from "./seller/SellerOrderList";
+export { default as SellerOrderDetails } from "./seller/SellerOrderDetails";
+
 export { default as Home } from "./Home";

@@ -29,6 +29,14 @@ import {
     UsersList,
     UpdateUser,
     ProductReview,
+    SellerRoute,
+    SellerDashboard,
+    SellerProductList,
+    SellerNewProduct,
+    UpdateSellerProduct,
+    SellerProductReview,
+    SellerOrderList,
+    SellerOrderDetails,
 } from "./components";
 
 function App() {
@@ -72,35 +80,93 @@ function App() {
             />
             <ProtectedRoute
                 path="/admin/products"
+                isAdmin={true}
                 exact
                 component={ProductList}
             />
             <ProtectedRoute
                 path="/admin/product"
+                isAdmin={true}
                 exact
                 component={NewProduct}
             />
             <ProtectedRoute
                 path="/admin/product/:id"
+                isAdmin={true}
                 exact
                 component={UpdateProduct}
             />
-            <ProtectedRoute path="/admin/orders" exact component={OrdersList} />
+            <ProtectedRoute
+                isAdmin={true}
+                path="/admin/orders"
+                exact
+                component={OrdersList}
+            />
             <ProtectedRoute
                 path="/admin/order/:id"
+                isAdmin={true}
                 exact
                 component={ProcessOrder}
             />
-            <ProtectedRoute path="/admin/users" exact component={UsersList} />
             <ProtectedRoute
+                isAdmin={true}
+                path="/admin/users"
+                exact
+                component={UsersList}
+            />
+            <ProtectedRoute
+                isAdmin={true}
                 path="/admin/user/:id"
                 exact
                 component={UpdateUser}
             />
             <ProtectedRoute
+                isAdmin={true}
                 path="/admin/reviews"
                 exact
                 component={ProductReview}
+            />
+            <SellerRoute
+                isAdmin={true}
+                path="/seller/dashboard"
+                exact
+                component={SellerDashboard}
+            />
+            <SellerRoute
+                isAdmin={true}
+                path="/seller/products/:id"
+                exact
+                component={SellerProductList}
+            />
+            <SellerRoute
+                isAdmin={true}
+                path="/seller/product"
+                exact
+                component={SellerNewProduct}
+            />
+            <SellerRoute
+                isAdmin={true}
+                path="/seller/product/:id"
+                exact
+                component={UpdateSellerProduct}
+            />
+            <SellerRoute
+                isAdmin={true}
+                path="/seller/reviews/:id"
+                exact
+                component={SellerProductReview}
+            />
+            <SellerRoute
+                isAdmin={true}
+                path="/seller/orders/:id"
+                exact
+                component={SellerOrderList}
+            />
+            <SellerRoute
+                isAdmin={true}
+                path="/seller/order/:id"
+                exact
+                component={SellerOrderDetails}
             />
         </Router>
     );

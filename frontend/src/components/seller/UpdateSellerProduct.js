@@ -3,14 +3,14 @@ import { MetaData } from "..";
 import { useAlert } from "react-alert";
 import { useDispatch, useSelector } from "react-redux";
 import {
-    updateProduct,
+    updateSellerProduct,
     getProductDetails,
     clearErrors,
 } from "../../actions/productActions";
-import { Sidebar } from "../index";
+import { SellerSidebar } from "../index";
 import { UPDATE_PRODUCT_RESET } from "../../constants/productConstants";
 
-const UpdateProduct = ({ match, history }) => {
+const UpdateSellerProduct = ({ match, history }) => {
     const alert = useAlert();
     const dispatch = useDispatch();
     const [name, setName] = useState("");
@@ -46,6 +46,8 @@ const UpdateProduct = ({ match, history }) => {
     ];
 
     const { error, product } = useSelector((state) => state.productDetails);
+    const { user } = useSelector((state) => state.auth);
+
     const {
         loading,
         error: updateError,
@@ -80,19 +82,19 @@ const UpdateProduct = ({ match, history }) => {
 
         if (isUpdated) {
             alert.success("Product updated successfully");
-            history.push("/admin/products");
+            history.push(`/seller/products/${user && user._id}`);
             dispatch({ type: UPDATE_PRODUCT_RESET });
         }
     }, [
         dispatch,
-        error,
-        updateError,
         alert,
-        history,
-        product,
-        product._id,
-        productId,
+        error,
         isUpdated,
+        history,
+        user,
+        updateError,
+        product,
+        productId,
     ]);
 
     const submitHandler = (e) => {
@@ -109,7 +111,7 @@ const UpdateProduct = ({ match, history }) => {
         images.forEach((image) => {
             formData.append("images", image);
         });
-        dispatch(updateProduct(product._id, formData));
+        dispatch(updateSellerProduct(product._id, formData));
     };
 
     const onChange = (e) => {
@@ -136,7 +138,7 @@ const UpdateProduct = ({ match, history }) => {
     return (
         <div>
             <MetaData title={"Update Product"} />
-            <Sidebar />
+            <SellerSidebar />
             <div className="w-full pl-20 h-fit md:h-auto max-w-lg mx-auto md:my-16 md:p-10 p-5 bg-white md:border md:shadow-lg md:rounded-md">
                 <form onSubmit={submitHandler} encType="multipart/form-data">
                     <h1 className="text-center font-bold text-xl pb-5 text-gray-700">
@@ -291,4 +293,4 @@ const UpdateProduct = ({ match, history }) => {
     );
 };
 
-export default UpdateProduct;
+export default UpdateSellerProduct;

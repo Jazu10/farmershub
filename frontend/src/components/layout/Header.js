@@ -73,13 +73,23 @@ function Header() {
                                         </button>
                                         <ul className="dropdown bg-white border-gray-300 border-2 rounded-md absolute hidden text-gray-700 group-hover:block w-44 right-0">
                                             <li className="">
-                                                {user && user.role === "admin" && (
-                                                    <Link
-                                                        to="/dashboard"
-                                                        className="dropelements rounded-t-md hover:bg-gray-200 py-2 px-4 block whitespace-no-wrap">
-                                                        Dashboard
-                                                    </Link>
-                                                )}
+                                                {(user &&
+                                                    user.role === "admin" && (
+                                                        <Link
+                                                            to="/dashboard"
+                                                            className="dropelements rounded-t-md hover:bg-gray-200 py-2 px-4 block whitespace-no-wrap">
+                                                            Dashboard
+                                                        </Link>
+                                                    )) ||
+                                                    (user &&
+                                                        user.role ===
+                                                            "seller" && (
+                                                            <Link
+                                                                to="/seller/dashboard"
+                                                                className="dropelements rounded-t-md hover:bg-gray-200 py-2 px-4 block whitespace-no-wrap">
+                                                                Dashboard
+                                                            </Link>
+                                                        ))}
                                             </li>
                                             <li>
                                                 <Link

@@ -1,4 +1,5 @@
 const Product = require("../models/product");
+const { ObjectId } = require("mongodb");
 
 const ErrorHandler = require("../utils/errorHandler");
 const catchAsyncErrors = require("../middlewares/catchAsyncErrors");
@@ -237,5 +238,28 @@ exports.deleteReview = catchAsyncErrors(async (req, res, next) => {
 
     res.status(200).json({
         success: true,
+    });
+});
+
+exports.getSellerProducts = catchAsyncErrors(async (req, res, next) => {
+    const products = await Product.find({ user: req.params.id }).sort({
+        createdAt: -1,
+    });
+    const productsCount = products.length;
+    res.status(200).json({
+        success: true,
+        productsCount,
+        products,
+    });
+});
+
+exports.getSellerProductReviews = catchAsyncErrors(async (req, res, next) => {
+    const product = await Product.findOne({
+        $and: [{ _id: req.query.id }, { user: req.query.user }],
+    });
+    let reviews = product && product.reviews.length > 0 ? product.reviews : [];
+    res.status(200).json({
+        success: true,
+        reviews: reviews,
     });
 });

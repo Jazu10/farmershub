@@ -21,7 +21,7 @@ const Profile = () => {
                                 <img
                                     src={user.avatar && user.avatar.url}
                                     alt=""
-                                    className="w-[300px] h-[300px] rounded-full mt-6"
+                                    className="w-[300px] h-[300px] rounded-full mt-6 object-cover"
                                 />
 
                                 <Link
@@ -52,13 +52,13 @@ const Profile = () => {
                                         String(user.createdAt).substring(0, 10)}
                                 </h1>
                                 <div className="flex flex-col">
-                                    {user && user.role !== "admin" && (
-                                        <Link
-                                            to="/orders/me"
-                                            className="mt-6 text-center text-lg w-full font-bold text-white bg-yellow-400 px-4 py-2 rounded-md hover:bg-yellow-500">
-                                            Orders
-                                        </Link>
-                                    )}
+                                    {/* {user && user.role !== "admin" && ( */}
+                                    <Link
+                                        to="/orders/me"
+                                        className="mt-6 text-center text-lg w-full font-bold text-white bg-yellow-400 px-4 py-2 rounded-md hover:bg-yellow-500">
+                                        Orders
+                                    </Link>
+                                    {/* )} */}
                                     <Link
                                         to="/password/update"
                                         className="mt-6 text-center text-lg w-full text-white font-bold bg-indigo-600 px-4 py-2 rounded-md hover:bg-indigo-700">

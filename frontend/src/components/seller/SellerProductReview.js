@@ -4,15 +4,15 @@ import { useAlert } from "react-alert";
 import { useDispatch, useSelector } from "react-redux";
 import Box from "@mui/material/Box";
 import { DataGrid, GridToolbar } from "@mui/x-data-grid";
-import Sidebar from "../admin/Sidebar";
+import { SellerSidebar } from "../";
 import {
-    getProductReviews,
+    getSellerProductReviews,
     deleteReview,
     clearErrors,
 } from "../../actions/productActions";
 import { DELETE_REVIEW_RESET } from "../../constants/productConstants";
 
-const ProductReview = () => {
+const SellerProductReview = ({ match }) => {
     const [productId, setProductId] = useState("");
     const alert = useAlert();
     const dispatch = useDispatch();
@@ -24,8 +24,12 @@ const ProductReview = () => {
         (state) => state.review,
     );
 
+    const userId = match.params.id;
+
     useEffect(() => {
-        if (productId !== "") dispatch(getProductReviews(productId));
+        if (productId !== "") {
+            dispatch(getSellerProductReviews(productId, userId));
+        }
         if (error) {
             alert.error(error);
             dispatch(clearErrors());
@@ -39,10 +43,11 @@ const ProductReview = () => {
             alert.success("Review Deleted!");
             dispatch({ type: DELETE_REVIEW_RESET });
         }
-    }, [dispatch, alert, isDeleted, productId, deleteError, error]);
+    }, [dispatch, alert, isDeleted, deleteError, error, productId, userId]);
+
     const submitHandler = (e) => {
         e.preventDefault();
-        dispatch(getProductReviews(productId));
+        dispatch(getSellerProductReviews(productId, userId));
     };
 
     const deleteReviewHandler = (id) => {
@@ -119,9 +124,9 @@ const ProductReview = () => {
     return (
         <div className="max-w-screen-2xl mx-auto">
             <MetaData title={"Reviews"} />
-            <Sidebar />
+            <SellerSidebar />
             <div className="w-full max-w-lg mx-auto md:my-16 md:p-10 p-5 bg-white md:border md:shadow-lg md:rounded-md">
-                <form onSubmit={submitHandler} encType="multipart/form-data">
+                <form onSubmit={submitHandler}>
                     <h1 className="text-center font-bold text-xl pb-5 text-gray-700">
                         Search Product Review
                     </h1>
@@ -193,4 +198,4 @@ const ProductReview = () => {
     );
 };
 
-export default ProductReview;
+export default SellerProductReview;
