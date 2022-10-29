@@ -11,7 +11,7 @@ const Profile = () => {
             ) : (
                 <>
                     <MetaData title={"Profile"} />
-                    <div className="bg-white block md:w-[95%] lg:w-[70%] mx-auto md:px-10 py-5 md:mt-10 rounded-md shadow-lg">
+                    <div className="bg-white block md:w-[95%] lg:w-[70%] mx-auto md:px-10 py-5 md:my-4 rounded-md shadow-lg">
                         <h1 className="text-3xl mt-4 md:mt-10 text-center font-bold">
                             My Profile
                         </h1>
@@ -38,13 +38,20 @@ const Profile = () => {
                                 <h1 className="text-xl font-semibold text-gray-600">
                                     {user && user.name}
                                 </h1>
-                                <h1 className="text-2xl mt-8 font-bold">
+                                <h1 className="text-2xl mt-4 font-bold">
                                     Email Address
                                 </h1>
                                 <h1 className="text-xl font-semibold text-gray-600">
                                     {user && user.email}
                                 </h1>
-                                <h1 className="text-2xl mt-8 font-bold">
+
+                                <h1 className="text-2xl mt-4 font-bold">
+                                    Phone Number
+                                </h1>
+                                <h1 className="text-xl font-semibold text-gray-600">
+                                    {user && user.mobile}
+                                </h1>
+                                <h1 className="text-2xl mt-4 font-bold">
                                     Joined on
                                 </h1>
                                 <h1 className="text-xl font-semibold text-gray-600">

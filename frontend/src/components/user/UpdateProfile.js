@@ -12,9 +12,10 @@ import { UPDATE_PROFILE_RESET } from "../../constants/userConstants";
 const UpdateProfile = ({ history }) => {
     const [name, setName] = useState("");
     const [email, setEmail] = useState("");
+    const [mobile, setMobile] = useState("");
 
     const [avatar, setAvatar] = useState("");
-    const [avatarPrev, setAvatarPrev] = useState("/avatar.png");
+    const [avatarPrev, setAvatarPrev] = useState("");
 
     const alert = useAlert();
     const dispatch = useDispatch();
@@ -26,7 +27,8 @@ const UpdateProfile = ({ history }) => {
         if (user) {
             setName(user.name);
             setEmail(user.email);
-            setAvatar(user.avatar.url);
+            setMobile(user.mobile);
+            setAvatarPrev(user.avatar.url);
         }
         if (error) {
             alert.error(error);
@@ -46,6 +48,7 @@ const UpdateProfile = ({ history }) => {
         const formData = new FormData();
         formData.set("name", name);
         formData.set("email", email);
+        formData.set("mobile", mobile);
         formData.set("avatar", avatar);
         dispatch(updateProfile(formData));
     };
@@ -94,6 +97,19 @@ const UpdateProfile = ({ history }) => {
                             name="email"
                             value={email}
                             onChange={(e) => setEmail(e.target.value)}
+                        />
+                        <label
+                            className="block uppercase tracking-wide text-gray-700 text-xs font-bold my-3"
+                            htmlFor="mobile">
+                            Phone no
+                        </label>
+                        <input
+                            className="w-full bg-gray-200 rounded py-3 px-4 leading-tight focus:outline-none"
+                            type="tel"
+                            placeholder="Enter your phone number"
+                            name="mobile"
+                            value={mobile}
+                            onChange={(e) => setMobile(e.target.value)}
                         />
 
                         <label

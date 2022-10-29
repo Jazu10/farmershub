@@ -6,9 +6,14 @@ import { useDispatch, useSelector } from "react-redux";
 import { register, clearErrors } from "../../actions/userActions";
 
 const Register = ({ history }) => {
-    const [user, setUser] = useState({ name: "", email: "", password: "" });
+    const [user, setUser] = useState({
+        name: "",
+        email: "",
+        password: "",
+        mobile: "",
+    });
 
-    const { name, email, password } = user;
+    const { name, email, password, mobile } = user;
 
     const [avatar, setAvatar] = useState("");
     const [avatarPrev, setAvatarPrev] = useState("/avatar.png");
@@ -35,6 +40,7 @@ const Register = ({ history }) => {
         const formData = new FormData();
         formData.set("name", name);
         formData.set("email", email);
+        formData.set("mobile", mobile);
         formData.set("password", password);
         formData.set("avatar", avatar);
         dispatch(register(formData));
@@ -87,6 +93,19 @@ const Register = ({ history }) => {
                             placeholder="Enter your email id"
                             name="email"
                             value={email}
+                            onChange={onChange}
+                        />
+                        <label
+                            className="block uppercase tracking-wide text-gray-700 text-xs font-bold my-3"
+                            htmlFor="mobile">
+                            Phone no
+                        </label>
+                        <input
+                            className="w-full bg-gray-200 rounded py-3 px-4 leading-tight focus:outline-none"
+                            type="tel"
+                            placeholder="Enter your phone number"
+                            name="mobile"
+                            value={mobile}
                             onChange={onChange}
                         />
                         <label
