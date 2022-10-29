@@ -50,7 +50,19 @@ const SellerOrdersList = ({ match, history }) => {
             field: "status",
             headerName: "Status",
             renderCell: (cellValues) => {
-                if (cellValues.row.status === "Refunded")
+                if (cellValues.row.status === "Processing")
+                    return (
+                        <p className="p-2 py-1 rounded-full bg-red-500 text-white">
+                            Processing
+                        </p>
+                    );
+                else if (cellValues.row.status === "Shipped")
+                    return (
+                        <p className="p-2 py-1 rounded-full bg-yellow-400 text-white">
+                            Shipped
+                        </p>
+                    );
+                else if (cellValues.row.status === "Refunded")
                     return (
                         <p className="p-2 py-1 rounded-full bg-red-500 text-white">
                             Cancelled

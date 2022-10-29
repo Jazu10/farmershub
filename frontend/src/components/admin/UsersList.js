@@ -51,6 +51,12 @@ const UsersList = ({ history }) => {
             minWidth: 100,
         },
         {
+            field: "mobile",
+            headerName: "Phone No",
+            flex: 1,
+            minWidth: 100,
+        },
+        {
             field: "role",
             headerName: "Role",
             renderCell: (cellValues) => {
@@ -118,6 +124,7 @@ const UsersList = ({ history }) => {
                     id: user._id,
                     name: user.name,
                     email: user.email,
+                    mobile: user.mobile,
                     role: user.role,
                     actions: user._id,
                 }),

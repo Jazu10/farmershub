@@ -28,6 +28,8 @@ import {
     orderReducer,
 } from "./reducers/orderReducer";
 
+import { payoutReducer } from "./reducers/payoutReducer";
+
 const reducers = combineReducers({
     products: productReducer,
     productDetails: productDetailsReducer,
@@ -47,6 +49,7 @@ const reducers = combineReducers({
     userDetails: userDetailsReducer,
     productReviews: productReviewReducer,
     review: reviewReducer,
+    payout: payoutReducer,
 });
 
 const initialState = {

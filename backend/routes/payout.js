@@ -5,25 +5,30 @@ const {
     newPayout,
     allPayouts,
     updatePayout,
+    singleSellerPayout,
     sellerPayouts,
 } = require("../controllers/payoutController");
 
 const { isAuthenticatedUser, authorizeRoles } = require("../middlewares/auth");
 
 router
-    .route("/payouts")
+    .route("/seller/payout/new")
     .post(isAuthenticatedUser, authorizeRoles("seller"), newPayout);
 
 router
-    .route("/payouts/:id")
+    .route("/seller/payouts/:id")
     .get(isAuthenticatedUser, authorizeRoles("seller"), sellerPayouts);
 
 router
-    .route("/payouts")
+    .route("/seller/payout")
+    .post(isAuthenticatedUser, authorizeRoles("seller"), singleSellerPayout);
+
+router
+    .route("/admin/payouts")
     .get(isAuthenticatedUser, authorizeRoles("admin"), allPayouts);
 
 router
-    .route("/payouts/update")
+    .route("/admin/payout/update")
     .put(isAuthenticatedUser, authorizeRoles("admin"), updatePayout);
 
 module.exports = router;

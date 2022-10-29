@@ -39,6 +39,15 @@ const OrderDetails = ({ match }) => {
 
     const isPaid =
         paymentInfo && paymentInfo.status === "success" ? true : false;
+
+    const print = () => {
+        let printContents = document.getElementById("print").innerHTML;
+        let originalContents = document.body.innerHTML;
+        document.body.innerHTML = printContents;
+        window.print();
+        document.body.innerHTML = originalContents;
+    };
+
     return (
         <div className="max-w-screen-2xl mx-auto mb-5">
             <MetaData title={"Order Details"} />
@@ -48,8 +57,8 @@ const OrderDetails = ({ match }) => {
             {loading ? (
                 <Loading />
             ) : (
-                <>
-                    <div className="flex flex-col p-5 space-y-6 bg-white max-w-screen-md mx-auto shadow-md">
+                <div className="flex flex-col p-5 space-y-6 bg-white max-w-screen-md mx-auto shadow-md">
+                    <div id="print" className="space-y-6">
                         <h1 className="text-2xl">
                             <p className="mb-2">Order # {order._id}</p>
                             <hr />
@@ -166,7 +175,14 @@ const OrderDetails = ({ match }) => {
                             </span>
                         </h1>
                     </div>
-                </>
+                    {order && orderStatus !== "Processing" && (
+                        <button
+                            onClick={print}
+                            className="flex ml-auto text-white bg-indigo-500 border-0 py-2 px-6 focus:outline-none hover:bg-indigo-600 rounded">
+                            Print
+                        </button>
+                    )}
+                </div>
             )}
         </div>
     );

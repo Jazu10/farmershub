@@ -8,7 +8,7 @@ import {
     SidebarContent,
 } from "react-pro-sidebar";
 
-import { FaList, FaUsers, FaStar } from "react-icons/fa";
+import { FaList, FaUsers, FaStar, FaRupeeSign } from "react-icons/fa";
 import { FiHome, FiArrowLeftCircle, FiArrowRightCircle } from "react-icons/fi";
 import { RiShoppingCartFill } from "react-icons/ri";
 import { Link } from "react-router-dom";
@@ -70,7 +70,11 @@ const Sidebar = () => {
                                     <p className="text-black">Users</p>
                                 </Link>
                             </MenuItem>
-
+                            <MenuItem icon={<FaRupeeSign />}>
+                                <Link className="" to={`/admin/payouts`}>
+                                    <p className="text-black">Payouts</p>
+                                </Link>
+                            </MenuItem>
                             <MenuItem icon={<FaStar />}>
                                 <Link className="" to="/admin/reviews">
                                     <p className="text-black">Reviews</p>

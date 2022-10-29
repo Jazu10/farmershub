@@ -9,7 +9,7 @@ import {
     SidebarContent,
 } from "react-pro-sidebar";
 
-import { FaList, FaStar } from "react-icons/fa";
+import { FaList, FaStar, FaRupeeSign } from "react-icons/fa";
 import { FiHome, FiArrowLeftCircle, FiArrowRightCircle } from "react-icons/fi";
 import { RiShoppingCartFill } from "react-icons/ri";
 import { Link } from "react-router-dom";
@@ -72,7 +72,13 @@ const SellerSidebar = () => {
                                     <p className="text-black">Orders</p>
                                 </Link>
                             </MenuItem>
-
+                            <MenuItem icon={<FaRupeeSign />}>
+                                <Link
+                                    className=""
+                                    to={`/seller/payouts/${user && user._id}`}>
+                                    <p className="text-black">Payouts</p>
+                                </Link>
+                            </MenuItem>
                             <MenuItem icon={<FaStar />}>
                                 <Link
                                     className=""

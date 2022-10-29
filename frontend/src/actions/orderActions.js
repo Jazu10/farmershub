@@ -120,11 +120,9 @@ export const deleteOrder = (id) => async (dispatch) => {
 
 export const sellerOrders = (id) => async (dispatch) => {
     try {
-        
         dispatch({ type: ALL_ORDERS_REQUEST });
         const { data } = await axios.get(`/api/v1/seller/orders/${id}`);
         dispatch({ type: ALL_ORDERS_SUCCESS, payload: data });
-
     } catch (error) {
         dispatch({
             type: ALL_ORDERS_FAIL,
@@ -146,9 +144,7 @@ export const getSellerOrderDetails = (id, userid) => async (dispatch) => {
             { id, userid },
             config,
         );
-        console.log(data);
         dispatch({ type: ORDER_DETAILS_SUCCESS, payload: data.order });
-
     } catch (error) {
         dispatch({
             type: ORDER_DETAILS_FAIL,

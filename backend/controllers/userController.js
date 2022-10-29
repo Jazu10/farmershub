@@ -168,7 +168,7 @@ exports.updateProfile = catchAsyncErrors(async (req, res, next) => {
     const newUserData = {
         name: req.body.name,
         email: req.body.email,
-        mobile:req.body.mobile
+        mobile: req.body.mobile,
     };
 
     if (req.body.avatar !== "") {
@@ -245,6 +245,7 @@ exports.updateUser = catchAsyncErrors(async (req, res, next) => {
     const newUserData = {
         name: req.body.name,
         email: req.body.email,
+        mobile: req.body.mobile,
         role: req.body.role,
     };
 

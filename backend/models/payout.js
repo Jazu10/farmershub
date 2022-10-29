@@ -15,6 +15,10 @@ const payout = new mongoose.Schema({
         type: Number,
         required: [true, "Please enter amount"],
     },
+    paid: {
+        type: Number,
+        default: 0,
+    },
     status: {
         type: String,
         default: "Not Paid",

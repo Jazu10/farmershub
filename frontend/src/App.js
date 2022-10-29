@@ -37,6 +37,8 @@ import {
     SellerProductReview,
     SellerOrderList,
     SellerOrderDetails,
+    SellerPayoutList,
+    PayoutList,
 } from "./components";
 
 function App() {
@@ -152,6 +154,12 @@ function App() {
                     exact
                     component={ProductReview}
                 />
+                <ProtectedRoute
+                    isAdmin={true}
+                    path="/admin/payouts"
+                    exact
+                    component={PayoutList}
+                />
                 <SellerRoute
                     isAdmin={true}
                     path="/seller/dashboard"
@@ -193,6 +201,12 @@ function App() {
                     path="/seller/order/:id"
                     exact
                     component={SellerOrderDetails}
+                />
+                <SellerRoute
+                    isAdmin={true}
+                    path="/seller/payouts/:id"
+                    exact
+                    component={SellerPayoutList}
                 />
                 <Route path="*" component={PageNotFound} />
             </Switch>

@@ -13,8 +13,9 @@ import { Sidebar, Loading } from "../";
 const UpdateUser = ({ match, history }) => {
     const { error, isUpdated } = useSelector((state) => state.user);
     const { user, loading } = useSelector((state) => state.userDetails);
-    const [name, setName] = useState();
-    const [email, setEmail] = useState();
+    const [name, setName] = useState("");
+    const [email, setEmail] = useState("");
+    const [mobile, setMobile] = useState("");
 
     const [role, setRole] = useState();
 
@@ -29,6 +30,7 @@ const UpdateUser = ({ match, history }) => {
         } else {
             setName(user.name);
             setEmail(user.email);
+            setMobile(user.mobile);
             setRole(user.role);
         }
 
@@ -53,6 +55,7 @@ const UpdateUser = ({ match, history }) => {
         const formData = new FormData();
         formData.set("name", name);
         formData.set("email", email);
+        formData.set("mobile", mobile);
         formData.set("role", role);
         dispatch(updateUser(user._id, formData));
     };
@@ -98,7 +101,19 @@ const UpdateUser = ({ match, history }) => {
                                 value={email}
                                 onChange={(e) => setEmail(e.target.value)}
                             />
-
+                            <label
+                                className="block uppercase tracking-wide text-gray-700 text-xs font-bold my-3"
+                                htmlFor="mobile">
+                                Phone No
+                            </label>
+                            <input
+                                className="w-full bg-gray-200 rounded py-3 px-4 leading-tight focus:outline-none"
+                                type="tel"
+                                placeholder="Enter your phone number"
+                                name="mobile"
+                                value={mobile}
+                                onChange={(e) => setMobile(e.target.value)}
+                            />
                             <label
                                 className="block uppercase tracking-wide text-gray-700 text-xs font-bold my-3"
                                 htmlFor="role">

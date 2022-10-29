@@ -6,7 +6,9 @@ import { getSellerOrderDetails, clearErrors } from "../../actions/orderActions";
 import SummaryProduct from "../cart/SummaryProduct";
 import { Sidebar, SellerSidebar } from "../";
 
-const SellerOrderDetails = ({ match }) => {
+import { checkPayout, newPayout } from "../../actions/payoutActions";
+import { NEW_PAYOUT_RESET } from "../../constants/payoutConstants";
+const SellerOrderDetails = ({ match, history }) => {
     const alert = useAlert();
     const dispatch = useDispatch();
 
@@ -25,13 +27,39 @@ const SellerOrderDetails = ({ match }) => {
     } = order;
     const { user: admin } = useSelector((state) => state.auth);
 
+    const {
+        payoutDetails,
+        error: payoutError,
+        isCreated,
+    } = useSelector((state) => state.payout);
+
     useEffect(() => {
         dispatch(getSellerOrderDetails(match.params.id, admin._id));
+        dispatch(checkPayout(match.params.id, admin._id));
         if (error) {
             alert.error(error);
             dispatch(clearErrors());
         }
-    }, [dispatch, error, alert, match.params.id, admin._id]);
+        if (payoutError) {
+            alert.error(payoutError);
+            dispatch(clearErrors());
+        }
+
+        if (isCreated) {
+            alert.success("Payout Requested");
+            dispatch({ type: NEW_PAYOUT_RESET });
+            history.push(`/seller/payouts/${admin._id}`);
+        }
+    }, [
+        dispatch,
+        error,
+        payoutError,
+        alert,
+        isCreated,
+        match.params.id,
+        history,
+        admin._id,
+    ]);
 
     const shippingDetails =
         shippingInfo &&
@@ -39,6 +67,25 @@ const SellerOrderDetails = ({ match }) => {
 
     const isPaid =
         paymentInfo && paymentInfo.status === "success" ? true : false;
+
+    const print = () => {
+        let printContents = document.getElementById("print").innerHTML;
+        let originalContents = document.body.innerHTML;
+        document.body.innerHTML = printContents;
+        window.print();
+        document.body.innerHTML = originalContents;
+    };
+
+    let displayPrice = totalPrice;
+    const submitHandler = (e) => {
+        e.preventDefault();
+        const formData = new FormData();
+        formData.set("order", match.params.id);
+        formData.set("user", admin._id);
+        formData.set("amount", totalPrice);
+        dispatch(newPayout(formData));
+    };
+
     return (
         <div className="max-w-screen-2xl mx-auto mb-5">
             <MetaData title={"Order Details"} />
@@ -48,8 +95,8 @@ const SellerOrderDetails = ({ match }) => {
             {loading ? (
                 <Loading />
             ) : (
-                <>
-                    <div className="flex flex-col p-5 space-y-6 bg-white max-w-screen-md mx-auto shadow-md">
+                <div className="flex flex-col p-5 space-y-6 bg-white max-w-screen-md mx-auto shadow-md">
+                    <div id="print" className="space-y-4">
                         <h1 className="text-2xl">
                             <p className="mb-2">Order # {order._id}</p>
                             <hr />
@@ -202,11 +249,27 @@ const SellerOrderDetails = ({ match }) => {
                         <h1 className="text-2xl text-right border-b pb-4">
                             Total Price:
                             <span className="ml-2">
-                                ₹ {order && totalPrice}
+                                ₹ {order && displayPrice}
                             </span>
                         </h1>
                     </div>
-                </>
+                    {order && ["Delivered", "Shipped"].includes(orderStatus) && (
+                        <div className="flex flex-row space-x-4">
+                            {payoutDetails === null && (
+                                <button
+                                    onClick={submitHandler}
+                                    className="flex ml-auto text-white bg-indigo-500 border-0 py-2 px-6 focus:outline-none hover:bg-indigo-600 rounded">
+                                    Request Payout
+                                </button>
+                            )}
+                            <button
+                                onClick={print}
+                                className="flex ml-auto text-white bg-indigo-500 border-0 py-2 px-6 focus:outline-none hover:bg-indigo-600 rounded">
+                                Print
+                            </button>
+                        </div>
+                    )}
+                </div>
             )}
         </div>
     );
