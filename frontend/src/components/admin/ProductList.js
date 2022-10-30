@@ -5,21 +5,27 @@ import { useDispatch, useSelector } from "react-redux";
 import {
     getAdminProducts,
     deleteProduct,
+    updateProductStatus,
     clearErrors,
 } from "../../actions/productActions";
 import { Link } from "react-router-dom";
 import Box from "@mui/material/Box";
 import { DataGrid, GridToolbar } from "@mui/x-data-grid";
 import Sidebar from "../admin/Sidebar";
-import { DELETE_PRODUCT_RESET } from "../../constants/productConstants";
+import {
+    DELETE_PRODUCT_RESET,
+    UPDATE_PRODUCT_RESET,
+} from "../../constants/productConstants";
 
 const ProductList = ({ history }) => {
     const alert = useAlert();
     const dispatch = useDispatch();
     const { loading, error, products } = useSelector((state) => state.products);
-    const { error: deleteError, isDeleted } = useSelector(
-        (state) => state.product,
-    );
+    const {
+        error: deleteError,
+        isDeleted,
+        isUpdated,
+    } = useSelector((state) => state.product);
 
     useEffect(() => {
         dispatch(getAdminProducts());
@@ -36,10 +42,18 @@ const ProductList = ({ history }) => {
             history.push("/admin/products");
             dispatch({ type: DELETE_PRODUCT_RESET });
         }
-    }, [dispatch, alert, error, deleteError, isDeleted, history]);
+        if (isUpdated) {
+            alert.success("Product Status Updated");
+            dispatch({ type: UPDATE_PRODUCT_RESET });
+        }
+    }, [dispatch, alert, error, deleteError, isUpdated, isDeleted, history]);
 
     const deleteProductHandler = (id) => {
         dispatch(deleteProduct(id));
+    };
+
+    const UpdateProductHandler = (id) => {
+        dispatch(updateProductStatus(id));
     };
 
     const columns = [
@@ -87,6 +101,29 @@ const ProductList = ({ history }) => {
             minWidth: 100,
         },
         {
+            field: "status",
+            headerName: "isActive",
+            renderCell: (cellValues) => {
+                return (
+                    <div className="relative inline-block w-10 mr-2 align-middle select-none transition duration-200 ease-in">
+                        <input
+                            type="checkbox"
+                            onClickCapture={() =>
+                                UpdateProductHandler(cellValues.row.id)
+                            }
+                            defaultChecked={cellValues.row.status}
+                            className="toggle-checkbox absolute block w-6 h-6 rounded-full bg-white border-4 appearance-none cursor-pointer"
+                        />
+                        <label
+                            htmlFor="toggle"
+                            className="toggle-label block overflow-hidden h-6 rounded-full bg-gray-300 cursor-pointer"></label>
+                    </div>
+                );
+            },
+            flex: 1,
+            minWidth: 100,
+        },
+        {
             field: "actions",
             headerName: "Action",
             renderCell: (cellValues) => {
@@ -126,6 +163,7 @@ const ProductList = ({ history }) => {
                     seller: product.seller,
                     price: `${product.price}`,
                     stock: product.stock,
+                    status: product.isActive,
                     actions: product._id,
                 }),
             );

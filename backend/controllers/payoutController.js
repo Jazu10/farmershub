@@ -62,8 +62,14 @@ exports.singleSellerPayout = catchAsyncErrors(async (req, res, next) => {
 exports.sellerPayouts = catchAsyncErrors(async (req, res, next) => {
     const payouts = await Payout.find({ user: req.params.id });
 
+    let subTotal = 0;
+    payouts.forEach((payout) => {
+        subTotal += payout.paid;
+    });
+
     res.status(200).json({
         success: true,
         payouts,
+        subTotal,
     });
 });

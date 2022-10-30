@@ -297,6 +297,17 @@ body{
     animation: mymove 2.5s infinite;
 }
 
+.toggle-checkbox:checked {
+    @apply: right-0 border-blue-500;
+    right: 0;
+    border-color: #11ade1;
+}
+
+.toggle-checkbox:checked+.toggle-label {
+    @apply: bg-blue-500;
+    background-color: #11ade1;
+}
+
 @keyframes mymove {
     33% {
         top: 0px;

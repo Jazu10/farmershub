@@ -18,6 +18,8 @@ function productItem({ products }) {
                             stock,
                             price,
                             images,
+                            schedule,
+                            isActive,
                         }) => (
                             <Product
                                 key={_id}
@@ -32,6 +34,8 @@ function productItem({ products }) {
                                 images={images}
                                 ratings={ratings}
                                 seller={seller}
+                                schedule={schedule}
+                                isActive={isActive}
                             />
                         ),
                     )}

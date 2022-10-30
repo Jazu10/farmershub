@@ -143,7 +143,7 @@ const PayoutList = ({ history }) => {
                             initialState={{
                                 sorting: {
                                     sortModel: [
-                                        { field: "status", sort: "desc" },
+                                        { field: "status", sort: "asc" },
                                     ],
                                 },
                             }}

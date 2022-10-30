@@ -29,6 +29,12 @@ const ProductDetails = ({ match }) => {
     const [rating, setRating] = useState(0);
     const [comment, setComment] = useState("");
 
+    let oneDay = 1000 * 60 * 60 * 24;
+
+    let date = new Date();
+    let scheduled = new Date(product && product.schedule);
+    let dateDiff = Math.round(Math.abs(scheduled - date) / oneDay);
+
     useEffect(() => {
         dispatch(getProductDetails(match.params.id));
 
@@ -116,7 +122,9 @@ const ProductDetails = ({ match }) => {
         formData.set("rating", rating);
         formData.set("comment", comment);
         formData.set("productId", match.params.id);
-        dispatch(newReview(formData));
+        if (comment !== "") {
+            dispatch(newReview(formData));
+        } else alert.error("Please enter comment to post");
     };
 
     return (
@@ -245,10 +253,13 @@ const ProductDetails = ({ match }) => {
                                         <button
                                             onClick={addToCart}
                                             disabled={
-                                                product && product.stock === 0
+                                                (product &&
+                                                    product.stock === 0) ||
+                                                dateDiff > 0
                                             }
                                             className={`flex ml-auto text-white bg-indigo-500 border-0 py-2 px-6 focus:outline-none hover:bg-indigo-600 rounded ${
-                                                product.stock === 0
+                                                product.stock === 0 ||
+                                                dateDiff > 0
                                                     ? "cursor-not-allowed"
                                                     : "cursor-pointer"
                                             }`}>

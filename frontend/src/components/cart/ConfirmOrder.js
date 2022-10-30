@@ -16,9 +16,40 @@ const ConfirmOrder = ({ history }) => {
         0,
     );
 
-    const shippingPrice = itemPrice > 5000 ? 250 : 500;
+    const locDict = {
+        Kasargod: shippingInfo && shippingInfo.location === "Kasargod" ? 1 : 14,
+        Kannur: 13,
+        Wayanad: 12,
+        Kozhikode: 11,
+        Malappuram: 10,
+        Palakkad: 9,
+        Thrissur: 8,
+        Ernakulam: 7,
+        Idukki: 6,
+        Kottayam: 5,
+        Alappuzha: 4,
+        Pathanamthitta: 3,
+        Kollam: 2,
+        Thiruvananthapuram: 1,
+    };
 
-    const totalPrice = shippingPrice + itemPrice;
+    let location = [];
+    let locationValue = 0;
+    let counter = 0;
+    cartItems.forEach((item) => {
+        !location.includes(item.location) && location.push(item.location);
+        locationValue += locDict[item.location];
+        counter++;
+    });
+
+    const locPoint = locationValue / counter;
+    const shippingVal =
+        shippingInfo && Math.abs(locPoint - locDict[shippingInfo.district]);
+
+    const shippingPrice = Math.round((shippingVal + location.length) * 500);
+    const taxPrice = (itemPrice * 3) / 100;
+
+    const totalPrice = Math.round(shippingPrice + itemPrice + taxPrice);
 
     const proceedToPayment = (e) => {
         e.preventDefault();
@@ -26,7 +57,7 @@ const ConfirmOrder = ({ history }) => {
             itemPrice,
             shippingPrice,
             totalPrice,
-            taxPrice: 0,
+            taxPrice: taxPrice,
         };
         dispatch(savePriceInfo(data));
 
@@ -139,6 +170,17 @@ const ConfirmOrder = ({ history }) => {
                                     thousandSeparator={true}
                                     prefix={"₹"}
                                     className="text-blue-600 text-xl font-bold px-2 py-1 bg-gray-200 rounded-md"
+                                />
+                            </div>
+                            <div className="flex my-4">
+                                <p className="flex text-xl">Tax:</p>
+                                <p className="flex flex-grow"></p>
+                                <CurrencyFormat
+                                    value={taxPrice}
+                                    displayType={"text"}
+                                    thousandSeparator={true}
+                                    prefix={"₹"}
+                                    className="text-red-500 text-xl font-bold px-2 py-1 bg-gray-200 rounded-md"
                                 />
                             </div>
                             <div className="flex my-4">

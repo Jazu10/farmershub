@@ -6,6 +6,7 @@ import { useDispatch, useSelector } from "react-redux";
 
 import { getSellerProducts } from "../../actions/productActions";
 import { sellerOrders } from "../../actions/orderActions";
+import { sellerPayouts } from "../../actions/payoutActions";
 // import { allUsers } from "../../actions/userActions";
 import { Link } from "react-router-dom";
 import { Loading } from "../";
@@ -16,6 +17,7 @@ const SellerDashboard = () => {
     const { products } = useSelector((state) => state.products);
     const { user } = useSelector((state) => state.auth);
     const { totalAmount, loading } = useSelector((state) => state.allOrders);
+    const { subTotal } = useSelector((state) => state.payout);
 
     let outOfStock = 0;
     products &&
@@ -34,6 +36,7 @@ const SellerDashboard = () => {
 
     useEffect(() => {
         dispatch(getSellerProducts(user._id));
+        dispatch(sellerPayouts(user._id));
         dispatch(sellerOrders(user._id));
         // dispatch(allUsers());
     }, [dispatch, user._id]);
@@ -48,7 +51,9 @@ const SellerDashboard = () => {
                 <div className="px-5 ml-12 md:ml-0 mt-10 lg:px-16 grid md:grid-cols-2 text-white grid-flow-row-dense">
                     <div className="flex flex-col md:col-span-2 lg:col-span-3  xl:col-span-4 h-32 items-center justify-center bg-blue-500 m-5 p-8 pb-5">
                         <h1 className="text-2xl">Total Amount</h1>
-                        <h1 className="text-2xl font-bold">₹ {totalAmount}</h1>
+                        <h1 className="text-2xl font-bold">
+                            ₹ {subTotal} / {totalAmount}
+                        </h1>
                     </div>
                     <Link to={`/seller/products/${user && user._id}`}>
                         <div className="flex flex-col items-center justify-center bg-green-500 m-5 p-8 pb-5 hover:shadow-lg">

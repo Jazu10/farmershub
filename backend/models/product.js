@@ -47,8 +47,12 @@ const productSchema = new mongoose.Schema({
         required: [true, "Please enter product seller"],
     },
     isActive: {
-        type: String,
-        default: "no",
+        type: Boolean,
+        default: false,
+    },
+    schedule: {
+        type: Date,
+        default: Date.now,
     },
     location: {
         type: String,

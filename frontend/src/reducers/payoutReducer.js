@@ -37,11 +37,18 @@ export const payoutReducer = (state = {}, action) => {
                 payoutDetails: action.payload,
             };
         case ALL_PAYOUT_SUCCESS:
-        case SELLER_PAYOUT_SUCCESS:
             return {
                 ...state,
                 loading: false,
                 payouts: action.payload,
+            };
+
+        case SELLER_PAYOUT_SUCCESS:
+            return {
+                ...state,
+                loading: false,
+                payouts: action.payload.payouts,
+                subTotal: action.payload.subTotal,
             };
 
         case NEW_PAYOUT_SUCCESS:

@@ -267,6 +267,28 @@ export const getSellerProductReviews = (id, user) => async (dispatch) => {
     }
 };
 
+export const updateProductStatus = (id) => async (dispatch) => {
+    try {
+        const config = {
+            headers: {
+                "Content-Type": "application/json",
+            },
+        };
+        dispatch({ type: UPDATE_PRODUCT_REQUEST });
+        const { data } = await axios.post(
+            `/api/v1/admin/product/activate`,
+            { id: id },
+            config,
+        );
+        dispatch({ type: UPDATE_PRODUCT_SUCCESS, payload: data.success });
+    } catch (error) {
+        dispatch({
+            type: UPDATE_PRODUCT_FAIL,
+            payload: error.response.data.message,
+        });
+    }
+};
+
 //clear CLEAR_ERRORS
 export const clearErrors = () => async (dispatch) => {
     dispatch({ type: CLEAR_ERRORS });

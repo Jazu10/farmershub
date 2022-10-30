@@ -263,3 +263,12 @@ exports.getSellerProductReviews = catchAsyncErrors(async (req, res, next) => {
         reviews: reviews,
     });
 });
+
+exports.activateProduct = catchAsyncErrors(async (req, res, next) => {
+    const product = await Product.findById(req.body.id);
+    product.isActive ? (product.isActive = false) : (product.isActive = true);
+    product.save({ validateBeforeSave: false });
+    res.status(200).json({
+        success: true,
+    });
+});

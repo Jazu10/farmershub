@@ -66,7 +66,7 @@ export const sellerPayouts = (id) => async (dispatch) => {
     try {
         dispatch({ type: SELLER_PAYOUT_REQUEST });
         const { data } = await axios.get(`/api/v1/seller/payouts/${id}`);
-        dispatch({ type: SELLER_PAYOUT_SUCCESS, payload: data.payouts });
+        dispatch({ type: SELLER_PAYOUT_SUCCESS, payload: data });
     } catch (error) {
         dispatch({
             type: SELLER_PAYOUT_FAIL,

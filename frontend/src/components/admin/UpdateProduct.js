@@ -20,6 +20,7 @@ const UpdateProduct = ({ match, history }) => {
     const [stock, setStock] = useState(0);
     const [location, setLocation] = useState("");
     const [unit, setUnit] = useState("");
+    const [schedule, setSchedule] = useState("");
 
     const [images, setImages] = useState([]);
     const [oldImages, setOldImages] = useState([]);
@@ -65,6 +66,7 @@ const UpdateProduct = ({ match, history }) => {
             setLocation(product.location);
             setStock(product.stock);
             setUnit(product.unit);
+            setSchedule(product.schedule.toString().substring(0, 10));
 
             setOldImages(product.images);
         }
@@ -105,6 +107,7 @@ const UpdateProduct = ({ match, history }) => {
         formData.set("stock", stock);
         formData.set("location", location);
         formData.set("unit", unit);
+        formData.set("schedule", schedule);
 
         images.forEach((image) => {
             formData.append("images", image);
@@ -224,6 +227,18 @@ const UpdateProduct = ({ match, history }) => {
                             name="stock"
                             value={stock}
                             onChange={(e) => setStock(e.target.value)}
+                        />
+                        <label
+                            className="block uppercase tracking-wide text-gray-700 text-xs font-bold my-3 mt-4"
+                            htmlFor="schedule">
+                            Schedule
+                        </label>
+                        <input
+                            className="w-full bg-gray-200 rounded py-3 px-4 leading-tight focus:outline-none"
+                            type="date"
+                            name="schedule"
+                            value={schedule}
+                            onChange={(e) => setSchedule(e.target.value)}
                         />
                         <label
                             className="block uppercase tracking-wide text-gray-700 text-xs font-bold my-3 mt-4"
