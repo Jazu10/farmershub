@@ -1,12 +1,9 @@
 import React from "react";
 import { Link } from "react-router-dom";
 import { MetaData } from "../";
-import { emptyCart } from "../../actions/cartActions";
-import { useDispatch } from "react-redux";
+
 
 const OrderSuccess = () => {
-    const dispatch = useDispatch();
-    dispatch(emptyCart());
     return (
         <div className=" max-w-screen-2xl mx-auto">
             <MetaData title={"Order Success"} />

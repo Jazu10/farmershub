@@ -5,6 +5,7 @@ import CheckoutSteps from "./CheckoutSteps";
 import axios from "axios";
 import { useAlert } from "react-alert";
 import { createOrder, clearErrors } from "../../actions/orderActions";
+import { emptyCart } from "../../actions/cartActions";
 
 const Payment = ({ history }) => {
     const [razorpayApiKey, setRazorpayApiKey] = useState("");
@@ -85,6 +86,7 @@ const Payment = ({ history }) => {
                             status: data.status,
                         };
                         dispatch(createOrder(order));
+                        dispatch(emptyCart());
                         history.push("/success");
                     }
                 } catch (error) {
