@@ -312,43 +312,45 @@ const ProductDetails = ({ match }) => {
                                         className="h-14 my-4 px-4 py-2 md:px-6 font-semibold rounded-md bg-yellow-400 hover:bg-yellow-500 text-white">
                                         Submit Your Review
                                     </button>
-
-                                    <div className="mt-10 mb-4 bg-white space-y-5 rounded-md">
-                                        {product.reviews &&
-                                            product.reviews.length > 0 &&
-                                            product.reviews.map((review, i) => (
-                                                <div key={review._id}>
-                                                    <p className="my-2 p-2 pb-0 text-2xl font-semibold text-yellow-500">
-                                                        {review.name}
-                                                    </p>
-                                                    <div
-                                                        key={i}
-                                                        className="flex flex-row text-xl px-2 mb-3 pb-1 text-gray-600 italic">
-                                                        <br />
-                                                        <p>{review.comment}</p>
-                                                        <p className="flex-grow"></p>
-                                                        <div className="rating-outer">
-                                                            <div
-                                                                className="rating-inner"
-                                                                style={{
-                                                                    width: `${
-                                                                        (review.rating /
-                                                                            5) *
-                                                                        100
-                                                                    }%`,
-                                                                }}></div>
-                                                        </div>
-                                                        <hr />
-                                                    </div>
-                                                </div>
-                                            ))}
-                                    </div>
                                 </div>
                             ) : (
                                 <p className="text-2xl mb-4">
                                     Login to post review
                                 </p>
                             )}
+                        </div>
+
+                        <div className=" bg-white mx-4 mb-4 md:mx-12 lg:mx-20 space-y-1 rounded-md flex flex-col">
+                            {product.reviews &&
+                                product.reviews.length > 0 &&
+                                product.reviews.map((review, i) => (
+                                    <div key={review._id}>
+                                        <div className="p-2 flex pb-0 items-center text-2xl font-semibold text-yellow-500">
+                                            <p>{review.name}</p>
+                                            <p className="flex-grow"></p>
+                                            <div className="text-xl rating-outer">
+                                                <div
+                                                    className="rating-inner"
+                                                    style={{
+                                                        width: `${
+                                                            (review.rating /
+                                                                5) *
+                                                            100
+                                                        }%`,
+                                                    }}></div>
+                                            </div>
+                                        </div>
+                                        <div
+                                            key={i}
+                                            className="flex flex-row text-justify text-xl px-2 mb-3 pb-1 text-gray-600 italic">
+                                            <br />
+                                            <p>{review.comment}</p>
+                                            <p className="flex-grow"></p>
+
+                                            <hr />
+                                        </div>
+                                    </div>
+                                ))}
                         </div>
                     </section>
                 </>
