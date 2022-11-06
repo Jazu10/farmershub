@@ -33,7 +33,7 @@ const ProductDetails = ({ match }) => {
 
     let date = new Date();
     let scheduled = new Date(product && product.schedule);
-    let dateDiff = Math.round(Math.abs(scheduled - date) / oneDay);
+    let dateDiff = Math.round((scheduled - date) / oneDay);
 
     useEffect(() => {
         dispatch(getProductDetails(match.params.id));
@@ -127,6 +127,10 @@ const ProductDetails = ({ match }) => {
         } else alert.error("Please enter comment to post");
     };
 
+    function createMarkup(html) {
+        return { __html: html };
+    }
+
     return (
         <div>
             <MetaData title={`${product.name}`} />
@@ -187,9 +191,11 @@ const ProductDetails = ({ match }) => {
                                             </span>
                                         </span>
                                     </div>
-                                    <p className="leading-relaxed">
-                                        {product && product.description}
-                                    </p>
+                                    <p
+                                        className="description leading-relaxed text-justify"
+                                        dangerouslySetInnerHTML={createMarkup(
+                                            product && product.description,
+                                        )}></p>
                                     <div className="flex mt-3 items-center pb-3 border-b-2 border-gray-100 mb-3"></div>
                                     <div className="flex flex-row justify-between">
                                         <p className="font-bold text-xl mt-2">

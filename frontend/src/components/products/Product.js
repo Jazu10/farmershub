@@ -20,7 +20,12 @@ function Product({
 
     let date = new Date();
     let scheduled = new Date(schedule);
-    let dateDiff = Math.round(Math.abs(scheduled - date) / oneDay);
+    let dateDiff = Math.round((scheduled - date) / oneDay);
+    if (dateDiff < 0) dateDiff = 0;
+
+    function createMarkup(html) {
+        return { __html: html };
+    }
     return (
         <>
             {dateDiff >= 0 && dateDiff <= 31 && isActive && (
@@ -60,9 +65,11 @@ function Product({
                         <h4 className="mt-2 font-semibold text-lg md:text-2xl line-clamp-1">
                             {name}
                         </h4>
-                        <p className="text-xs my-2 line-clamp-2 italic">
-                            {description}
-                        </p>
+                        <p
+                            className="text-xs my-2 line-clamp-2 italic description"
+                            dangerouslySetInnerHTML={createMarkup(
+                                description,
+                            )}></p>
                         <div className="font-bold justify-between inline-flex items-baseline">
                             <div className="text-lg bg-gray-100 rounded-md p-1 px-2 text-blue-600">
                                 ₹ {price}
@@ -109,9 +116,11 @@ function Product({
                             <h4 className="font-semibold text-lg pb-1 pt-3 line-clamp-1">
                                 {name}
                             </h4>
-                            <p className="text-xs line-clamp-2 italic">
-                                {description}
-                            </p>
+                            <p
+                                className="text-xs line-clamp-2 italic description"
+                                dangerouslySetInnerHTML={createMarkup(
+                                    description,
+                                )}></p>
                             <div className="flex w-full justify-between items-center mt-1">
                                 <p className="flex sm:text-md bg-gray-200 p-1 rounded-md text-blue-500 font-bold">
                                     ₹ {price}

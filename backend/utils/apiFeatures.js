@@ -32,7 +32,10 @@ class APIFeatures {
 
         this.query = this.query
             .find({
-                $or: [{ ...name }, { ...seller }, { ...location }],
+                $and: [
+                    { $or: [{ ...name }, { ...seller }, { ...location }] },
+                    { isActive: true },
+                ],
             })
             .sort({ stock: -1, createdAt: -1 });
         return this;

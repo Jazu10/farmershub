@@ -12,7 +12,7 @@ const MSearch = ({ history }) => {
         <div>
             {/* <!-- mobile search bar --> */}
             <div className="w-full flex flex-col md:hidden items-center pb-2 px-4">
-                <div className="flex flex-grow bg-white items-center h-10 w-full rounded-md shadow-md">
+                <form className="flex flex-grow bg-white items-center h-10 w-full rounded-md shadow-md">
                     <input
                         className="bg-transparent font-semibold xs:text-md sm:text-lg pl-4 flex flex-grow focus:outline-none"
                         type="text"
@@ -24,7 +24,7 @@ const MSearch = ({ history }) => {
                         className="px-4 text-xl cursor-pointer mb-1 hover:text-gray-500">
                         <i className="fa fa-search"></i>
                     </button>
-                </div>
+                </form>
             </div>
         </div>
     );

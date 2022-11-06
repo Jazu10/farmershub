@@ -26,7 +26,16 @@
     }
 }
 
-
+.description h1{
+    font-size: small;
+    font-weight: bold;
+    display: inline-block;
+    
+}
+.description li{
+    list-style-type:disc;
+    margin-left:20px;
+}
 
 .prod img {
     width: 8rem;

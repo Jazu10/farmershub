@@ -78,6 +78,25 @@ const Home = ({ match }) => {
         setPrice([0, 100000]);
     };
 
+    let display =
+        window.innerWidth <= 720
+            ? {
+                  nextLabel: ">",
+                  prevLabel: "<",
+                  startLabel: "<<",
+                  endLabel: ">>",
+                  pageNeighbours: 1,
+                  withGoToInput: false,
+              }
+            : {
+                  nextLabel: "Next",
+                  prevLabel: "Prev",
+                  startLabel: "First Page",
+                  endLabel: "Last Page",
+                  pageNeighbours: 2,
+                  withGoToInput: true,
+              };
+
     const categories = ["Vegetables", "Fruits"];
 
     return (
@@ -253,10 +272,12 @@ const Home = ({ match }) => {
                                     itemsPerPage={resPerPage}
                                     totalItems={productsCount}
                                     onPageChange={setCurrentPageNo}
-                                    nextLabel={"Next"}
-                                    prevLabel={"Prev"}
-                                    startLabel={"First Page"}
-                                    endLabel={"Last Page"}
+                                    pageNeighbours={display.pageNeighbours}
+                                    nextLabel={display.nextLabel}
+                                    prevLabel={display.prevLabel}
+                                    startLabel={display.startLabel}
+                                    endLabel={display.endLabel}
+                                    withGoToInput={display.withGoToInput}
                                 />
                             </div>
                         )}
