@@ -8,6 +8,8 @@ import { MetaData, Loader } from "../components";
 import { useAlert } from "react-alert";
 
 import ProductItem from "./products/ProductItem";
+import { Banner } from "../components";
+import "react-responsive-carousel/lib/styles/carousel.min.css";
 
 import { Pagination } from "react-pagination-bar";
 import "react-pagination-bar/dist/index.css";
@@ -106,12 +108,13 @@ const Home = ({ match }) => {
                 <Loader />
             ) : (
                 <>
-                    <div className="w-full">
+                    <div className="max-w-screen-2xl mx-auto">
+                        <Banner />
                         {keyword ? (
                             <>
                                 <div className="max-w-screen-2xl mx-auto">
-                                    <div className=" md:py-4 lg:px-20 md:px-6 py-2 px-4">
-                                        <div className="flex justify-end items-center mb-4">
+                                    <div className="md:mt-2 md:py-4 lg:px-20 md:px-6 pb-2 px-4">
+                                        <div className="flex justify-end items-center mb-2 md:mb-4">
                                             {/*  filters Button (md and plus Screen) */}
                                             <button
                                                 onClick={() =>
@@ -128,7 +131,7 @@ const Home = ({ match }) => {
                                             onClick={() =>
                                                 setShowfilters(!showFilters)
                                             }
-                                            className="cursor-pointer mt-6 sm:hidden hover:bg-gray-700 focus:ring-2 focus:ring-offset-2 focus:ring-gray-800 py-2 w-full bg-gray-800 flex text-base leading-4 font-normal text-white justify-center items-center">
+                                            className="cursor-pointer md:hidden hover:bg-gray-700 focus:ring-2 focus:ring-offset-2 focus:ring-gray-800 py-2 w-full bg-gray-800 flex text-base leading-4 font-normal text-white justify-center items-center">
                                             Filters
                                         </button>
                                     </div>
@@ -136,7 +139,7 @@ const Home = ({ match }) => {
                                     <div
                                         id="filterSection"
                                         className={
-                                            "relative md:py-10 lg:px-20 md:px-6 py-9 px-4 bg-gray-400 w-full transition " +
+                                            "relative md:py-10 lg:px-20 md:px-6 py-9 px-4 bg-gray-300 w-full transition " +
                                             (showFilters ? "block" : "hidden")
                                         }>
                                         {/* Cross button Code  */}
@@ -259,10 +262,13 @@ const Home = ({ match }) => {
                                         </div>
                                     </div>
                                 </div>
-                                <ProductItem products={products} />
+                                <ProductItem
+                                    search={true}
+                                    products={products}
+                                />
                             </>
                         ) : (
-                            <ProductItem products={products} />
+                            <ProductItem search={false} products={products} />
                         )}
 
                         {resPerPage <= count && (

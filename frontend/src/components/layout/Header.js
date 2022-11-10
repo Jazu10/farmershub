@@ -17,7 +17,7 @@ function Header() {
         alert.success("Logged out successfully!");
     };
     return (
-        <Headroom>
+        <Headroom disableInlineStyles={true}>
             <header className="header bg-gray-200 bg-clip-border backdrop-filter backdrop-blur-3xl bg-opacity-20 top-0 w-full sticky">
                 <nav className="nav mx-auto max-w-screen-2xl flex py-2 px-4 md:py-6 w-full items-center justify-between md:justify-around">
                     {/* <!-- logo --> */}

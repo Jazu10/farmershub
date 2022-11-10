@@ -4,6 +4,7 @@ export { default as Loader } from "./layout/Loader";
 export { default as Loading } from "./layout/Loading";
 export { default as Search } from "./layout/Search";
 export { default as MSearch } from "./layout/MSearch";
+export { default as Banner } from "./layout/Banner";
 export { default as Sidebar } from "./admin/Sidebar";
 export { default as PageNotFound } from "./PageNotFound";
 

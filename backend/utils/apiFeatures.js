@@ -37,7 +37,7 @@ class APIFeatures {
                     { isActive: true },
                 ],
             })
-            .sort({ stock: -1, createdAt: -1 });
+            .sort({ stock: -1, createdAt: -1, schedule: 1 });
         return this;
     }
 
@@ -57,7 +57,7 @@ class APIFeatures {
 
         this.query = this.query
             .find(JSON.parse(queryStr))
-            .sort({ stock: -1, createdAt: -1 });
+            .sort({ stock: -1, createdAt: -1, schedule: 1 });
         return this;
     }
 

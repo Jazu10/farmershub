@@ -54,7 +54,7 @@ const SellerNewProduct = ({ history }) => {
 
         if (success) {
             alert.success("Product created successfully");
-            history.push("/admin/products");
+            history.push(`/seller/products/${user._id}`);
             dispatch({ type: NEW_PRODUCT_RESET });
         }
     }, [dispatch, alert, error, success, history]);

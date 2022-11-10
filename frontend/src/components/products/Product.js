@@ -15,6 +15,7 @@ function Product({
     images,
     schedule,
     isActive,
+    imgWidth,
 }) {
     let oneDay = 1000 * 60 * 60 * 24;
 
@@ -30,7 +31,7 @@ function Product({
         <>
             {dateDiff >= 0 && dateDiff <= 31 && isActive && (
                 <Link to={`/product/${_id}`}>
-                    <div className="relative hidden md:flex flex-col m-5 bg-white p-8 pb-5 shadow-md hover:shadow-xl transform duration-500 hover:scale-105 cursor-pointer">
+                    <div className="relative z-20 hidden md:flex flex-col m-5 bg-white p-8 pb-5 shadow-md hover:shadow-xl transform duration-500 hover:scale-105 cursor-pointer">
                         {stock === 0 && (
                             <>
                                 <div className="absolute flex w-full h-full bg-white opacity-40 top-0 right-0 left-0 bottom-0 items-center justify-center"></div>
@@ -51,7 +52,9 @@ function Product({
                             </>
                         )}
                         <img
-                            className="rounded h-[200px] object-cover"
+                            className={`rounded h-[200px] ${
+                                imgWidth ? "object-contain" : "object-cover"
+                            }`}
                             loading="lazy"
                             src={images[0].url}
                             alt=""
@@ -85,7 +88,7 @@ function Product({
                             </div>
                         </div>
                     </div>
-                    <div className="prod relative md:hidden my-1 bg-white flex cursor-pointer shadow-md">
+                    <div className="prod relative z-20 md:hidden my-1 bg-white flex cursor-pointer shadow-md">
                         {stock === 0 && (
                             <>
                                 <div className="absolute flex w-full h-full bg-white opacity-40 top-0 right-0 left-0 bottom-0 items-center justify-center"></div>
