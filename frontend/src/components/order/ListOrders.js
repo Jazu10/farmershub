@@ -52,7 +52,7 @@ const ListOrrder = ({ history }) => {
             renderCell: (cellValues) => {
                 return (
                     <p className="font-bold text-blue-600 p-2 py-1 rounded-md bg-gray-200">
-                        $ {cellValues.row.amount}
+                        ₹ {cellValues.row.amount}
                     </p>
                 );
             },

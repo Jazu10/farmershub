@@ -94,13 +94,15 @@ exports.updateOrder = catchAsyncErrors(async (req, res, next) => {
         );
     }
 
+    order.orderStatus = req.body.status;
+
+    if (order.orderStatus === "Delivered") {
+        order.deliveredAt = Date.now();
+    }
+    await order.save();
     // order.orderItems.forEach(async (item) => {
     //     await updateStock(item.product, item.quantity);
     // });
-
-    (order.orderStatus = req.body.status), (order.deliveredAt = Date.now());
-
-    await order.save();
 
     res.status(200).json({
         success: true,
@@ -111,6 +113,7 @@ async function updateStock(id, quantity) {
     const product = await Product.findById(id);
 
     product.stock = product.stock - quantity;
+    product.sold = product.sold + quantity;
 
     await product.save({ validateBeforeSave: false });
 }
@@ -119,6 +122,7 @@ async function addStock(id, quantity) {
     const product = await Product.findById(id);
 
     product.stock = product.stock + quantity;
+    product.sold = product.sold - quantity;
 
     await product.save({ validateBeforeSave: false });
 }
@@ -129,6 +133,12 @@ exports.deleteOrder = catchAsyncErrors(async (req, res, next) => {
 
     if (!order) {
         return next(new ErrorHandler("No Order found with this ID", 404));
+    }
+
+    if (order.orderStatus !== "Processing") {
+        return next(
+            new ErrorHandler("You cannot cancel this order! Try again", 400),
+        );
     }
 
     if (order.paymentInfo.refund_id !== "") {

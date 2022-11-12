@@ -90,6 +90,23 @@ const SellerProducts = ({ match, history }) => {
             minWidth: 100,
         },
         {
+            field: "sold",
+            headerName: "Sold",
+            renderCell: (cellValues) => {
+                return cellValues.row.sold !== 0 ? (
+                    <p className="p-4 py-1 rounded-full  bg-green-400 text-white">
+                        {cellValues.row.sold}
+                    </p>
+                ) : (
+                    <p className="p-4 py-1 rounded-full  bg-red-500 text-white">
+                        {cellValues.row.sold}
+                    </p>
+                );
+            },
+            flex: 1,
+            minWidth: 100,
+        },
+        {
             field: "actions",
             headerName: "Action",
             renderCell: (cellValues) => {
@@ -129,6 +146,7 @@ const SellerProducts = ({ match, history }) => {
                     // seller: product.seller,
                     price: `${product.price}`,
                     stock: product.stock,
+                    sold: product.sold,
                     actions: product._id,
                 }),
             );

@@ -57,7 +57,7 @@ const SellerNewProduct = ({ history }) => {
             history.push(`/seller/products/${user._id}`);
             dispatch({ type: NEW_PRODUCT_RESET });
         }
-    }, [dispatch, alert, error, success, history]);
+    }, [dispatch, alert, error, user._id, success, history]);
 
     const submitHandler = (e) => {
         e.preventDefault();

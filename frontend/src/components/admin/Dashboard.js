@@ -1,4 +1,4 @@
-import React, { useEffect } from "react";
+import React, { useState, useEffect } from "react";
 import Sidebar from "./Sidebar";
 import { MetaData } from "../";
 
@@ -9,6 +9,8 @@ import { allOrders } from "../../actions/orderActions";
 import { allUsers } from "../../actions/userActions";
 import { Link } from "react-router-dom";
 import { Loading } from "../";
+import BarChart from "../layout/Chart";
+import PieChart from "../layout/PieChart";
 
 const Dashboard = () => {
     const dispatch = useDispatch();
@@ -26,13 +28,80 @@ const Dashboard = () => {
                 outOfStock += 1;
             }
         });
+
+    let prods = products.sort((a, b) => b.sold - a.sold);
+    prods = prods.slice(0, 5);
+    let prodData = [];
+    for (let i = 0; i < prods.length; i++) {
+        prodData.push({ name: prods[i].name, sold: prods[i].sold });
+    }
+
     let customers = 0;
     users &&
         users.forEach((user) => {
-            if (user.role === "admin") {
+            if (user.role === "user") {
                 customers += 1;
             }
         });
+
+    let ordr = orders ? orders : [];
+    let monthlyData = [];
+    let date;
+    ordr = ordr.sort((a, b) => Date(a.createdAt) - Date(b.createdAt));
+    ordr = ordr.slice(ordr.length - 31, ordr.length);
+
+    for (let i = 0; i < ordr.length; i++) {
+        date = new Date(ordr[i].createdAt);
+        date = date.toISOString().substring(0, 10);
+        monthlyData.push({ date: date, amount: ordr[i].totalPrice });
+    }
+
+    const monthlyRes = Array.from(
+        monthlyData.reduce(
+            (m, { date, amount }) => m.set(date, (m.get(date) || 0) + amount),
+            new Map(),
+        ),
+        ([date, amount]) => ({ date, amount }),
+    );
+
+    let yearlyData = [];
+    const monthNames = [
+        "January",
+        "February",
+        "March",
+        "April",
+        "May",
+        "June",
+        "July",
+        "August",
+        "September",
+        "October",
+        "November",
+        "December",
+    ];
+
+    let month, year;
+    let yearlyOrders = orders ? orders : [];
+
+    for (let i = 0; i < yearlyOrders.length; i++) {
+        date = new Date(yearlyOrders[i].createdAt);
+        month = date.getMonth();
+        year = date.getFullYear();
+        yearlyData.push({
+            date: monthNames[month].toString() + " " + year,
+            amount: ordr[i].totalPrice,
+        });
+    }
+
+    let yearlyRes = Array.from(
+        yearlyData.reduce(
+            (m, { date, amount }) => m.set(date, (m.get(date) || 0) + amount),
+            new Map(),
+        ),
+        ([date, amount]) => ({ date, amount }),
+    );
+
+    yearlyRes = yearlyRes.slice(yearlyRes.length - 12, yearlyRes.length);
 
     useEffect(() => {
         dispatch(getAdminProducts());
@@ -94,6 +163,19 @@ const Dashboard = () => {
                     </div>
                 </div>
             )}
+            <PieChart res={prodData} title={"Top Sold Products"} />
+            <BarChart
+                res={monthlyRes}
+                color={"#FFD400"}
+                label={"Income per Day"}
+                title={"Daily Sales"}
+            />
+            <BarChart
+                res={yearlyRes}
+                color={"red"}
+                label={"Income per Month"}
+                title={"Monthly Sales"}
+            />
         </div>
     );
 };

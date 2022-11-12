@@ -163,7 +163,13 @@ const ProcessOrder = ({ match }) => {
                         <h1 className="text-xl text-right border-b pb-4">
                             Shipping Price:
                             <span className="ml-2">
-                                ₹ {totalPrice > 5000 ? "250" : "500"}
+                                ₹ {order && order.shippingPrice}
+                            </span>
+                        </h1>
+                        <h1 className="text-xl text-right border-b pb-4">
+                            Tax Price:
+                            <span className="ml-2">
+                                ₹ {order && order.taxPrice}
                             </span>
                         </h1>
                         <h1 className="text-2xl text-right border-b pb-4">
