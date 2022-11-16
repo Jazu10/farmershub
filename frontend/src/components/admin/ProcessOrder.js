@@ -178,31 +178,37 @@ const ProcessOrder = ({ match }) => {
                                 ₹ {order && totalPrice}
                             </span>
                         </h1>
-                        {order && orderStatus !== "Refunded" && (
-                            <div className="flex flex-row text-xl items-center justify-evenly">
-                                <h2 className="font-bold text-blue-500">
-                                    Status
-                                </h2>
-                                <select
-                                    className="focus:outline-none p-2 text-lg bg-gray-200 rounded-md"
-                                    name="status"
-                                    value={status}
-                                    onChange={(e) => setStatus(e.target.value)}>
-                                    <option value="Processing">
-                                        Processing
-                                    </option>
-                                    <option value="Shipped">Shipped</option>
-                                    <option value="Delivered">Delivered</option>
-                                </select>
-                                <button
-                                    className="bg-blue-500 text-lg hover:bg-blue-600 p-2 rounded text-white"
-                                    onClick={() =>
-                                        updateOrderHandler(order._id)
-                                    }>
-                                    Update Order
-                                </button>
-                            </div>
-                        )}
+                        {order &&
+                            (orderStatus !== "Refunded" ||
+                                orderStatus !== "Refunded") && (
+                                <div className="flex flex-row text-xl items-center justify-evenly">
+                                    <h2 className="font-bold text-blue-500">
+                                        Status
+                                    </h2>
+                                    <select
+                                        className="focus:outline-none p-2 text-lg bg-gray-200 rounded-md"
+                                        name="status"
+                                        value={status}
+                                        onChange={(e) =>
+                                            setStatus(e.target.value)
+                                        }>
+                                        <option value="Processing">
+                                            Processing
+                                        </option>
+                                        <option value="Shipped">Shipped</option>
+                                        <option value="Delivered">
+                                            Delivered
+                                        </option>
+                                    </select>
+                                    <button
+                                        className="bg-blue-500 text-lg hover:bg-blue-600 p-2 rounded text-white"
+                                        onClick={() =>
+                                            updateOrderHandler(order._id)
+                                        }>
+                                        Update Order
+                                    </button>
+                                </div>
+                            )}
                     </div>
                 </>
             )}

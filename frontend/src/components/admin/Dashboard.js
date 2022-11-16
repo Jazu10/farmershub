@@ -52,7 +52,12 @@ const Dashboard = () => {
 
     for (let i = 0; i < ordr.length; i++) {
         date = new Date(ordr[i].createdAt);
-        date = date.toISOString().substring(0, 10);
+        date = date =
+            date.getDate() +
+            " / " +
+            (date.getMonth() + 1) +
+            " / " +
+            date.getFullYear();
         monthlyData.push({ date: date, amount: ordr[i].totalPrice });
     }
 

@@ -100,7 +100,7 @@ const SellerPayoutList = ({ match, history }) => {
                             initialState={{
                                 sorting: {
                                     sortModel: [
-                                        { field: "status", sort: "desc" },
+                                        { field: "status", sort: "asc" },
                                     ],
                                 },
                             }}

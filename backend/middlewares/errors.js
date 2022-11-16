@@ -36,7 +36,8 @@ module.exports = (err, req, res, next) => {
 
         // Handling Mongoose duplicate key errors
         if (err.code === 11000) {
-            const message = `Duplicate ${Object.keys(err.keyValue)} entered`;
+            // const message = `Duplicate ${Object.keys(err.keyValue)} entered`;
+            const message = "This Email ID already registered with us.";
             error = new ErrorHandler(message, 400);
         }
 

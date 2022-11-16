@@ -131,6 +131,10 @@ const ProductDetails = ({ match }) => {
         return { __html: html };
     }
 
+    let reviews =
+        product.reviews && product.reviews.length > 0 && product.reviews;
+    reviews = reviews && reviews.sort((a, b) => b.rating - a.rating);
+
     return (
         <div>
             <MetaData title={`${product.name}`} />
@@ -322,8 +326,8 @@ const ProductDetails = ({ match }) => {
 
                         <div className=" bg-white mx-4 mb-4 md:mx-12 lg:mx-20 space-y-1 rounded-md flex flex-col">
                             {product.reviews &&
-                                product.reviews.length > 0 &&
-                                product.reviews.map((review, i) => (
+                                reviews &&
+                                reviews.map((review, i) => (
                                     <div key={review._id}>
                                         <div className="p-2 flex pb-0 items-center text-2xl font-semibold text-yellow-500">
                                             <p>{review.name}</p>

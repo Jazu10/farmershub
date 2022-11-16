@@ -48,7 +48,7 @@ const SellerOrderDetails = ({ match, history }) => {
         if (isCreated) {
             alert.success("Payout Requested");
             dispatch({ type: NEW_PAYOUT_RESET });
-            history.push(`/seller/payouts/${admin._id}`);
+            history.push(`/seller/orders/${admin._id}`);
         }
     }, [
         dispatch,

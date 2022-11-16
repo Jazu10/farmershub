@@ -132,7 +132,7 @@ const Register = ({ history }) => {
                                 alt=""
                                 height={50}
                                 width={50}
-                                className="h-[50px] w-[50px] rounded-full"
+                                className="h-[50px] w-[50px] rounded-full object-cover"
                             />
                             <div className="flex flex-grow" />
                             <input

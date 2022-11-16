@@ -35,7 +35,7 @@ const UpdateProfile = ({ history }) => {
             dispatch(clearErrors());
         }
         if (isUpdated) {
-            alert.success("User Updated!");
+            alert.success("Profile Updated!");
             dispatch(loadUser());
 
             history.push("/me");
@@ -123,7 +123,7 @@ const UpdateProfile = ({ history }) => {
                                 alt=""
                                 height={50}
                                 width={50}
-                                className="h-[50px] w-[50px] rounded-full"
+                                className="h-[50px] w-[50px] rounded-full object-cover"
                             />
                             <div className="flex flex-grow" />
                             <input

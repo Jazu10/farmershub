@@ -175,7 +175,7 @@ const SellerProducts = ({ match, history }) => {
                             }}
                             initialState={{
                                 sorting: {
-                                    sortModel: [{ field: "name", sort: "asc" }],
+                                    sortModel: [{ field: "id", sort: "desc" }],
                                 },
                             }}
                         />

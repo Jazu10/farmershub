@@ -7,16 +7,19 @@ import Box from "@mui/material/Box";
 import { DataGrid, GridToolbar } from "@mui/x-data-grid";
 import { SellerSidebar } from "../";
 import { sellerOrders, clearErrors } from "../../actions/orderActions";
+import { sellerPayouts } from "../../actions/payoutActions";
 
 const SellerOrdersList = ({ match, history }) => {
     const alert = useAlert();
     const dispatch = useDispatch();
     const { loading, error, orders } = useSelector((state) => state.allOrders);
+    const { payouts } = useSelector((state) => state.payout);
 
     const userId = match.params.id;
 
     useEffect(() => {
         dispatch(sellerOrders(userId));
+        dispatch(sellerPayouts(userId));
 
         if (error) {
             alert.error(error);
@@ -80,6 +83,26 @@ const SellerOrdersList = ({ match, history }) => {
             minWidth: 100,
         },
         {
+            field: "payoutStatus",
+            headerName: "Payout",
+            renderCell: (cellValues) => {
+                if (cellValues.row.payoutStatus === "Requested")
+                    return (
+                        <p className="p-2 py-1 rounded-full bg-green-400 text-white">
+                            Requested
+                        </p>
+                    );
+                else if (cellValues.row.payoutStatus === "Not Requested")
+                    return (
+                        <p className="p-2 py-1 rounded-full bg-red-500 text-white">
+                            Not Requested
+                        </p>
+                    );
+            },
+            flex: 1,
+            minWidth: 100,
+        },
+        {
             field: "actions",
             headerName: "Action",
             renderCell: (cellValues) => {
@@ -118,16 +141,22 @@ const SellerOrdersList = ({ match, history }) => {
     const setOrders = () => {
         const data = [];
         orders &&
-            orders.forEach((order) =>
+            orders.forEach((order) => {
+                let payoutStatus =
+                    payouts && payouts.find((i) => i.order === order._id);
                 data.push({
                     id: order._id,
                     user: order.user.name,
                     numofItems: order.orderItems.length,
                     amount: `${order.totalPrice}`,
                     status: order.orderStatus,
+                    payoutStatus:
+                        payoutStatus !== undefined
+                            ? "Requested"
+                            : "Not Requested",
                     actions: order._id,
-                }),
-            );
+                });
+            });
         return data;
     };
 
