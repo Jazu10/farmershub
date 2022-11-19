@@ -216,7 +216,9 @@ exports.logout = catchAsyncErrors(async (req, res, next) => {
 
 // Get all users   =>   /api/v1/admin/users
 exports.allUsers = catchAsyncErrors(async (req, res, next) => {
-    const users = await User.find();
+    const users = await User.find({
+        $and: [{ isDeleted: "false" }, { isRoot: "false" }],
+    });
 
     res.status(200).json({
         success: true,
@@ -269,10 +271,13 @@ exports.deleteUser = catchAsyncErrors(async (req, res, next) => {
             new ErrorHandler(`User does not found with id: ${req.params.id}`),
         );
     }
-    const image_id = user.avatar.public_id;
-    await cloudinary.v2.uploader.destroy(image_id);
-    await user.remove();
-
+    // const image_id = user.avatar.public_id;
+    // await cloudinary.v2.uploader.destroy(image_id);
+    // await user.remove();
+    let id = crypto.randomBytes(20).toString("hex");
+    user.isDeleted = "true";
+    user.email = id;
+    user.save({ validateBeforeSave: false });
     res.status(200).json({
         success: true,
     });

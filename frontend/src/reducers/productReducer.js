@@ -180,7 +180,8 @@ export const singleProductReducer = (state = {}, action) => {
             return {
                 ...state,
                 loading: false,
-                isDeleted: action.payload,
+                isDeleted: action.payload.success,
+                message: action.payload.message,
             };
         case UPDATE_PRODUCT_SUCCESS:
             return {
@@ -199,6 +200,7 @@ export const singleProductReducer = (state = {}, action) => {
             return {
                 ...state,
                 isDeleted: false,
+                message: "",
             };
         case UPDATE_PRODUCT_RESET:
             return {

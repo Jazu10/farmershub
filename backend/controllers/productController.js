@@ -64,7 +64,9 @@ exports.getProducts = catchAsyncErrors(async (req, res, next) => {
 
 // Get all products (Admin)  =>   /api/v1/admin/products
 exports.getAdminProducts = catchAsyncErrors(async (req, res, next) => {
-    const products = await Product.find().sort({ createdAt: -1 });
+    const products = await Product.find({ isDeleted: "false" }).sort({
+        createdAt: -1,
+    });
     res.status(200).json({
         success: true,
         products,
@@ -144,17 +146,19 @@ exports.deleteProduct = catchAsyncErrors(async (req, res, next) => {
     }
 
     // Deleting images associated with the product
-    for (let i = 0; i < product.images.length; i++) {
-        const res = await cloudinary.v2.uploader.destroy(
-            product.images[i].public_id,
-        );
-    }
+    // for (let i = 0; i < product.images.length; i++) {
+    //     const res = await cloudinary.v2.uploader.destroy(
+    //         product.images[i].public_id,
+    //     );
+    // }
 
-    await product.remove();
+    // await product.remove();
+    product.isDeleted = "true";
+    product.save();
 
     res.status(200).json({
         success: true,
-        message: "Product is deleted.",
+        message: `${product.name} is deleted.`,
     });
 });
 
@@ -242,7 +246,9 @@ exports.deleteReview = catchAsyncErrors(async (req, res, next) => {
 });
 
 exports.getSellerProducts = catchAsyncErrors(async (req, res, next) => {
-    const products = await Product.find({ user: req.params.id }).sort({
+    const products = await Product.find({
+        $and: [{ user: req.params.id }, { isDeleted: "false" }],
+    }).sort({
         createdAt: -1,
     });
     const productsCount = products.length;

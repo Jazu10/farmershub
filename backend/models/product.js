@@ -50,6 +50,11 @@ const productSchema = new mongoose.Schema({
         type: Boolean,
         default: false,
     },
+    isDeleted: {
+        type: String,
+        required: [true, "Please enter product status"],
+        default: "false"
+    },
     schedule: {
         type: Date,
         default: Date.now,

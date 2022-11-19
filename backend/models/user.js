@@ -42,6 +42,15 @@ const userSchema = new mongoose.Schema({
         type: String,
         default: "user",
     },
+    isRoot: {
+        type: Boolean,
+        default: false,
+    },
+    isDeleted: {
+        type: String,
+        required: [true, "Please enter status"],
+        default: "false",
+    },
     createdAt: {
         type: Date,
         default: Date.now,

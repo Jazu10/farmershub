@@ -17,9 +17,11 @@ const SellerProducts = ({ match, history }) => {
     const alert = useAlert();
     const dispatch = useDispatch();
     const { loading, error, products } = useSelector((state) => state.products);
-    const { error: deleteError, isDeleted } = useSelector(
-        (state) => state.product,
-    );
+    const {
+        error: deleteError,
+        message,
+        isDeleted,
+    } = useSelector((state) => state.product);
 
     const userId = match.params.id;
 
@@ -35,11 +37,20 @@ const SellerProducts = ({ match, history }) => {
             dispatch(clearErrors());
         }
         if (isDeleted) {
-            alert.success("Product deleted successfully");
+            alert.success(message);
             history.push(`/seller/products/${userId}`);
             dispatch({ type: DELETE_PRODUCT_RESET });
         }
-    }, [dispatch, alert, error, deleteError, userId, isDeleted, history]);
+    }, [
+        dispatch,
+        alert,
+        error,
+        deleteError,
+        userId,
+        message,
+        isDeleted,
+        history,
+    ]);
 
     const deleteProductHandler = (id) => {
         dispatch(deleteSellerProduct(id));

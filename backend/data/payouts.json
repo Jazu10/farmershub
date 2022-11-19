@@ -1,0 +1,191 @@
+[{
+  "_id": {
+    "$oid": "636f48923b55cba4e941dcea"
+  },
+  "order": {
+    "$oid": "636f47753b55cba4e941d985"
+  },
+  "user": {
+    "$oid": "63550e0908c1d6cb76f6715f"
+  },
+  "amount": 16500,
+  "paid": 16500,
+  "status": "Paid",
+  "createdAt": {
+    "$date": {
+      "$numberLong": "1668237458032"
+    }
+  },
+  "__v": 0
+},{
+  "_id": {
+    "$oid": "636f4b4e60ce9d8b553c71e0"
+  },
+  "order": {
+    "$oid": "636f4a9d44d4d4717e604669"
+  },
+  "user": {
+    "$oid": "635f4a0e01ef62263e7bdba1"
+  },
+  "amount": 41000,
+  "paid": 41000,
+  "status": "Paid",
+  "createdAt": {
+    "$date": {
+      "$numberLong": "1668238158103"
+    }
+  },
+  "__v": 0
+},{
+  "_id": {
+    "$oid": "636f4b5660ce9d8b553c7275"
+  },
+  "order": {
+    "$oid": "636f47753b55cba4e941d985"
+  },
+  "user": {
+    "$oid": "635f4a0e01ef62263e7bdba1"
+  },
+  "amount": 2500,
+  "paid": 2500,
+  "status": "Paid",
+  "createdAt": {
+    "$date": {
+      "$numberLong": "1668238166904"
+    }
+  },
+  "__v": 0
+},{
+  "_id": {
+    "$oid": "636f4b7160ce9d8b553c7450"
+  },
+  "order": {
+    "$oid": "636f4a9d44d4d4717e604669"
+  },
+  "user": {
+    "$oid": "63550e0908c1d6cb76f6715f"
+  },
+  "amount": 7500,
+  "paid": 7500,
+  "status": "Paid",
+  "createdAt": {
+    "$date": {
+      "$numberLong": "1668238193770"
+    }
+  },
+  "__v": 0
+},{
+  "_id": {
+    "$oid": "637464ff06dae2a14a86798a"
+  },
+  "order": {
+    "$oid": "6374638b6f0dc5aca4c16be9"
+  },
+  "user": {
+    "$oid": "63550e0908c1d6cb76f6715f"
+  },
+  "amount": 36000,
+  "paid": 36000,
+  "status": "Paid",
+  "createdAt": {
+    "$date": {
+      "$numberLong": "1668572415675"
+    }
+  },
+  "__v": 0
+},{
+  "_id": {
+    "$oid": "6374650806dae2a14a867a5e"
+  },
+  "order": {
+    "$oid": "6374607ee206fbe74d48e4b8"
+  },
+  "user": {
+    "$oid": "63550e0908c1d6cb76f6715f"
+  },
+  "amount": 30000,
+  "paid": 30000,
+  "status": "Paid",
+  "createdAt": {
+    "$date": {
+      "$numberLong": "1668572424252"
+    }
+  },
+  "__v": 0
+},{
+  "_id": {
+    "$oid": "6374667a021173f53c438468"
+  },
+  "order": {
+    "$oid": "6374638b6f0dc5aca4c16be9"
+  },
+  "user": {
+    "$oid": "635f4a0e01ef62263e7bdba1"
+  },
+  "amount": 12000,
+  "paid": 12000,
+  "status": "Paid",
+  "createdAt": {
+    "$date": {
+      "$numberLong": "1668572794670"
+    }
+  },
+  "__v": 0
+},{
+  "_id": {
+    "$oid": "6374667f021173f53c438504"
+  },
+  "order": {
+    "$oid": "6374607ee206fbe74d48e4b8"
+  },
+  "user": {
+    "$oid": "635f4a0e01ef62263e7bdba1"
+  },
+  "amount": 7000,
+  "paid": 7000,
+  "status": "Paid",
+  "createdAt": {
+    "$date": {
+      "$numberLong": "1668572799273"
+    }
+  },
+  "__v": 0
+},{
+  "_id": {
+    "$oid": "637469a1fb924f30bb2e525c"
+  },
+  "order": {
+    "$oid": "637467cb74a9341641ba4754"
+  },
+  "user": {
+    "$oid": "635f4a0e01ef62263e7bdba1"
+  },
+  "amount": 14200,
+  "paid": 14200,
+  "status": "Paid",
+  "createdAt": {
+    "$date": {
+      "$numberLong": "1668573601246"
+    }
+  },
+  "__v": 0
+},{
+  "_id": {
+    "$oid": "63747519a8d7021abdd2a72a"
+  },
+  "order": {
+    "$oid": "63746b1814440167f9d92416"
+  },
+  "user": {
+    "$oid": "63550e0908c1d6cb76f6715f"
+  },
+  "amount": 40000,
+  "paid": 40000,
+  "status": "Paid",
+  "createdAt": {
+    "$date": {
+      "$numberLong": "1668576537732"
+    }
+  },
+  "__v": 0
+}]

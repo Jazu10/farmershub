@@ -1,0 +1,1581 @@
+[{
+  "_id": {
+    "$oid": "634ffb2d8645fd2051d0caed"
+  },
+  "name": "Carrots",
+  "price": 3000,
+  "description": "<h1>About the Product</h1><ul className=\"list-decimal\"><li> Considered</li></ul> sweeter than other carrots, Red Carrots contain more of a pigment called lycopene which is also present in tomatoes. A popular sweet-tasting root vegetable, carrots are narrow and cone shaped. They have thick, fleshy, deeply colored root, which grows underground, and feathery green leaves that emerge above the ground. While these greens are fresh tasting and slightly bitter, the carrot roots are crunchy textured with a sweet and minty aromatic taste. Benefits Carrots provide the highest content of vitamin A of all the vegetables. Brightly orange colored carrots have pigments like carotenoids and flavonoids, that provide several antioxidants and act as a defense against cancer. They aid in maintaining oral health and also decrease the risk of stroke and other heart diseases.'",
+  "ratings": 0,
+  "images": [
+    {
+      "public_id": "products/dxddoq35kfpuwydm6alu",
+      "url": "https://res.cloudinary.com/farmershub/image/upload/v1666186021/products/dxddoq35kfpuwydm6alu.jpg",
+      "_id": {
+        "$oid": "634ffb2d8645fd2051d0caee"
+      }
+    },
+    {
+      "public_id": "products/yvz3xrpewktomurlixmz",
+      "url": "https://res.cloudinary.com/farmershub/image/upload/v1666186024/products/yvz3xrpewktomurlixmz.jpg",
+      "_id": {
+        "$oid": "634ffb2d8645fd2051d0caef"
+      }
+    },
+    {
+      "public_id": "products/bh0jlnrnhipj63blcowl",
+      "url": "https://res.cloudinary.com/farmershub/image/upload/v1666186026/products/bh0jlnrnhipj63blcowl.jpg",
+      "_id": {
+        "$oid": "634ffb2d8645fd2051d0caf0"
+      }
+    }
+  ],
+  "category": "Vegetables",
+  "seller": "Seller - 2",
+  "isActive": true,
+  "location": "Alappuzha",
+  "unit": "100",
+  "stock": 1,
+  "numOfReviews": 0,
+  "user": {
+    "$oid": "635f4a0e01ef62263e7bdba1"
+  },
+  "reviews": [],
+  "createdAt": {
+    "$date": {
+      "$numberLong": "1666186029270"
+    }
+  },
+  "__v": 0,
+  "schedule": {
+    "$date": {
+      "$numberLong": "1667174400000"
+    }
+  },
+  "sold": 0,
+  "isDeleted": "false"
+},{
+  "_id": {
+    "$oid": "634ffdaee8c67c8df7cfb9d1"
+  },
+  "name": "Beetroot",
+  "price": 5600,
+  "description": "The beetroot is the taproot portion of a beet plant, usually known in North America as beets while the vegetable is referred to as beetroot in British English, and also known as the table beet, garden beet, red beet, dinner beet or golden beet.\r\n\r\nBeets are rich in folate (vitamin B9) which helps cells grow and function. Folate plays a key role in controlling damage to blood vessels, which can reduce the risk of heart disease and stroke. Beets are naturally high in nitrates, which are turned into nitric oxide in the body.",
+  "ratings": 0,
+  "images": [
+    {
+      "public_id": "products/89a4de67f154efe525e72b677441c76d",
+      "url": "https://res.cloudinary.com/farmershub/image/upload/v1666366750/products/89a4de67f154efe525e72b677441c76d.webp",
+      "_id": {
+        "$oid": "6352bd208d006577789505bb"
+      }
+    },
+    {
+      "public_id": "products/899dc570f844b14e8cf2dedd6870a78d",
+      "url": "https://res.cloudinary.com/farmershub/image/upload/v1666366752/products/899dc570f844b14e8cf2dedd6870a78d.jpg",
+      "_id": {
+        "$oid": "6352bd208d006577789505bc"
+      }
+    }
+  ],
+  "category": "Vegetables",
+  "seller": "Seller - 2",
+  "isActive": true,
+  "location": "Alappuzha",
+  "unit": "100",
+  "stock": 0,
+  "numOfReviews": 0,
+  "user": {
+    "$oid": "635f4a0e01ef62263e7bdba1"
+  },
+  "reviews": [],
+  "createdAt": {
+    "$date": {
+      "$numberLong": "1666186670069"
+    }
+  },
+  "__v": 0,
+  "schedule": {
+    "$date": {
+      "$numberLong": "1667088000000"
+    }
+  },
+  "sold": 0,
+  "isDeleted": "false"
+},{
+  "_id": {
+    "$oid": "634ffe53e8c67c8df7cfb9dc"
+  },
+  "name": "Tomato",
+  "price": 3500,
+  "description": "The tomato is the edible berry of the plant Solanum lycopersicum, commonly known as the tomato plant. The species originated in western South America, Mexico, and Central America. The Mexican Nahuatl word tomatl gave rise to the Spanish word tomate, from which the English word tomato derived.\r\n\r\nTomatoes are the major dietary source of the antioxidant lycopene, which has been linked to many health benefits, including reduced risk of heart disease and cancer. They are also a great source of vitamin C, potassium, folate, and vitamin K.",
+  "ratings": 3,
+  "images": [
+    {
+      "public_id": "products/atiukryj6pd8gn8edvcw",
+      "url": "https://res.cloudinary.com/farmershub/image/upload/v1666186827/products/atiukryj6pd8gn8edvcw.jpg",
+      "_id": {
+        "$oid": "634ffe53e8c67c8df7cfb9dd"
+      }
+    },
+    {
+      "public_id": "products/xnbnzaaxmjfrud1vm00k",
+      "url": "https://res.cloudinary.com/farmershub/image/upload/v1666186829/products/xnbnzaaxmjfrud1vm00k.jpg",
+      "_id": {
+        "$oid": "634ffe53e8c67c8df7cfb9de"
+      }
+    },
+    {
+      "public_id": "products/i6bhedi2cxtlqvdvpabv",
+      "url": "https://res.cloudinary.com/farmershub/image/upload/v1666186832/products/i6bhedi2cxtlqvdvpabv.webp",
+      "_id": {
+        "$oid": "634ffe53e8c67c8df7cfb9df"
+      }
+    }
+  ],
+  "category": "Fruits",
+  "seller": "Seller - 2",
+  "isActive": true,
+  "location": "Kottayam",
+  "unit": "100",
+  "stock": 10,
+  "numOfReviews": 1,
+  "user": {
+    "$oid": "635f4a0e01ef62263e7bdba1"
+  },
+  "reviews": [
+    {
+      "user": {
+        "$oid": "62f3bb2e5af90ec3e3ebf65f"
+      },
+      "name": "Admin",
+      "rating": 3,
+      "comment": "Good Tomatoes",
+      "_id": {
+        "$oid": "635e2a7a6877f10faca9a01d"
+      }
+    }
+  ],
+  "createdAt": {
+    "$date": {
+      "$numberLong": "1666186835867"
+    }
+  },
+  "__v": 2,
+  "schedule": {
+    "$date": {
+      "$numberLong": "1667114054612"
+    }
+  },
+  "isDeleted": "false",
+  "sold": 0
+},{
+  "_id": {
+    "$oid": "634ffecde8c67c8df7cfb9eb"
+  },
+  "name": "Potato",
+  "price": 4500,
+  "description": "The potato is a starchy tuber of the plant Solanum tuberosum and is a root vegetable and a fruit native to the Americas. The plant is a perennial in the nightshade family Solanaceae. Wild potato species can be found from the southern United States to southern Chile.\r\n\r\nIn addition to starch, potatoes contain vitamins, minerals, and fiber. They're rich in vitamin C, which is an antioxidant. Potatoes were a life-saving food source in early times because the vitamin C prevented scurvy.",
+  "ratings": 5,
+  "images": [
+    {
+      "public_id": "products/jcbyb1lag6dzdb94gnb9",
+      "url": "https://res.cloudinary.com/farmershub/image/upload/v1666186947/products/jcbyb1lag6dzdb94gnb9.webp",
+      "_id": {
+        "$oid": "634ffecde8c67c8df7cfb9ec"
+      }
+    },
+    {
+      "public_id": "products/wwia13m5bpwizba3d9qq",
+      "url": "https://res.cloudinary.com/farmershub/image/upload/v1666186950/products/wwia13m5bpwizba3d9qq.jpg",
+      "_id": {
+        "$oid": "634ffecde8c67c8df7cfb9ed"
+      }
+    },
+    {
+      "public_id": "products/u4chbwi5sr1ylqdnv0yi",
+      "url": "https://res.cloudinary.com/farmershub/image/upload/v1666186953/products/u4chbwi5sr1ylqdnv0yi.jpg",
+      "_id": {
+        "$oid": "634ffecde8c67c8df7cfb9ee"
+      }
+    }
+  ],
+  "category": "Vegetables",
+  "seller": "Seller - 1",
+  "isActive": true,
+  "location": "Ernakulam",
+  "unit": "150",
+  "stock": 51,
+  "numOfReviews": 1,
+  "user": {
+    "$oid": "63550e0908c1d6cb76f6715f"
+  },
+  "reviews": [
+    {
+      "user": {
+        "$oid": "635cf16574e265607466c765"
+      },
+      "name": "Nived",
+      "rating": 5,
+      "comment": "No added chemical preservatives and are completely organic",
+      "_id": {
+        "$oid": "63745fbae206fbe74d48e36a"
+      }
+    }
+  ],
+  "createdAt": {
+    "$date": {
+      "$numberLong": "1666186957111"
+    }
+  },
+  "__v": 4,
+  "schedule": {
+    "$date": {
+      "$numberLong": "1667109991618"
+    }
+  },
+  "sold": 2,
+  "isDeleted": "false"
+},{
+  "_id": {
+    "$oid": "634fff43e8c67c8df7cfb9fd"
+  },
+  "name": "Pumpkin",
+  "price": 2500,
+  "description": "A pumpkin is a cultivar of winter squash that is round with smooth, slightly ribbed skin, and is most often deep yellow to orange in coloration. The thick shell contains the seeds and pulp.\r\n\r\nRich in vitamins, minerals and antioxidants, pumpkin is incredibly healthy. What's more, its low calorie content makes it a weight-loss-friendly food. Its nutrients and antioxidants may boost your immune system, protect your eyesight, lower your risk of certain cancers and promote heart and skin health.",
+  "ratings": 0,
+  "images": [
+    {
+      "public_id": "products/xw4xxdl6ugbf8c4zohkv",
+      "url": "https://res.cloudinary.com/farmershub/image/upload/v1666187072/products/xw4xxdl6ugbf8c4zohkv.webp",
+      "_id": {
+        "$oid": "634fff43e8c67c8df7cfb9fe"
+      }
+    }
+  ],
+  "category": "Vegetables",
+  "seller": "Seller - 2",
+  "isActive": true,
+  "location": "Thrissur",
+  "unit": "100",
+  "stock": 11,
+  "numOfReviews": 0,
+  "user": {
+    "$oid": "635f4a0e01ef62263e7bdba1"
+  },
+  "reviews": [],
+  "createdAt": {
+    "$date": {
+      "$numberLong": "1666187075484"
+    }
+  },
+  "__v": 0,
+  "schedule": {
+    "$date": {
+      "$numberLong": "1667109991639"
+    }
+  },
+  "sold": 1,
+  "isDeleted": "false"
+},{
+  "_id": {
+    "$oid": "634ffff0e8c67c8df7cfba20"
+  },
+  "name": "Red Apple",
+  "price": 6500,
+  "description": "An apple is an edible fruit produced by an apple tree. Apple trees are cultivated worldwide and are the most widely grown species in the genus Malus. The tree originated in Central Asia, where its wild ancestor, Malus sieversii, is still found today.\r\n\r\nEach time you eat an apple, you'll get a healthy dose of this important vitamin. B-complex vitamins are also found in apples. This includes riboflavin, thiamin and vitamin B-6, all of which are essential in maintaining red blood cells and keeping your nervous system strong and healthy. Apples include vitamin K as well.",
+  "ratings": 2,
+  "images": [
+    {
+      "public_id": "products/523a6414e4eca8b091b7796d5870de87",
+      "url": "https://res.cloudinary.com/farmershub/image/upload/v1666256377/products/523a6414e4eca8b091b7796d5870de87.jpg",
+      "_id": {
+        "$oid": "63510dfc08aefbc550f81510"
+      }
+    },
+    {
+      "public_id": "products/e20f09373ca23dc8a55415edc8925842",
+      "url": "https://res.cloudinary.com/farmershub/image/upload/v1666256379/products/e20f09373ca23dc8a55415edc8925842.jpg",
+      "_id": {
+        "$oid": "63510dfc08aefbc550f81511"
+      }
+    }
+  ],
+  "category": "Fruits",
+  "seller": "Seller - 1",
+  "isActive": true,
+  "location": "Kottayam",
+  "unit": "100",
+  "stock": 0,
+  "numOfReviews": 2,
+  "user": {
+    "$oid": "63550e0908c1d6cb76f6715f"
+  },
+  "reviews": [
+    {
+      "user": {
+        "$oid": "62f3bb2e5af90ec3e3ebf65f"
+      },
+      "name": "Admin",
+      "rating": 0,
+      "comment": "Good Product",
+      "_id": {
+        "$oid": "6350266fc5169090e1e9cfd4"
+      }
+    },
+    {
+      "user": {
+        "$oid": "634812989d09660f253cff48"
+      },
+      "name": "Jaseem",
+      "rating": 4,
+      "comment": "Fresh",
+      "_id": {
+        "$oid": "6350e395f9d39aa79491e90d"
+      }
+    }
+  ],
+  "createdAt": {
+    "$date": {
+      "$numberLong": "1666187248951"
+    }
+  },
+  "__v": 2,
+  "schedule": {
+    "$date": {
+      "$numberLong": "1667114823763"
+    }
+  },
+  "isDeleted": "false",
+  "sold": 0
+},{
+  "_id": {
+    "$oid": "63500081955b781df9b26cf4"
+  },
+  "name": "Mango",
+  "price": 6000,
+  "description": "A mango is an edible stone fruit produced by the tropical tree Mangifera indica. It is believed to have originated in the region between northwestern Myanmar, Bangladesh, and northeastern India.\r\n\r\nA ripe fresh mango can be described as tasting sweet, citrus, and almost melon flavor all in one. I think of them as a combination of peach, orange, and cantaloupe. Because of the way mango smells, I also find them to also have a floral and tropical, like papaya and pineapple taste to them as well.",
+  "ratings": 4.333333333333333,
+  "images": [
+    {
+      "public_id": "products/jc7rwzrquemizksphu7o",
+      "url": "https://res.cloudinary.com/farmershub/image/upload/v1666187387/products/jc7rwzrquemizksphu7o.jpg",
+      "_id": {
+        "$oid": "63500081955b781df9b26cf5"
+      }
+    },
+    {
+      "public_id": "products/wttjcrxoupjcwq6vemln",
+      "url": "https://res.cloudinary.com/farmershub/image/upload/v1666187390/products/wttjcrxoupjcwq6vemln.jpg",
+      "_id": {
+        "$oid": "63500081955b781df9b26cf6"
+      }
+    }
+  ],
+  "category": "Fruits",
+  "seller": "Seller - 2",
+  "isActive": true,
+  "location": "Kozhikode",
+  "unit": "100",
+  "stock": 25,
+  "numOfReviews": 3,
+  "user": {
+    "$oid": "635f4a0e01ef62263e7bdba1"
+  },
+  "reviews": [
+    {
+      "user": {
+        "$oid": "634812989d09660f253cff48"
+      },
+      "name": "Jaseem",
+      "rating": 5,
+      "comment": "hi",
+      "_id": {
+        "$oid": "635df6055eaaea73ac776507"
+      }
+    },
+    {
+      "user": {
+        "$oid": "62f3bb2e5af90ec3e3ebf65f"
+      },
+      "name": "Admin",
+      "rating": 4,
+      "comment": "Nice Product",
+      "_id": {
+        "$oid": "635e27102d081c16895fba9f"
+      }
+    },
+    {
+      "user": {
+        "$oid": "637460fbe206fbe74d48e625"
+      },
+      "name": "Jobin",
+      "rating": 4,
+      "comment": "Sweet mangoes.. my customer loves these products\r\n\r\n",
+      "_id": {
+        "$oid": "6374611de206fbe74d48e65c"
+      }
+    }
+  ],
+  "createdAt": {
+    "$date": {
+      "$numberLong": "1666187393550"
+    }
+  },
+  "__v": 5,
+  "schedule": {
+    "$date": {
+      "$numberLong": "1667102213841"
+    }
+  },
+  "sold": 2,
+  "isDeleted": "false"
+},{
+  "_id": {
+    "$oid": "635001a4c810a14189d14165"
+  },
+  "name": "Green Mango",
+  "price": 6000,
+  "description": "Raw mangoes, picked when just mature, are also known as “Green mangoes.” Mangoes grow at the ends of long stems on evergreen trees in sub-tropical and tropical regions around the globe. Raw mangoes are firm and can be oval or slightly kidney bean-ed, depending on the variety. The mangoes aren’t fully developed, so the seed is small and thin and the firm flesh is crisp. The flavor is sharply sour and can be slightly bitter due to concentrations of oxalic, citric and other types of acids which aren’t present in a ripe mango. The skin of some varieties of raw mango contain oils that can be irritating to those who have a sensitivity to poison ivy or oak, which is a distant relative of the mango. However, those with sensitivities to the skin genelly don’t experience any irritation from the flesh.\r\n\r\nGreen mango can be sour or nutty and sweet depending on the variety. The sour ones are used in the place of lime or in combination with lime in Thai dishes. An unripe mango is very hard when you touch it and does not give in like a ripe fruit.\r\n",
+  "ratings": 3,
+  "images": [
+    {
+      "public_id": "products/sedkobwzro9hncpacozm",
+      "url": "https://res.cloudinary.com/farmershub/image/upload/v1666187684/products/sedkobwzro9hncpacozm.jpg",
+      "_id": {
+        "$oid": "635001a4c810a14189d14166"
+      }
+    },
+    {
+      "public_id": "products/pekoyezmnokpsoqo1djx",
+      "url": "https://res.cloudinary.com/farmershub/image/upload/v1666187685/products/pekoyezmnokpsoqo1djx.jpg",
+      "_id": {
+        "$oid": "635001a4c810a14189d14167"
+      }
+    }
+  ],
+  "category": "Vegetables",
+  "seller": "Seller - 1",
+  "isActive": true,
+  "location": "Palakkad",
+  "unit": "110",
+  "stock": 17,
+  "numOfReviews": 3,
+  "user": {
+    "$oid": "63550e0908c1d6cb76f6715f"
+  },
+  "reviews": [
+    {
+      "user": {
+        "$oid": "62f3bb2e5af90ec3e3ebf65f"
+      },
+      "name": "Admin",
+      "rating": 0,
+      "comment": "Super",
+      "_id": {
+        "$oid": "6353908e95a2785d9a2159a9"
+      }
+    },
+    {
+      "user": {
+        "$oid": "63550e0908c1d6cb76f6715f"
+      },
+      "name": "Seller - 1",
+      "rating": 4,
+      "comment": "Good",
+      "_id": {
+        "$oid": "635f5bb42b36b1abc8b6689c"
+      }
+    },
+    {
+      "user": {
+        "$oid": "634812989d09660f253cff48"
+      },
+      "name": "Jaseem",
+      "rating": 5,
+      "comment": "Good",
+      "_id": {
+        "$oid": "6369334107af8e53137c5557"
+      }
+    }
+  ],
+  "createdAt": {
+    "$date": {
+      "$numberLong": "1666187684072"
+    }
+  },
+  "__v": 3,
+  "schedule": {
+    "$date": {
+      "$numberLong": "1667114386272"
+    }
+  },
+  "isDeleted": "false",
+  "sold": 0
+},{
+  "_id": {
+    "$oid": "63553a5e6567a52dfa7b9391"
+  },
+  "name": "Cucumber",
+  "price": 4000,
+  "description": "Cucumber",
+  "ratings": 0,
+  "images": [
+    {
+      "public_id": "products/28cac140df83a2e0b59d995d5ea44b07",
+      "url": "https://res.cloudinary.com/farmershub/image/upload/v1666529883/products/28cac140df83a2e0b59d995d5ea44b07.jpg",
+      "_id": {
+        "$oid": "63553a5e6567a52dfa7b9392"
+      }
+    },
+    {
+      "public_id": "products/3c890c7a89c2cb67a05ca70389afda76",
+      "url": "https://res.cloudinary.com/farmershub/image/upload/v1666529887/products/3c890c7a89c2cb67a05ca70389afda76.jpg",
+      "_id": {
+        "$oid": "63553a5e6567a52dfa7b9393"
+      }
+    }
+  ],
+  "category": "Vegetables",
+  "seller": "Seller - 2",
+  "isActive": true,
+  "location": "Kozhikode",
+  "unit": "100",
+  "stock": 7,
+  "numOfReviews": 0,
+  "user": {
+    "$oid": "635f4a0e01ef62263e7bdba1"
+  },
+  "reviews": [],
+  "createdAt": {
+    "$date": {
+      "$numberLong": "1666529886199"
+    }
+  },
+  "__v": 0,
+  "schedule": {
+    "$date": {
+      "$numberLong": "1667174400000"
+    }
+  },
+  "sold": 1,
+  "isDeleted": "false"
+},{
+  "_id": {
+    "$oid": "63553a9e6567a52dfa7b93c5"
+  },
+  "name": "Cabbage",
+  "price": 3000,
+  "description": "Cabbage",
+  "ratings": 0,
+  "images": [
+    {
+      "public_id": "products/559f765bdd73f5e7cc85fe824c560f14",
+      "url": "https://res.cloudinary.com/farmershub/image/upload/v1666529951/products/559f765bdd73f5e7cc85fe824c560f14.jpg",
+      "_id": {
+        "$oid": "63553a9e6567a52dfa7b93c6"
+      }
+    }
+  ],
+  "category": "Vegetables",
+  "seller": "Seller - 1",
+  "isActive": true,
+  "location": "Thrissur",
+  "unit": "100",
+  "stock": 5,
+  "numOfReviews": 0,
+  "user": {
+    "$oid": "63550e0908c1d6cb76f6715f"
+  },
+  "reviews": [],
+  "createdAt": {
+    "$date": {
+      "$numberLong": "1666529950926"
+    }
+  },
+  "__v": 0,
+  "schedule": {
+    "$date": {
+      "$numberLong": "1667260800000"
+    }
+  },
+  "isDeleted": "false",
+  "sold": 0
+},{
+  "_id": {
+    "$oid": "6368c16e6cf4706a25553955"
+  },
+  "name": "Pomogranite",
+  "price": 15000,
+  "description": "Pomegranates are low in calories and fat but high in fiber, vitamins, and minerals. Benefits include antioxidants, heart health, urinary health, exercise endurance, and more.\r\n\r\nPomegranates are round, red fruits. They feature a white inner flesh that’s densely packed with crunchy, juicy edible seeds called arils.\r\n\r\nThey may be best known for the vibrantly colored juice they’re often used in, but these unique fruits have a lot more to offer.\r\n\r\nWith the potential to support many aspects of health, from immunity to brain health, pomegranates are worth adding to your healthy eating routine.\r\n\r\nThis article examines the many nutritional and health benefits of pomegranates.",
+  "ratings": 0,
+  "images": [
+    {
+      "public_id": "products/aafeae3773dc6e0feb27ce9fdcd3e12c",
+      "url": "https://res.cloudinary.com/farmershub/image/upload/v1667809643/products/aafeae3773dc6e0feb27ce9fdcd3e12c.jpg",
+      "_id": {
+        "$oid": "6368c16e6cf4706a25553956"
+      }
+    },
+    {
+      "public_id": "products/d5ddb7d8d9f662c02b0694632ab547c1",
+      "url": "https://res.cloudinary.com/farmershub/image/upload/v1667809645/products/d5ddb7d8d9f662c02b0694632ab547c1.webp",
+      "_id": {
+        "$oid": "6368c16e6cf4706a25553957"
+      }
+    }
+  ],
+  "category": "Fruits",
+  "seller": "Seller - 1",
+  "isActive": true,
+  "schedule": {
+    "$date": {
+      "$numberLong": "1667865600000"
+    }
+  },
+  "location": "Wayanad",
+  "unit": "100",
+  "stock": 12,
+  "numOfReviews": 0,
+  "user": {
+    "$oid": "63550e0908c1d6cb76f6715f"
+  },
+  "reviews": [],
+  "createdAt": {
+    "$date": {
+      "$numberLong": "1667809646609"
+    }
+  },
+  "__v": 0,
+  "sold": 0,
+  "isDeleted": "false"
+},{
+  "_id": {
+    "$oid": "6368c26a6cf4706a255539de"
+  },
+  "name": "Coconut",
+  "price": 10000,
+  "description": "The coconut tree provides food, fuel, cosmetics, folk medicine and building materials, among many other uses. The inner flesh of the mature seed, as well as the coconut milk extracted from it, form a regular part of the diets of many people in the tropics and subtropics. Coconuts are distinct from other fruits because their endosperm contains a large quantity of clear liquid, called coconut water or coconut juice. Mature, ripe coconuts can be used as edible seeds, or processed for oil and plant milk from the flesh, charcoal from the hard shell, and coir from the fibrous husk. Dried coconut flesh is called copra, and the oil and milk derived from it are commonly used in cooking – frying in particular – as well as in soaps and cosmetics. Sweet coconut sap can be made into drinks or fermented into palm wine or coconut vinegar. The hard shells, fibrous husks and long pinnate leaves can be used as material to make a variety of products for furnishing and decoration.",
+  "ratings": 4,
+  "images": [
+    {
+      "public_id": "products/dbb3c3bc1cf06dadb5b8185419310a45",
+      "url": "https://res.cloudinary.com/farmershub/image/upload/v1667809893/products/dbb3c3bc1cf06dadb5b8185419310a45.jpg",
+      "_id": {
+        "$oid": "6368c26a6cf4706a255539df"
+      }
+    },
+    {
+      "public_id": "products/86580ebcb9bc6db8c555fdf5227241f1",
+      "url": "https://res.cloudinary.com/farmershub/image/upload/v1667809895/products/86580ebcb9bc6db8c555fdf5227241f1.png",
+      "_id": {
+        "$oid": "6368c26a6cf4706a255539e0"
+      }
+    },
+    {
+      "public_id": "products/dedd3f9242d6485dc151779b67c006d7",
+      "url": "https://res.cloudinary.com/farmershub/image/upload/v1667809897/products/dedd3f9242d6485dc151779b67c006d7.avif",
+      "_id": {
+        "$oid": "6368c26a6cf4706a255539e1"
+      }
+    }
+  ],
+  "category": "Fruits",
+  "seller": "Seller - 1",
+  "isActive": true,
+  "schedule": {
+    "$date": {
+      "$numberLong": "1667779200000"
+    }
+  },
+  "location": "Pathanamthitta",
+  "unit": "3",
+  "stock": 0,
+  "numOfReviews": 1,
+  "user": {
+    "$oid": "63550e0908c1d6cb76f6715f"
+  },
+  "reviews": [
+    {
+      "user": {
+        "$oid": "63746af414440167f9d923cb"
+      },
+      "name": "vimal",
+      "rating": 4,
+      "comment": "Good Product",
+      "_id": {
+        "$oid": "63746b0414440167f9d92406"
+      }
+    }
+  ],
+  "createdAt": {
+    "$date": {
+      "$numberLong": "1667809898257"
+    }
+  },
+  "__v": 1,
+  "sold": 4,
+  "isDeleted": "false"
+},{
+  "_id": {
+    "$oid": "6368c7896cf4706a25553b83"
+  },
+  "name": "Alphonsa Mango",
+  "price": 7500,
+  "description": "A mango is an edible stone fruit produced by the tropical tree Mangifera indica. It is believed to have originated in the region between northwestern Myanmar, Bangladesh, and northeastern India. A ripe fresh mango can be described as tasting sweet, citrus, and almost melon flavor all in one. I think of them as a combination of peach, orange, and cantaloupe. Because of the way mango smells, I also find them to also have a floral and tropical, like papaya and pineapple taste to them as well.\r\n\r\n",
+  "ratings": 4,
+  "images": [
+    {
+      "public_id": "products/f6cc1bb4b44f51826876f89600f94ac3",
+      "url": "https://res.cloudinary.com/farmershub/image/upload/v1667811204/products/f6cc1bb4b44f51826876f89600f94ac3.webp",
+      "_id": {
+        "$oid": "6368c7896cf4706a25553b84"
+      }
+    },
+    {
+      "public_id": "products/ee92dbaf3bff90e4b8d18b8bcea287f8",
+      "url": "https://res.cloudinary.com/farmershub/image/upload/v1667811206/products/ee92dbaf3bff90e4b8d18b8bcea287f8.jpg",
+      "_id": {
+        "$oid": "6368c7896cf4706a25553b85"
+      }
+    },
+    {
+      "public_id": "products/f1001963e9c3a9446a11399fa64f189d",
+      "url": "https://res.cloudinary.com/farmershub/image/upload/v1667811208/products/f1001963e9c3a9446a11399fa64f189d.webp",
+      "_id": {
+        "$oid": "6368c7896cf4706a25553b86"
+      }
+    }
+  ],
+  "category": "Fruits",
+  "seller": "Seller - 1",
+  "isActive": true,
+  "schedule": {
+    "$date": {
+      "$numberLong": "1667865600000"
+    }
+  },
+  "location": "Alappuzha",
+  "unit": "100",
+  "stock": 3,
+  "numOfReviews": 1,
+  "user": {
+    "$oid": "63550e0908c1d6cb76f6715f"
+  },
+  "reviews": [
+    {
+      "user": {
+        "$oid": "635cf16574e265607466c765"
+      },
+      "name": "Nived",
+      "rating": 4,
+      "comment": "Carbide Free, tasty and juicy mangoes... customers love these mangoes must buy",
+      "_id": {
+        "$oid": "63745ff5e206fbe74d48e3d1"
+      }
+    }
+  ],
+  "createdAt": {
+    "$date": {
+      "$numberLong": "1667811209660"
+    }
+  },
+  "__v": 1,
+  "sold": 3,
+  "isDeleted": "false"
+},{
+  "_id": {
+    "$oid": "6368c8416cf4706a25553bae"
+  },
+  "name": "Spring Onion",
+  "price": 1000,
+  "description": "What is spring onion called?\r\nAlso known as scallions or green onions, spring onions are in fact very young onions, harvested before the bulb has had a chance to swell. Both the long, slender green tops and the small white bulb are edible, and are good either raw or cooked. They have a similar flavour to onions, but are much milder.",
+  "ratings": 0,
+  "images": [
+    {
+      "public_id": "products/d217221aeec1eea3264e25125d47bba9",
+      "url": "https://res.cloudinary.com/farmershub/image/upload/v1667811390/products/d217221aeec1eea3264e25125d47bba9.jpg",
+      "_id": {
+        "$oid": "6368c8416cf4706a25553baf"
+      }
+    },
+    {
+      "public_id": "products/7a0f68309ac104dab66ee25898904543",
+      "url": "https://res.cloudinary.com/farmershub/image/upload/v1667811393/products/7a0f68309ac104dab66ee25898904543.webp",
+      "_id": {
+        "$oid": "6368c8416cf4706a25553bb0"
+      }
+    }
+  ],
+  "category": "Vegetables",
+  "seller": "Seller - 2",
+  "isActive": true,
+  "schedule": {
+    "$date": {
+      "$numberLong": "1667779200000"
+    }
+  },
+  "location": "Thrissur",
+  "unit": "50",
+  "stock": 0,
+  "numOfReviews": 0,
+  "user": {
+    "$oid": "635f4a0e01ef62263e7bdba1"
+  },
+  "reviews": [],
+  "createdAt": {
+    "$date": {
+      "$numberLong": "1667811393666"
+    }
+  },
+  "__v": 0,
+  "sold": 2,
+  "isDeleted": "false"
+},{
+  "_id": {
+    "$oid": "6368c9586cf4706a25553e7d"
+  },
+  "name": "Guava",
+  "price": 6000,
+  "description": "Guava is loaded with nutrients. Not only does it have more Vitamin C than oranges, guava is also rich in other antioxidants, and has been shown to have a number of great health benefits. Here are just a few of the benefits of eating this tropical fruit. One of the key nutrients found in guava is fiber.",
+  "ratings": 0,
+  "images": [
+    {
+      "public_id": "products/2f8f080447b838d7a38eb4888d979a97",
+      "url": "https://res.cloudinary.com/farmershub/image/upload/v1667811671/products/2f8f080447b838d7a38eb4888d979a97.jpg",
+      "_id": {
+        "$oid": "6368c9586cf4706a25553e7e"
+      }
+    },
+    {
+      "public_id": "products/f343bd387157ec50beaa465dd90c3c97",
+      "url": "https://res.cloudinary.com/farmershub/image/upload/v1667811672/products/f343bd387157ec50beaa465dd90c3c97.jpg",
+      "_id": {
+        "$oid": "6368c9586cf4706a25553e7f"
+      }
+    }
+  ],
+  "category": "Fruits",
+  "seller": "Seller - 2",
+  "isActive": true,
+  "schedule": {
+    "$date": {
+      "$numberLong": "1668643200000"
+    }
+  },
+  "location": "Palakkad",
+  "unit": "100",
+  "stock": 0,
+  "numOfReviews": 0,
+  "user": {
+    "$oid": "635f4a0e01ef62263e7bdba1"
+  },
+  "reviews": [],
+  "createdAt": {
+    "$date": {
+      "$numberLong": "1667811672953"
+    }
+  },
+  "__v": 0,
+  "isDeleted": "false",
+  "sold": 0
+},{
+  "_id": {
+    "$oid": "6368c9e46cf4706a25553f02"
+  },
+  "name": "Lettuce",
+  "price": 2500,
+  "description": "It is a good source of fiber, iron, folate, and vitamin C. Lettuce is also a good source of various other health-beneficial bioactive compounds. In vitro and in vivo studies have shown anti-inflammatory, cholesterol-lowering, and anti-diabetic activities attributed to the bioactive compounds in lettuce.",
+  "ratings": 0,
+  "images": [
+    {
+      "public_id": "products/39186425c56cc5ace27d8517298323d8",
+      "url": "https://res.cloudinary.com/farmershub/image/upload/v1667811809/products/39186425c56cc5ace27d8517298323d8.jpg",
+      "_id": {
+        "$oid": "6368c9e46cf4706a25553f03"
+      }
+    },
+    {
+      "public_id": "products/cdf02c791191b8eb9938403bbd779df6",
+      "url": "https://res.cloudinary.com/farmershub/image/upload/v1667811811/products/cdf02c791191b8eb9938403bbd779df6.jpg",
+      "_id": {
+        "$oid": "6368c9e46cf4706a25553f04"
+      }
+    }
+  ],
+  "category": "Vegetables",
+  "seller": "Seller - 1",
+  "isActive": true,
+  "schedule": {
+    "$date": {
+      "$numberLong": "1667779200000"
+    }
+  },
+  "location": "Ernakulam",
+  "unit": "50",
+  "stock": 2,
+  "numOfReviews": 0,
+  "user": {
+    "$oid": "63550e0908c1d6cb76f6715f"
+  },
+  "reviews": [],
+  "createdAt": {
+    "$date": {
+      "$numberLong": "1667811812068"
+    }
+  },
+  "__v": 0,
+  "sold": 3,
+  "isDeleted": "false"
+},{
+  "_id": {
+    "$oid": "6368ca616cf4706a25553f92"
+  },
+  "name": "Lemon",
+  "price": 8000,
+  "description": "lemon, (Citrus ×limon), small tree or spreading bush of the rue family (Rutaceae) and its edible fruit. Lemon juice is a characteristic ingredient in many pastries and desserts, such as tarts and the traditional American lemon meringue pie. The distinctive astringent flavour of the fruit, either fresh or preserved, is also used to enhance many poultry, fish, and vegetable dishes worldwide. Lemonade, made with lemon, sugar, and water, is a popular warm-weather beverage, and the juice itself is commonly added to tea. Citric acid may amount to 5 percent or more by weight of the lemon’s juice, which is also rich in vitamin C and contains smaller amounts of the B vitamins, particularly thiamin, riboflavin, and niacin.",
+  "ratings": 0,
+  "images": [
+    {
+      "public_id": "products/4cb39eb5de76c09d0bf74d84229f26e7",
+      "url": "https://res.cloudinary.com/farmershub/image/upload/v1667811934/products/4cb39eb5de76c09d0bf74d84229f26e7.jpg",
+      "_id": {
+        "$oid": "6368ca616cf4706a25553f93"
+      }
+    },
+    {
+      "public_id": "products/efd30124b27d7c770e4da82edfefdda1",
+      "url": "https://res.cloudinary.com/farmershub/image/upload/v1667811935/products/efd30124b27d7c770e4da82edfefdda1.jpg",
+      "_id": {
+        "$oid": "6368ca616cf4706a25553f94"
+      }
+    },
+    {
+      "public_id": "products/31a8e2dfe688340dfde5b6f7c6b73faa",
+      "url": "https://res.cloudinary.com/farmershub/image/upload/v1667811937/products/31a8e2dfe688340dfde5b6f7c6b73faa.jpg",
+      "_id": {
+        "$oid": "6368ca616cf4706a25553f95"
+      }
+    }
+  ],
+  "category": "Vegetables",
+  "seller": "Seller - 2",
+  "isActive": true,
+  "schedule": {
+    "$date": {
+      "$numberLong": "1667779200000"
+    }
+  },
+  "location": "Kozhikode",
+  "unit": "100",
+  "stock": 3,
+  "numOfReviews": 0,
+  "user": {
+    "$oid": "635f4a0e01ef62263e7bdba1"
+  },
+  "reviews": [],
+  "createdAt": {
+    "$date": {
+      "$numberLong": "1667811937757"
+    }
+  },
+  "__v": 0,
+  "isDeleted": "false",
+  "sold": 0
+},{
+  "_id": {
+    "$oid": "6368cb5c68b55609dcd438e2"
+  },
+  "name": "Papaya",
+  "price": 4000,
+  "description": "What is the benefits to eat papaya?\r\nThe possible health benefits of consuming papaya include a reduced risk of heart disease, diabetes, cancer, aiding in digestion, improving blood glucose control in people with diabetes, lowering blood pressure, and improving wound healing.",
+  "ratings": 0,
+  "images": [
+    {
+      "public_id": "products/12a40a50e08daee85a33226089d50859",
+      "url": "https://res.cloudinary.com/farmershub/image/upload/v1667812182/products/12a40a50e08daee85a33226089d50859.jpg",
+      "_id": {
+        "$oid": "6368cb5c68b55609dcd438e3"
+      }
+    },
+    {
+      "public_id": "products/1736492cfd0ec956dc27f0d51fbb7bda",
+      "url": "https://res.cloudinary.com/farmershub/image/upload/v1667812185/products/1736492cfd0ec956dc27f0d51fbb7bda.jpg",
+      "_id": {
+        "$oid": "6368cb5c68b55609dcd438e4"
+      }
+    },
+    {
+      "public_id": "products/e210e5876f2080dd8100cca3806bfa02",
+      "url": "https://res.cloudinary.com/farmershub/image/upload/v1667812187/products/e210e5876f2080dd8100cca3806bfa02.jpg",
+      "_id": {
+        "$oid": "6368cb5c68b55609dcd438e5"
+      }
+    }
+  ],
+  "category": "Fruits",
+  "seller": "Seller - 2",
+  "isActive": true,
+  "schedule": {
+    "$date": {
+      "$numberLong": "1667779200000"
+    }
+  },
+  "location": "Malappuram",
+  "unit": "100",
+  "stock": 0,
+  "numOfReviews": 0,
+  "user": {
+    "$oid": "635f4a0e01ef62263e7bdba1"
+  },
+  "reviews": [],
+  "createdAt": {
+    "$date": {
+      "$numberLong": "1667812188112"
+    }
+  },
+  "__v": 0,
+  "sold": 2,
+  "isDeleted": "false"
+},{
+  "_id": {
+    "$oid": "6368d73bf15d8a192a8f0469"
+  },
+  "name": "Rambuttan",
+  "price": 10000,
+  "description": "Rambutans are also full of potassium, a mineral that helps your heart beat, kidneys function, and muscles contract. Rambutans are rich in vitamin C, which is a potent antioxidant. Consuming antioxidants helps fight off free radicals, which are waste products in your body that can damage your cells.",
+  "ratings": 0,
+  "images": [
+    {
+      "public_id": "products/15b4dced660f6b8390e22e71a10ff10f",
+      "url": "https://res.cloudinary.com/farmershub/image/upload/v1667815223/products/15b4dced660f6b8390e22e71a10ff10f.jpg",
+      "_id": {
+        "$oid": "6368d73bf15d8a192a8f046a"
+      }
+    },
+    {
+      "public_id": "products/cdfd75d6c874e2487ae6f8e240dd3665",
+      "url": "https://res.cloudinary.com/farmershub/image/upload/v1667815226/products/cdfd75d6c874e2487ae6f8e240dd3665.jpg",
+      "_id": {
+        "$oid": "6368d73bf15d8a192a8f046b"
+      }
+    }
+  ],
+  "category": "Fruits",
+  "seller": "Seller - 2",
+  "isActive": true,
+  "schedule": {
+    "$date": {
+      "$numberLong": "1667779200000"
+    }
+  },
+  "location": "Malappuram",
+  "unit": "100",
+  "stock": 0,
+  "numOfReviews": 0,
+  "user": {
+    "$oid": "635f4a0e01ef62263e7bdba1"
+  },
+  "reviews": [],
+  "createdAt": {
+    "$date": {
+      "$numberLong": "1667815227293"
+    }
+  },
+  "__v": 0,
+  "sold": 2,
+  "isDeleted": "false"
+},{
+  "_id": {
+    "$oid": "6368ddbaf15d8a192a8f090a"
+  },
+  "name": "Capsicum",
+  "price": 3000,
+  "description": "Capsicum is extremely high in vitamin C which is essential for many processes in the body including immune function, wound healing and the synthesis of collagen. In addition to vitamin C, capsicum is also high in vitamin A. Vitamin A is vital for immune support, reproduction and vision strength.",
+  "ratings": 0,
+  "images": [
+    {
+      "public_id": "products/43aaee17cb501148874c6761f81a1242",
+      "url": "https://res.cloudinary.com/farmershub/image/upload/v1667816887/products/43aaee17cb501148874c6761f81a1242.webp",
+      "_id": {
+        "$oid": "6368ddbaf15d8a192a8f090b"
+      }
+    },
+    {
+      "public_id": "products/444f5230cdddc0ab3d85b8c166d347a7",
+      "url": "https://res.cloudinary.com/farmershub/image/upload/v1667816889/products/444f5230cdddc0ab3d85b8c166d347a7.jpg",
+      "_id": {
+        "$oid": "6368ddbaf15d8a192a8f090c"
+      }
+    }
+  ],
+  "category": "Vegetables",
+  "seller": "Seller - 1",
+  "isActive": true,
+  "schedule": {
+    "$date": {
+      "$numberLong": "1667779200000"
+    }
+  },
+  "location": "Alappuzha",
+  "unit": "100",
+  "stock": 2,
+  "numOfReviews": 0,
+  "user": {
+    "$oid": "63550e0908c1d6cb76f6715f"
+  },
+  "reviews": [],
+  "createdAt": {
+    "$date": {
+      "$numberLong": "1667816890364"
+    }
+  },
+  "__v": 0,
+  "isDeleted": "false",
+  "sold": 0
+},{
+  "_id": {
+    "$oid": "6368de07f15d8a192a8f0930"
+  },
+  "name": "Green Chilly",
+  "price": 2000,
+  "description": "Chili peppers, from Nahuatl chīlli, are varieties of the berry-fruit of plants from the genus Capsicum, which are members of the nightshade family Solanaceae, cultivated for their pungency. Chili peppers are widely used in many cuisines as a spice to add \"heat\" to dishes.",
+  "ratings": 0,
+  "images": [
+    {
+      "public_id": "products/24cbf58fc1096c200d55b1a3886fc7e0",
+      "url": "https://res.cloudinary.com/farmershub/image/upload/v1667816964/products/24cbf58fc1096c200d55b1a3886fc7e0.jpg",
+      "_id": {
+        "$oid": "6368de07f15d8a192a8f0931"
+      }
+    },
+    {
+      "public_id": "products/7a53b262d3f9bc9a13c976e9d260cff1",
+      "url": "https://res.cloudinary.com/farmershub/image/upload/v1667816966/products/7a53b262d3f9bc9a13c976e9d260cff1.jpg",
+      "_id": {
+        "$oid": "6368de07f15d8a192a8f0932"
+      }
+    }
+  ],
+  "category": "Vegetables",
+  "seller": "Seller - 1",
+  "isActive": true,
+  "schedule": {
+    "$date": {
+      "$numberLong": "1667779200000"
+    }
+  },
+  "location": "Alappuzha",
+  "unit": "70",
+  "stock": 2,
+  "numOfReviews": 0,
+  "user": {
+    "$oid": "63550e0908c1d6cb76f6715f"
+  },
+  "reviews": [],
+  "createdAt": {
+    "$date": {
+      "$numberLong": "1667816967542"
+    }
+  },
+  "__v": 0,
+  "isDeleted": "false",
+  "sold": 0
+},{
+  "_id": {
+    "$oid": "6368de86f15d8a192a8f094a"
+  },
+  "name": "Dragon Fruit",
+  "price": 5000,
+  "description": "When ripe, dragon fruit has a mildly sweet flavor often described as a blend of pear and kiwi, and a soft texture similar to a ripe kiwi. Under-ripe dragon fruit, on the other hand, is basically flavorless. Native to Mexico, Central and South America, the dragon fruit plant is a cactus.",
+  "ratings": 4,
+  "images": [
+    {
+      "public_id": "products/e9eac395f3984b44cc799d1191e5f7cd",
+      "url": "https://res.cloudinary.com/farmershub/image/upload/v1667817082/products/e9eac395f3984b44cc799d1191e5f7cd.jpg",
+      "_id": {
+        "$oid": "6368de86f15d8a192a8f094b"
+      }
+    },
+    {
+      "public_id": "products/377e5b2de043b6783949c58ffbb61b4f",
+      "url": "https://res.cloudinary.com/farmershub/image/upload/v1667817084/products/377e5b2de043b6783949c58ffbb61b4f.webp",
+      "_id": {
+        "$oid": "6368de86f15d8a192a8f094c"
+      }
+    }
+  ],
+  "category": "Fruits",
+  "seller": "Seller - 1",
+  "isActive": true,
+  "schedule": {
+    "$date": {
+      "$numberLong": "1667779200000"
+    }
+  },
+  "location": "Ernakulam",
+  "unit": "50",
+  "stock": 1,
+  "numOfReviews": 1,
+  "user": {
+    "$oid": "63550e0908c1d6cb76f6715f"
+  },
+  "reviews": [
+    {
+      "user": {
+        "$oid": "635cf16574e265607466c765"
+      },
+      "name": "Nived",
+      "rating": 4,
+      "comment": "These dragon fruits are so tasty and fresh",
+      "_id": {
+        "$oid": "63745eb1e206fbe74d48e32b"
+      }
+    }
+  ],
+  "createdAt": {
+    "$date": {
+      "$numberLong": "1667817094022"
+    }
+  },
+  "__v": 1,
+  "sold": 3,
+  "isDeleted": "false"
+},{
+  "_id": {
+    "$oid": "6368e393f15d8a192a8f0c39"
+  },
+  "name": "Garlic",
+  "price": 1500,
+  "description": "Garlic contains antioxidants that support the body's protective mechanisms against oxidative damage ( 19 ). High doses of garlic supplements have been shown to increase antioxidant enzymes in humans, as well as significantly reduce oxidative stress in people with high blood pressure ( 7 , 9 , 20 ).",
+  "ratings": 0,
+  "images": [
+    {
+      "public_id": "products/1c8d2b5b51418587775baed63285d64d",
+      "url": "https://res.cloudinary.com/farmershub/image/upload/v1667818384/products/1c8d2b5b51418587775baed63285d64d.jpg",
+      "_id": {
+        "$oid": "6368e393f15d8a192a8f0c3a"
+      }
+    },
+    {
+      "public_id": "products/c7e993964e86ba3d636890285c701e41",
+      "url": "https://res.cloudinary.com/farmershub/image/upload/v1667818386/products/c7e993964e86ba3d636890285c701e41.webp",
+      "_id": {
+        "$oid": "6368e393f15d8a192a8f0c3b"
+      }
+    }
+  ],
+  "category": "Vegetables",
+  "seller": "Seller - 1",
+  "isActive": true,
+  "schedule": {
+    "$date": {
+      "$numberLong": "1667779200000"
+    }
+  },
+  "location": "Palakkad",
+  "unit": "50",
+  "stock": 4,
+  "numOfReviews": 0,
+  "user": {
+    "$oid": "63550e0908c1d6cb76f6715f"
+  },
+  "reviews": [],
+  "createdAt": {
+    "$date": {
+      "$numberLong": "1667818387512"
+    }
+  },
+  "__v": 0,
+  "sold": 0,
+  "isDeleted": "false"
+},{
+  "_id": {
+    "$oid": "6368e40ff15d8a192a8f0d94"
+  },
+  "name": "Green Grapes",
+  "price": 13000,
+  "description": "A grape is a fruit, botanically a berry, of the deciduous woody vines of the flowering plant genus Vitis. Grapes are a non-climacteric type of fruit, generally occurring in clusters. The cultivation of grapes began perhaps 8,000 years ago, and the fruit has been used as human food over history.",
+  "ratings": 0,
+  "images": [
+    {
+      "public_id": "products/716366991cb6b853a4509cbd66e94a44",
+      "url": "https://res.cloudinary.com/farmershub/image/upload/v1667818491/products/716366991cb6b853a4509cbd66e94a44.jpg",
+      "_id": {
+        "$oid": "6368e40ff15d8a192a8f0d95"
+      }
+    },
+    {
+      "public_id": "products/e0925c7025ae395a571103ebce09334b",
+      "url": "https://res.cloudinary.com/farmershub/image/upload/v1667818494/products/e0925c7025ae395a571103ebce09334b.jpg",
+      "_id": {
+        "$oid": "6368e40ff15d8a192a8f0d96"
+      }
+    },
+    {
+      "public_id": "products/b67d2255730574e1df40f731cc11122a",
+      "url": "https://res.cloudinary.com/farmershub/image/upload/v1667818496/products/b67d2255730574e1df40f731cc11122a.jpg",
+      "_id": {
+        "$oid": "6368e40ff15d8a192a8f0d97"
+      }
+    }
+  ],
+  "category": "Fruits",
+  "seller": "Seller - 1",
+  "isActive": true,
+  "schedule": {
+    "$date": {
+      "$numberLong": "1667779200000"
+    }
+  },
+  "location": "Kozhikode",
+  "unit": "100",
+  "stock": 8,
+  "numOfReviews": 0,
+  "user": {
+    "$oid": "63550e0908c1d6cb76f6715f"
+  },
+  "reviews": [],
+  "createdAt": {
+    "$date": {
+      "$numberLong": "1667818511132"
+    }
+  },
+  "__v": 0,
+  "sold": 2,
+  "isDeleted": "false"
+},{
+  "_id": {
+    "$oid": "6368e459f15d8a192a8f0e98"
+  },
+  "name": "Grapes Black",
+  "price": 10000,
+  "description": "A grape is a fruit, botanically a berry, of the deciduous woody vines of the flowering plant genus Vitis. Grapes are a non-climacteric type of fruit, generally occurring in clusters. The cultivation of grapes began perhaps 8,000 years ago, and the fruit has been used as human food over history.",
+  "ratings": 0,
+  "images": [
+    {
+      "public_id": "products/4a7cf7617f70ce9770e4ca641e9ad939",
+      "url": "https://res.cloudinary.com/farmershub/image/upload/v1667818583/products/4a7cf7617f70ce9770e4ca641e9ad939.jpg",
+      "_id": {
+        "$oid": "6368e459f15d8a192a8f0e99"
+      }
+    },
+    {
+      "public_id": "products/2ab53cb8cbeb0f5eb52215a2263647e8",
+      "url": "https://res.cloudinary.com/farmershub/image/upload/v1667818585/products/2ab53cb8cbeb0f5eb52215a2263647e8.webp",
+      "_id": {
+        "$oid": "6368e459f15d8a192a8f0e9a"
+      }
+    }
+  ],
+  "category": "Fruits",
+  "seller": "Seller - 1",
+  "isActive": true,
+  "schedule": {
+    "$date": {
+      "$numberLong": "1667779200000"
+    }
+  },
+  "location": "Kollam",
+  "unit": "100",
+  "stock": 3,
+  "numOfReviews": 0,
+  "user": {
+    "$oid": "63550e0908c1d6cb76f6715f"
+  },
+  "reviews": [],
+  "createdAt": {
+    "$date": {
+      "$numberLong": "1667818585817"
+    }
+  },
+  "__v": 0,
+  "sold": 1,
+  "isDeleted": "false"
+},{
+  "_id": {
+    "$oid": "6368e509f15d8a192a8f1025"
+  },
+  "name": "Tapioca",
+  "price": 3500,
+  "description": "Tapioca is a starch extracted from the storage roots of the cassava plant, a species native to the North and Northeast regions of Brazil, but whose use is now spread throughout South America. It is a perennial shrub adapted to the hot conditions of tropical lowlands.",
+  "ratings": 4,
+  "images": [
+    {
+      "public_id": "products/7f2c144c68f6bbe5644cf2c0ade8765d",
+      "url": "https://res.cloudinary.com/farmershub/image/upload/v1667818757/products/7f2c144c68f6bbe5644cf2c0ade8765d.jpg",
+      "_id": {
+        "$oid": "6368e509f15d8a192a8f1026"
+      }
+    },
+    {
+      "public_id": "products/433514ca872dcae3d8a4e7723c16fe69",
+      "url": "https://res.cloudinary.com/farmershub/image/upload/v1667818759/products/433514ca872dcae3d8a4e7723c16fe69.jpg",
+      "_id": {
+        "$oid": "6368e509f15d8a192a8f1027"
+      }
+    }
+  ],
+  "category": "Vegetables",
+  "seller": "Seller - 2",
+  "isActive": true,
+  "schedule": {
+    "$date": {
+      "$numberLong": "1667779200000"
+    }
+  },
+  "location": "Palakkad",
+  "unit": "100",
+  "stock": 16,
+  "numOfReviews": 1,
+  "user": {
+    "$oid": "635f4a0e01ef62263e7bdba1"
+  },
+  "reviews": [
+    {
+      "user": {
+        "$oid": "63746709021173f53c43860a"
+      },
+      "name": "Yazin",
+      "rating": 4,
+      "comment": "Fresh Tapiocas",
+      "_id": {
+        "$oid": "6374679774a9341641ba4746"
+      }
+    }
+  ],
+  "createdAt": {
+    "$date": {
+      "$numberLong": "1667818761226"
+    }
+  },
+  "__v": 1,
+  "sold": 4,
+  "isDeleted": "false"
+},{
+  "_id": {
+    "$oid": "6368e5a9f15d8a192a8f1070"
+  },
+  "name": "Sweet Potato",
+  "price": 1800,
+  "description": "The sweet potato or sweetpotato is a dicotyledonous plant that belongs to the bindweed or morning glory family, Convolvulaceae. Its large, starchy, sweet-tasting tuberous roots are used as a root vegetable. The young shoots and leaves are sometimes eaten as greens",
+  "ratings": 4,
+  "images": [
+    {
+      "public_id": "products/aeea8a89e149da99da6653aac8c2ad08",
+      "url": "https://res.cloudinary.com/farmershub/image/upload/v1667818858/products/aeea8a89e149da99da6653aac8c2ad08.webp",
+      "_id": {
+        "$oid": "6368e5a9f15d8a192a8f1071"
+      }
+    }
+  ],
+  "category": "Vegetables",
+  "seller": "Seller - 2",
+  "isActive": true,
+  "schedule": {
+    "$date": {
+      "$numberLong": "1667779200000"
+    }
+  },
+  "location": "Palakkad",
+  "unit": "50",
+  "stock": 17,
+  "numOfReviews": 1,
+  "user": {
+    "$oid": "635f4a0e01ef62263e7bdba1"
+  },
+  "reviews": [
+    {
+      "user": {
+        "$oid": "63746709021173f53c43860a"
+      },
+      "name": "Yazin",
+      "rating": 4,
+      "comment": "Good Sweet potatoes.. good quality",
+      "_id": {
+        "$oid": "6374678174a9341641ba4705"
+      }
+    }
+  ],
+  "createdAt": {
+    "$date": {
+      "$numberLong": "1667818921306"
+    }
+  },
+  "__v": 1,
+  "sold": 4,
+  "isDeleted": "false"
+},{
+  "_id": {
+    "$oid": "6368e661f15d8a192a8f12ce"
+  },
+  "name": "Orange",
+  "price": 7000,
+  "description": "An orange is a fruit of various citrus species in the family Rutaceae (see list of plants known as orange); it primarily refers to Citrus × sinensis, which is also called sweet orange, to distinguish it from the related Citrus × aurantium, referred to as bitter orange.",
+  "ratings": 4,
+  "images": [
+    {
+      "public_id": "products/c30ee1a63aa3d18bda960daaf269b125",
+      "url": "https://res.cloudinary.com/farmershub/image/upload/v1667819176/products/c30ee1a63aa3d18bda960daaf269b125.webp",
+      "_id": {
+        "$oid": "6368e6aef15d8a192a8f13c2"
+      }
+    },
+    {
+      "public_id": "products/e2173b9e8dd03e9fafd4d2f91b8b2d2b",
+      "url": "https://res.cloudinary.com/farmershub/image/upload/v1667819177/products/e2173b9e8dd03e9fafd4d2f91b8b2d2b.jpg",
+      "_id": {
+        "$oid": "6368e6aef15d8a192a8f13c3"
+      }
+    },
+    {
+      "public_id": "products/1cc73f076c7b8b0f09eed919eb47bbcc",
+      "url": "https://res.cloudinary.com/farmershub/image/upload/v1667819180/products/1cc73f076c7b8b0f09eed919eb47bbcc.jpg",
+      "_id": {
+        "$oid": "6368e6aef15d8a192a8f13c4"
+      }
+    },
+    {
+      "public_id": "products/d2f569543c45636cc3b7065d08ce2877",
+      "url": "https://res.cloudinary.com/farmershub/image/upload/v1667819181/products/d2f569543c45636cc3b7065d08ce2877.jpg",
+      "_id": {
+        "$oid": "6368e6aef15d8a192a8f13c5"
+      }
+    }
+  ],
+  "category": "Fruits",
+  "seller": "Seller - 2",
+  "isActive": true,
+  "schedule": {
+    "$date": {
+      "$numberLong": "1667779200000"
+    }
+  },
+  "location": "Kottayam",
+  "unit": "100",
+  "stock": 9,
+  "numOfReviews": 1,
+  "user": {
+    "$oid": "635f4a0e01ef62263e7bdba1"
+  },
+  "reviews": [
+    {
+      "user": {
+        "$oid": "635cf16574e265607466c765"
+      },
+      "name": "Nived",
+      "rating": 4,
+      "comment": "Organic oranges.. They were so fresh ",
+      "_id": {
+        "$oid": "63746030e206fbe74d48e49a"
+      }
+    }
+  ],
+  "createdAt": {
+    "$date": {
+      "$numberLong": "1667819105544"
+    }
+  },
+  "__v": 1,
+  "sold": 1,
+  "isDeleted": "false"
+}]

@@ -1,0 +1,190 @@
+[{
+  "_id": {
+    "$oid": "62f3bb2e5af90ec3e3ebf65f"
+  },
+  "name": "Admin",
+  "email": "farmershubkerala@gmail.com",
+  "password": "$2a$10$B4Xq2LKkR2N3xPwIvWFdd.r13F5LhTwdZw/30Nq6eVPfFsPD5fdna",
+  "avatar": {
+    "public_id": "avatars/1396bdcf3b86fbdcc14ffe3bee918ee5",
+    "url": "https://res.cloudinary.com/farmershub/image/upload/v1666504522/avatars/1396bdcf3b86fbdcc14ffe3bee918ee5.jpg"
+  },
+  "role": "admin",
+  "createdAt": {
+    "$date": {
+      "$numberLong": "1660140334080"
+    }
+  },
+  "__v": 0,
+  "resetPasswordExpire": {
+    "$date": {
+      "$numberLong": "1660300607235"
+    }
+  },
+  "resetPasswordToken": "1498a537687a1775ac158c11a5864323ca70b42fc8aff908ef436b127f313af6",
+  "mobile": {
+    "$numberLong": "3432532545"
+  },
+  "isRoot": true,
+  "isDeleted": "false"
+},{
+  "_id": {
+    "$oid": "634812989d09660f253cff48"
+  },
+  "name": "Jaseem",
+  "email": "jaseemks11@gmail.com",
+  "password": "$2a$10$/lhX5FzQt4xND3KiOGow/./fWVV9evS248gtS5o1MnoIHdWc2h5y.",
+  "avatar": {
+    "public_id": "avatars/398fd726478b4938c24ff329a1d3d1b0",
+    "url": "https://res.cloudinary.com/farmershub/image/upload/v1667037176/avatars/398fd726478b4938c24ff329a1d3d1b0.jpg"
+  },
+  "role": "user",
+  "createdAt": {
+    "$date": {
+      "$numberLong": "1665667736088"
+    }
+  },
+  "__v": 0,
+  "resetPasswordExpire": {
+    "$date": {
+      "$numberLong": "1666450472657"
+    }
+  },
+  "resetPasswordToken": "dadec887e6bd4f0f9c4af95fef0319b4da9aed362e5bc545e33b58ecdbd23965",
+  "mobile": {
+    "$numberLong": "9562935099"
+  },
+  "isDeleted": "false"
+},{
+  "_id": {
+    "$oid": "63550e0908c1d6cb76f6715f"
+  },
+  "name": "Seller - 1",
+  "email": "seller1@gmail.com",
+  "password": "$2a$10$JzHBJ11fAegXSGxoWgDFweFH.BdgwJB54jyhzgNLG/HdAgMn.AQlm",
+  "avatar": {
+    "public_id": "avatars/64b43719475337011cd4c1bb4737f834",
+    "url": "https://res.cloudinary.com/farmershub/image/upload/v1666518530/avatars/64b43719475337011cd4c1bb4737f834.webp"
+  },
+  "role": "seller",
+  "createdAt": {
+    "$date": {
+      "$numberLong": "1666518537123"
+    }
+  },
+  "__v": 0,
+  "mobile": {
+    "$numberLong": "7544323123"
+  },
+  "isDeleted": "false"
+},{
+  "_id": {
+    "$oid": "635cf16574e265607466c765"
+  },
+  "name": "Nived",
+  "email": "nived@gmail.com",
+  "mobile": {
+    "$numberLong": "9876543210"
+  },
+  "password": "$2a$10$Rtkkkse0g7anf724yl2oEO9aGMm1WAwMApXqbVk.Omsx5NUDaRCFy",
+  "avatar": {
+    "public_id": "avatars/1cc73f076c7b8b0f09eed919eb47bbcc",
+    "url": "https://res.cloudinary.com/farmershub/image/upload/v1668570481/avatars/1cc73f076c7b8b0f09eed919eb47bbcc.jpg"
+  },
+  "role": "user",
+  "createdAt": {
+    "$date": {
+      "$numberLong": "1667035493945"
+    }
+  },
+  "__v": 0,
+  "isDeleted": "false"
+},{
+  "_id": {
+    "$oid": "635f4a0e01ef62263e7bdba1"
+  },
+  "name": "Seller - 2",
+  "email": "seller2@gmail.com",
+  "mobile": {
+    "$numberLong": "9874293840"
+  },
+  "password": "$2a$10$TFwHUNqOvsyBvtlEqWhWAeorBEwdrBP/BG4dWGtduZpdchqKcXUcG",
+  "avatar": {
+    "public_id": "avatars/0b48316f85ebfea220f3c7efb2bc478b",
+    "url": "https://res.cloudinary.com/farmershub/image/upload/v1667189262/avatars/0b48316f85ebfea220f3c7efb2bc478b.jpg"
+  },
+  "role": "seller",
+  "createdAt": {
+    "$date": {
+      "$numberLong": "1667189262718"
+    }
+  },
+  "__v": 0,
+  "isDeleted": "false"
+},{
+  "_id": {
+    "$oid": "637460fbe206fbe74d48e625"
+  },
+  "name": "Jobin",
+  "email": "jobin@gmail.com",
+  "mobile": {
+    "$numberLong": "9459675403"
+  },
+  "password": "$2a$10$O9xn5sfjdHsdFJmMAh5gHOE1GFJO3UMEoseyllH64Y0FfG8tMV2QC",
+  "avatar": {
+    "public_id": "avatars/64b43719475337011cd4c1bb4737f834",
+    "url": "https://res.cloudinary.com/farmershub/image/upload/v1666518530/avatars/64b43719475337011cd4c1bb4737f834.webp"
+  },
+  "role": "user",
+  "createdAt": {
+    "$date": {
+      "$numberLong": "1668571387269"
+    }
+  },
+  "__v": 0,
+  "isDeleted": "false"
+},{
+  "_id": {
+    "$oid": "63746709021173f53c43860a"
+  },
+  "name": "Yazin",
+  "email": "yazin@gmail.com",
+  "mobile": {
+    "$numberLong": "9788977695"
+  },
+  "password": "$2a$10$/T7zAZWLedP7fkzBfVmKne43tBJ3Sju5X2GHoExJ4AoHkL14emjcW",
+  "avatar": {
+    "public_id": "avatars/54894dc2856138e42d18e14a3ff97cc1",
+    "url": "https://res.cloudinary.com/farmershub/image/upload/v1668572939/avatars/54894dc2856138e42d18e14a3ff97cc1.jpg"
+  },
+  "role": "user",
+  "createdAt": {
+    "$date": {
+      "$numberLong": "1668572937532"
+    }
+  },
+  "__v": 0,
+  "isDeleted": "false"
+},{
+  "_id": {
+    "$oid": "63746af414440167f9d923cb"
+  },
+  "name": "vimal",
+  "email": "vimal@gmail.com",
+  "mobile": {
+    "$numberLong": "9878967897"
+  },
+  "password": "$2a$10$WVSkepZyIiiVdD1WHqqyzuhGZeJUiK81BE0PZrnypy3fS10Xl/o3y",
+  "avatar": {
+    "public_id": "avatars/2ab53cb8cbeb0f5eb52215a2263647e8",
+    "url": "https://res.cloudinary.com/farmershub/image/upload/v1668573942/avatars/2ab53cb8cbeb0f5eb52215a2263647e8.webp"
+  },
+  "role": "user",
+  "createdAt": {
+    "$date": {
+      "$numberLong": "1668573940968"
+    }
+  },
+  "__v": 0,
+  "isDeleted": "false"
+}]

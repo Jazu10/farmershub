@@ -25,6 +25,7 @@ const ProductList = ({ history }) => {
         error: deleteError,
         isDeleted,
         isUpdated,
+        message,
     } = useSelector((state) => state.product);
 
     useEffect(() => {
@@ -38,7 +39,7 @@ const ProductList = ({ history }) => {
             dispatch(clearErrors());
         }
         if (isDeleted) {
-            alert.success("Product deleted successfully");
+            alert.success(message);
             history.push("/admin/products");
             dispatch({ type: DELETE_PRODUCT_RESET });
         }
@@ -46,7 +47,16 @@ const ProductList = ({ history }) => {
             alert.success("Product Status Updated");
             dispatch({ type: UPDATE_PRODUCT_RESET });
         }
-    }, [dispatch, alert, error, deleteError, isUpdated, isDeleted, history]);
+    }, [
+        dispatch,
+        alert,
+        error,
+        deleteError,
+        isUpdated,
+        message,
+        isDeleted,
+        history,
+    ]);
 
     const deleteProductHandler = (id) => {
         dispatch(deleteProduct(id));
@@ -76,7 +86,7 @@ const ProductList = ({ history }) => {
             renderCell: (cellValues) => {
                 return (
                     <p className="font-bold text-blue-600 p-2 py-1 rounded-md bg-gray-200">
-                        $ {cellValues.row.price}
+                        ₹ {cellValues.row.price}
                     </p>
                 );
             },
@@ -165,7 +175,7 @@ const ProductList = ({ history }) => {
                 );
             },
             flex: 1,
-            minWidth: 100,
+            minWidth: 140,
             sortable: false,
         },
     ];

@@ -35,6 +35,7 @@ class APIFeatures {
                 $and: [
                     { $or: [{ ...name }, { ...seller }, { ...location }] },
                     { isActive: true },
+                    { isDeleted: 'false' }
                 ],
             })
             .sort({ stock: -1, createdAt: -1, schedule: 1 });
