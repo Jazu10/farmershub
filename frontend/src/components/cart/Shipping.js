@@ -3,8 +3,10 @@ import { MetaData } from "../../components";
 import { useDispatch, useSelector } from "react-redux";
 import { saveShippingInfo } from "../../actions/cartActions";
 import CheckoutSteps from "./CheckoutSteps";
+import { useAlert } from "react-alert";
 const Shipping = ({ history }) => {
-    const loading = "";
+    const loading = false;
+    const alert = useAlert();
     const { shippingInfo } = useSelector((state) => state.cart);
     const [address, setAddress] = useState(shippingInfo.address);
     const [city, setCity] = useState(shippingInfo.city);
@@ -34,6 +36,8 @@ const Shipping = ({ history }) => {
     const submitHandler = (e) => {
         e.preventDefault();
         // console.log({ address, city, phone, postalCode, country });
+        if (!address || !city || !phone || !postalCode)
+            return alert.error("Please fill all the details");
         dispatch(
             saveShippingInfo({
                 address,

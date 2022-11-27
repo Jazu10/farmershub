@@ -42,7 +42,9 @@ exports.newProduct = catchAsyncErrors(async (req, res, next) => {
 // Get all products   =>   /api/v1/products?keyword=apple
 exports.getProducts = catchAsyncErrors(async (req, res, next) => {
     const resPerPage = 14;
-    const productsCount = await Product.countDocuments({ isActive: true });
+    const productsCount = await Product.countDocuments({
+        $and: [{ isActive: true }, { isDeleted: "false" }],
+    });
 
     const apiFeatures = new APIFeatures(Product.find(), req.query)
         .search()
@@ -154,6 +156,7 @@ exports.deleteProduct = catchAsyncErrors(async (req, res, next) => {
 
     // await product.remove();
     product.isDeleted = "true";
+    product.stock = 0;
     product.save();
 
     res.status(200).json({
