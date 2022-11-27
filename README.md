@@ -1,4 +1,4 @@
-# e-comm
+# Farmer' Hub
 
 ###### To start the backend in developer mode
 ``` 
@@ -15,3 +15,8 @@ npm run prod
 cd frontend
 npm start
 ```
+
+#### Login Credentials
+`Admin`
+> Email: farmershubkerala@gmail.com
+> Password: 123123
