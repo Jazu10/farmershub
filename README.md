@@ -1,13 +1,13 @@
 # e-comm
 
 ###### To start the backend in developer mode
-> **npm run dev**
+``` npm run dev ```
 
 ###### To start the backend in production mode
-> **npm run prod**
+``` npm run prod ```
 
 ###### To start the frontend
 ```
-**cd frontend**
-**npm start**
+cd frontend
+npm start
 ```
