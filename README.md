@@ -20,3 +20,11 @@ npm start
 `Admin`
 > Email: farmershubkerala@gmail.com
 > Password: 123123
+
+`Farmer`
+> Email: seller1@gmail.com
+> Password: 123123
+
+`Customer`
+> Email: jaseemks11@gmail.com
+> Password: 123123
