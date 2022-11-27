@@ -7,5 +7,7 @@
 > **npm run prod**
 
 ###### To start the frontend
-> **cd frontend**
-> **npm start**
+```
+**cd frontend**
+**npm start**
+```
