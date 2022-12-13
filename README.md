@@ -1,5 +1,13 @@
 # Farmer' Hub
 
+###### Installing Dependencies
+
+```
+npm install
+cd frontend
+npm install
+```
+
 ###### To start the backend in developer mode
 
 ```
